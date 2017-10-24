@@ -11,5 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.login = login;
   window.logoutUser = logoutUser;
   const root = document.getElementById('root');
-  ReactDom.render(root)
+  ReactDom.render(<App />, root)
 })
+
+const App = () => (
+  <div>
+    Hi from app!
+  </div>
+);
