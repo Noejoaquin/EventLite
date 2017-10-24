@@ -8,9 +8,14 @@
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": "4.1.1",
+    "npm": "2.1.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
