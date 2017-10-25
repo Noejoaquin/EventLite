@@ -6,6 +6,7 @@ class NavBar extends React.Component {
 
 
   render(){
+
     let nav;
     if (this.props.currentUser){
       nav = (

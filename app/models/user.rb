@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates :email, :first_name, :last_name, :password_digest, :session_token, presence: true, uniqueness: true
+  validates :email, :password_digest, :session_token, presence: true, uniqueness: true
   validates :email, uniqueness: { scope: [:first_name, :last_name] }
   validates :password, length: { minimum: 6, allow_nil: true }
 
