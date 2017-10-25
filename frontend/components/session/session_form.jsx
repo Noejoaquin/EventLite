@@ -24,8 +24,7 @@ class SessionForm extends React.Component {
 
   handleSubmit(e){
     let state = this.state;
-    this.revertBackToOriginalState();
-    this.props.processForm(state);
+    this.props.processForm(state).then(this.revertBackToOriginalState);
   }
 
   componentWillReceiveProps(nextProps){
@@ -33,6 +32,10 @@ class SessionForm extends React.Component {
       this.props.clearErrors();
       this.revertBackToOriginalState()
     }
+  }
+
+  handleGuestLogin(){
+    this.props.login({email: 'guest@guest.com', password: 'starwars', first_name: 'guest', last_name: 'guest'})
   }
 
 
@@ -51,60 +54,64 @@ class SessionForm extends React.Component {
     })
     let path = this.props.match.path === '/login' ? '/signup' : '/login'
     let otherFormType = this.props.formType === 'Log In' ? 'Sign Up' : 'Log In';
-    let link=<Link to={path}>{otherFormType}</Link>
+    let link=<Link id='session-link' to={path}>{otherFormType}</Link>
     if (!this.props.loggedIn){
 
       if (this.props.match.path === '/login'){
         form = (
-          <div>
-            Log In
-          <form onSubmit={this.handleSubmit}>
-            <label>email
-              <input type='text' onChange={this.handleChange('email')} value={this.state.email} />
+          <section className='session-form-parent-login'>
+            <h2 className='sesson-greeting-login'>Welcome Back</h2>
+            <h4 className='session-type-login'>Log In</h4>
+          <form className='session-form-login' onSubmit={this.handleSubmit}>
+            <label className='email-login'>email
+              <input type='email' onChange={this.handleChange('email')} value={this.state.email} />
             </label>
             <br/>
-            <label>password
+            <label className='password-login'>password
               <input type='text' onChange={this.handleChange('password')} value={this.state.password}/>
             </label>
-            <button type='submit'>{this.props.formType}</button>
+            <button type='submit-login'>{this.props.formType}</button>
           </form>
-          </div>
+        </section>
         )
       } else {
         form = (
-          <div>
-          Sign Up
-            <form onSubmit={this.handleSubmit}>
-              <label> email
-                <input type='text' onChange={this.handleChange('email')} value={this.state.email}/>
+          <section className='session-form-parent-signup'>
+            <h2 className='sesson-greeting-signup'>Welcome</h2>
+            <h4 className='session-type-signup'>Sign Up</h4>
+            <form className='session-form-signup' onSubmit={this.handleSubmit}>
+              <label className='email-signup'> email
+              <input  type='email' onChange={this.handleChange('email')} value={this.state.email}/>
               </label>
               <br/>
-              <label> first name
+              <label className='first-name-signup'> first name
                 <input type='text' onChange={this.handleChange('first_name')} value={this.state.first_name} />
               </label>
               <br/>
-              <label>last name
+              <label className='last-name-signup'>last name
                 <input type='text' onChange={this.handleChange('last_name')} value={this.state.last_name}/>
               </label>
               <br/>
-              <label> password
+              <label className='password-signup'> password
                 <input type='text' onChange={this.handleChange('password')} value={this.state.password}/>
               </label>
               <br/>
-              <button type='submit'>{this.props.formType}</button>
+              <button type='submit-signup-signup'>{this.props.formType}</button>
+              <br/>
+              <button type='guest-login-signup' onClick={this.handleGuestLogin()}>Guest Login</button>
           </form>
-        </div>
+        </section>
         )
       }
   }
     return (
-      <div>
+      <section>
         {link}
         {form}
       <ul>
         {errors}
       </ul>
-    </div>
+    </section>
     )
   }
 }

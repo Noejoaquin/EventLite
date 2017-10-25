@@ -10,18 +10,24 @@ class NavBar extends React.Component {
     let nav;
     if (this.props.currentUser){
       nav = (
-        <ul>
-        <h2>{this.props.currentUser.first_name}</h2>
-        <button onClick={() => this.props.logout()}>logout</button>
-      </ul>
+        <nav className='main-nav'>
+
+          <ul>
+            <h2>{this.props.currentUser.first_name}</h2>
+            <button onClick={() => this.props.logout()}>logout</button>
+          </ul>
+      </nav>
       );
     } else {
       nav = (
-        <ul>
-          <Link to='/signup'>Sign Up</Link>
-          <br/>
-          <Link to='/login'>Login</Link>
-        </ul>
+        <nav className='main-nav'>
+          
+          <ul>
+            <Link to='/signup'>Sign Up</Link>
+            <br/>
+            <Link to='/login'>Login</Link>
+          </ul>
+        </nav>
       );
     }
     return(

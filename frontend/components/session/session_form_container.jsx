@@ -19,7 +19,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const action = ownProps.match.path === "/signup" ? signUp : login;
   return {
     clearErrors: () => dispatch(clearErrors()),
-    processForm: (user) => dispatch(action(user))
+    processForm: (user) => dispatch(action(user)),
+    login: (user) => dispatch(login(user))
    }
 ;
 }

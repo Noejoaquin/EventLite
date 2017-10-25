@@ -11,7 +11,7 @@ import { AuthRoute } from '../util/route_util';
 // <AuthRoute path='/signup' component={SessionFormContainer} />
 // <GreetingContainer/>
  const App = () => (
-   <div>
+   <main className='app'>
      <h1>eventLite</h1>
 
      <Switch>
@@ -20,7 +20,7 @@ import { AuthRoute } from '../util/route_util';
        <Route path='/' component={NavContainer} />
       </Switch>
 
-   </div>
+   </main>
  );
 
  export default App;
