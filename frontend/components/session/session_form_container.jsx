@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
-import { signUp, login } from '../../actions/session_actions';
+import { signUp, login, clearErrors } from '../../actions/session_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -17,9 +17,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const action = ownProps.match.path === "/signup" ? signUp : login;
-  return (
-  { processForm: (user) => dispatch(action(user)) }
-);
+  return {
+    clearErrors: () => dispatch(clearErrors()),
+    processForm: (user) => dispatch(action(user))
+   }
+;
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);

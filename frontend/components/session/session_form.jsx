@@ -10,19 +10,32 @@ class SessionForm extends React.Component {
     } else {
       this.state = {email: '',password: '' }
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.revertBackToOriginalState = this.revertBackToOriginalState.bind(this)
+  }
+
+  revertBackToOriginalState(){
+    if (this.props.formType === 'Log In'){
+      this.setState({ email: '', password: ''})
+    } else {
+      this.setState({email: '', password: '', first_name: '', last_name: ''})
+    }
   }
 
   handleSubmit(e){
-    this.props.processForm(this.state)
-
+    let state = this.state;
+    this.revertBackToOriginalState();
+    this.props.processForm(state);
   }
 
-  componentWillReceiveProps(){
-    if (this.props.errors){
-      this.props.errors = [];
+  componentWillReceiveProps(nextProps){
+    if (this.props.formType !== nextProps.formType){
+      this.props.clearErrors();
+      this.revertBackToOriginalState()
     }
   }
+
+
 
   handleChange(field){
     return (e) => {
@@ -33,13 +46,12 @@ class SessionForm extends React.Component {
 
   render(){
     let form;
-
-    let path = this.props.match.path === '/login' ? '/signup' : '/login'
-    let otherFormType = this.props.formType === 'Log In' ? 'Sign Up' : 'Log In';
-    let link=<Link to={path}>{otherFormType}</Link>
     let errors = this.props.errors.map((error, idx) =>{
       return <li key={idx}>{error}</li>
     })
+    let path = this.props.match.path === '/login' ? '/signup' : '/login'
+    let otherFormType = this.props.formType === 'Log In' ? 'Sign Up' : 'Log In';
+    let link=<Link to={path}>{otherFormType}</Link>
     if (!this.props.loggedIn){
 
       if (this.props.match.path === '/login'){
@@ -48,11 +60,11 @@ class SessionForm extends React.Component {
             Log In
           <form onSubmit={this.handleSubmit}>
             <label>email
-              <input type='text' onChange={this.handleChange('email')}/>
+              <input type='text' onChange={this.handleChange('email')} value={this.state.email} />
             </label>
             <br/>
             <label>password
-              <input type='text' onChange={this.handleChange('password')} />
+              <input type='text' onChange={this.handleChange('password')} value={this.state.password}/>
             </label>
             <button type='submit'>{this.props.formType}</button>
           </form>
@@ -64,19 +76,19 @@ class SessionForm extends React.Component {
           Sign Up
             <form onSubmit={this.handleSubmit}>
               <label> email
-                <input type='text' onChange={this.handleChange('email')} />
+                <input type='text' onChange={this.handleChange('email')} value={this.state.email}/>
               </label>
               <br/>
               <label> first name
-                <input type='text' onChange={this.handleChange('first_name')}/>
+                <input type='text' onChange={this.handleChange('first_name')} value={this.state.first_name} />
               </label>
               <br/>
               <label>last name
-                <input type='text' onChange={this.handleChange('last_name')} />
+                <input type='text' onChange={this.handleChange('last_name')} value={this.state.last_name}/>
               </label>
               <br/>
               <label> password
-                <input type='text' onChange={this.handleChange('password')} />
+                <input type='text' onChange={this.handleChange('password')} value={this.state.password}/>
               </label>
               <br/>
               <button type='submit'>{this.props.formType}</button>
