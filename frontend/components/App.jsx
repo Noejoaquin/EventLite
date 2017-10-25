@@ -1,7 +1,7 @@
 import React from 'react';
 import NavContainer from './nav_bar/nav_bar_container';
 import { Route } from 'react-router';
-import SessionForm from './session/session_form_container';
+import SessionFormContainer from './session/session_form_container';
 // import GreetingContainer from './greeting/greeting_container';
 
 // import { AuthRoute } from '../util/route_util';
