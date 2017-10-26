@@ -14,3 +14,24 @@ user3 = User.create(email: 'Alice@joe.com', first_name: 'alice', last_name: 'jac
 user4 = User.create(email: 'MIKE@joe.com', first_name: 'mike', last_name: 'jack', password: 'starwars')
 user1 = User.create(email: 'louis@joe.com', first_name: 'louis', last_name: 'jack', password: 'starwars')
 guest_user = User.create(email:'guest@guest.com', first_name: 'guest', last_name: 'guest', password:'starwars')
+
+Category.destroy_all
+
+cat1 = Category.create(name: 'Music')
+cat2 = Category.create(name: 'Business')
+cat3 = Category.create(name: 'Arts')
+cat4 = Category.create(name: 'Other')
+cat5 = Category.create(name: 'Holiday')
+cat6 = Category.create(name: 'Fashion')
+cat7 = Category.create(name: 'Health')
+cat8 = Category.create(name: 'Community')
+
+
+Event.destroy_all
+
+
+event1 = Event.create(category_id: cat1.id, organizer_id: user2.id, name:'Square Dancing Competition', description:'Time to dance!', location:'Central park', ticket_type:'free', price: 0.00, start_time: Time.zone.now)
+event2 = Event.create(category_id: cat2.id, organizer_id: user3.id, name:'Mixer', description:'Broaden your network!', location:'Central park', ticket_type:'free', price: 0.00, start_time:Time.zone.now)
+event3 = Event.create(category_id: cat3.id, organizer_id: user2.id, name:'Painting Exhibition', description:'Come see the art', location:'Central park', ticket_type:'free', price: 0.00, start_time:Time.zone.now)
+event4 = Event.create(category_id: cat4.id, organizer_id: user2.id, name:'Hangin out', description:'Enjoy the day with friends', location:'Central park', ticket_type:'paid', price: 20.00, start_time:Time.zone.now)
+event5 = Event.create(category_id: cat1.id, organizer_id: user4.id, name:'Halloween Dance Party', description:'Get your thriller on!', location:'Central park', ticket_type:'paid', price: 20.00, start_time:Time.zone.now)
