@@ -1,8 +1,31 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer          not null, primary key
+#  first_name         :string           not null
+#  last_name          :string           not null
+#  email              :string           not null
+#  password_digest    :string           not null
+#  session_token      :string           not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#
+
 class User < ApplicationRecord
   validates :email, :password_digest, :session_token, presence: true, uniqueness: true
-  validates :first_name, :last_name, presence: true 
+  validates :first_name, :last_name, presence: true
   validates :email, uniqueness: { scope: [:first_name, :last_name] }
   validates :password, length: { minimum: 6, allow_nil: true }
+
+  has_many :events,
+  primary_key: :id,
+  class_name: 'Event',
+  foreign_key: :organizer_id
 
   after_initialize :ensure_session_token!
 
