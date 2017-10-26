@@ -15,7 +15,7 @@
  */
 
  /*reset*/
- @import './base/reset';
+@import './base/reset';
 
 @import './components/session_form_sign_in';
 @import './components/session_form_login';
