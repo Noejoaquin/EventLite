@@ -76,7 +76,7 @@ class SessionForm extends React.Component {
             <br/>
               <li>
                 <label className='password-login'>Password</label>
-                <input placeholder='Enter password' type='text' onChange={this.handleChange('password')} value={this.state.password}/>
+                <input placeholder='Enter password' type='password' onChange={this.handleChange('password')} value={this.state.password}/>
               </li>
             </ul>
           </form>
@@ -119,7 +119,7 @@ class SessionForm extends React.Component {
                 <br/>
                 <li>
                 <label className='password-signup'> Password  </label>
-                  <input placeholder='Enter password' type='text' onChange={this.handleChange('password')} value={this.state.password}/>
+                  <input placeholder='Enter password' type='password' onChange={this.handleChange('password')} value={this.state.password}/>
                   </li>
                 </ul>
               </form>
