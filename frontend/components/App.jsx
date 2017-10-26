@@ -12,7 +12,6 @@ import { AuthRoute } from '../util/route_util';
 // <GreetingContainer/>
  const App = () => (
    <main className='app'>
-     <h1>eventLite</h1>
 
      <Switch>
        <AuthRoute path="/login" component={SessionFormContainer} />

@@ -1,0 +1,117 @@
+
+
+.session-form-parent-signup{
+  // border: 1px solid black;
+  margin: auto;
+  margin-top: 40px;
+  width: 80%;
+  height: 30%;
+  display: block;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.session-ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#session-link:hover{
+  text-decoration: underline;
+}
+
+#session-link{
+  color: #f86004;
+}
+
+.session-form-parent-signup h2 {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 34px;
+  color: #646262;
+}
+
+.input-list{
+  margin-top: 30px;
+  display: flex;
+}
+.signup-buttons{
+  margin-top: 65px;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.session-form-signup label {
+  font-family: sans-serif;
+  align-items: center;
+  margin-left: 30px;
+  color: #767473;
+}
+
+.session-type-signup{
+  display: flex;
+  justify-content: center;
+  color: #8D8988;
+}
+
+
+.session-form-signup{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.errors{
+  display: flex;
+  justify-content: space-around;
+}
+
+.errors li {
+  padding-right: 5%;
+  color: red;
+  font-family: sans-serif;
+}
+
+.submit-signup{
+  text-align: center;
+  padding: 15px;
+  font-size: 19px;
+  font-family: serif;
+  background-color: #f86004;
+  color: #fff;
+  border-radius: 100px / 110px;
+  padding-left: 115px;
+  padding-right: 115px;
+}
+
+.guest-login{
+  padding: 15px;
+  font-size: 19px;
+  font-family: serif;
+  background-color: #f86004;
+  color: #fff;
+  border-radius: 100px / 110px;
+  padding-left: 100px;
+  padding-right: 100px;
+
+}
+
+input[type=text],[type=email]{
+  width: 150px;
+}
+
+.session-form-parent-signup button {
+  transition-duration: 0.5s;
+}
+
+.session-form-parent-signup button:hover{
+  background-color: #fd348b;
+}
+
+.session-form-parent-signup input {
+  padding: 8px;
+  margin-left: 10px;
+  border: 1px solid #D8D0CE;
+}

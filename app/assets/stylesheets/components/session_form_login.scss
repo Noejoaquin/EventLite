@@ -1,0 +1,114 @@
+
+.session-form-parent-login{
+  margin: auto;
+  margin-top: 40px;
+  width: 80%;
+  height: 20%;
+  display: block;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.session-ul-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#session-link{
+  color: #f86004;
+}
+
+.session-form-parent-login h2 {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 34px;
+  color: #646262;
+}
+
+.input-list{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.login-buttons{
+  margin-top: 65px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.session-form-login label {
+  font-family: sans-serif;
+  align-items: center;
+  margin-left: 30px;
+  color: #767473;
+}
+
+.session-type-login{
+  display: flex;
+  justify-content: center;
+  color: #8D8988;
+}
+
+
+.session-form-login{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.errors{
+  display: flex;
+  justify-content: space-around;
+}
+
+.errors li {
+  padding-right: 5%;
+  color: red;
+  font-family: sans-serif;
+}
+
+.submit-login{
+  text-align: center;
+  padding: 15px;
+  font-size: 19px;
+  font-family: serif;
+  background-color: #f86004;
+  color: #fff;
+  border-radius: 100px / 110px;
+  padding-left: 115px;
+  padding-right: 115px;
+}
+
+.guest-login{
+  padding: 15px;
+  font-size: 19px;
+  font-family: serif;
+  background-color: #f86004;
+  color: #fff;
+  border-radius: 100px / 110px;
+  padding-left: 100px;
+  padding-right: 100px;
+
+}
+
+input[type=text],[type=email]{
+  width: 150px;
+}
+
+.session-form-parent-login button {
+  transition-duration: 0.5s;
+}
+
+.session-form-parent-login button:hover{
+  background-color: #fd348b;
+}
+
+.session-form-parent-login input {
+  border: 1px solid black;
+  padding: 8px;
+  margin-left: 10px;
+  border: 1px solid #D8D0CE;
+}

@@ -6,12 +6,13 @@ class SessionForm extends React.Component {
   constructor(props){
     super(props);
     if(this.props.formType === 'Log In'){
-      this.state = {email: '', password: '', first_name: '', last_name: ''}
-    } else {
       this.state = {email: '',password: '' }
+    } else {
+      this.state = {email: '', password: '', first_name: '', last_name: ''}
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.revertBackToOriginalState = this.revertBackToOriginalState.bind(this)
+    this.handleGuestLogin = this.handleGuestLogin.bind(this);
   }
 
   revertBackToOriginalState(){
@@ -35,10 +36,8 @@ class SessionForm extends React.Component {
   }
 
   handleGuestLogin(){
-    this.props.login({email: 'guest@guest.com', password: 'starwars', first_name: 'guest', last_name: 'guest'})
+    this.props.login({email: 'guest@guest.com', password: 'starwars'})
   }
-
-
 
   handleChange(field){
     return (e) => {
@@ -46,11 +45,12 @@ class SessionForm extends React.Component {
     }
   }
 
-
   render(){
     let form;
     let errors = this.props.errors.map((error, idx) =>{
-      return <li key={idx}>{error}</li>
+      return (
+        <li key={idx}>{error}</li>
+        )
     })
     let path = this.props.match.path === '/login' ? '/signup' : '/login'
     let otherFormType = this.props.formType === 'Log In' ? 'Sign Up' : 'Log In';
@@ -61,54 +61,88 @@ class SessionForm extends React.Component {
         form = (
           <section className='session-form-parent-login'>
             <h2 className='sesson-greeting-login'>Welcome Back</h2>
-            <h4 className='session-type-login'>Log In</h4>
+            <ul className='session-ul-login'>
+              <li>
+                {link}
+              </li>
+            </ul>
+            <h4 className='session-type-login'>Please enter your email and password to log in</h4>
           <form className='session-form-login' onSubmit={this.handleSubmit}>
-            <label className='email-login'>email
-              <input type='email' onChange={this.handleChange('email')} value={this.state.email} />
-            </label>
+            <ul className='input-list'>
+              <li>
+                <label className='email-login'>Email</label>
+                <input placeholder='Enter email' type='email' onChange={this.handleChange('email')} value={this.state.email} />
+              </li>
             <br/>
-            <label className='password-login'>password
-              <input type='text' onChange={this.handleChange('password')} value={this.state.password}/>
-            </label>
-            <button type='submit-login'>{this.props.formType}</button>
+              <li>
+                <label className='password-login'>Password</label>
+                <input placeholder='Enter password' type='text' onChange={this.handleChange('password')} value={this.state.password}/>
+              </li>
+            </ul>
           </form>
+          <ul className='login-buttons'>
+            <li>
+          <button className='submit-login' onClick={this.handleSubmit} type='submit-login'>{this.props.formType}</button>
+          </li>
+          <li>
+          <button className='guest-login' onClick={this.handleGuestLogin}>Guest Login</button>
+          </li>
+          </ul>
         </section>
         )
       } else {
         form = (
           <section className='session-form-parent-signup'>
             <h2 className='sesson-greeting-signup'>Welcome</h2>
-            <h4 className='session-type-signup'>Sign Up</h4>
-            <form className='session-form-signup' onSubmit={this.handleSubmit}>
-              <label className='email-signup'> email
-              <input  type='email' onChange={this.handleChange('email')} value={this.state.email}/>
-              </label>
+              <ul className='session-ul'>
+                <li>
+                  {link}
+                </li>
+              </ul>
+            <h4 className='session-type-signup'>Create an account</h4>
+              <form className='session-form-signup' onSubmit={this.handleSubmit}>
+                <ul className='input-list'>
+                  <li>
+                   <label className='first-name-signup'> First Name</label>
+                   <input placeholder='Enter first name' type='text' onChange={this.handleChange('first_name')} value={this.state.first_name} />
+                 </li>
+                <br/>
+                  <li>
+                    <label className='last-name-signup'>Last Name</label>
+                    <input placeholder='Enter last name' type='text' onChange={this.handleChange('last_name')} value={this.state.last_name}/>
+                  </li>
+                <br/>
+                <li>
+                    <label className='email-signup'> Email</label>
+                    <input placeholder='Enter email' type='email' onChange={this.handleChange('email')} value={this.state.email}/>
+                  </li>
+                <br/>
+                <li>
+                <label className='password-signup'> Password  </label>
+                  <input placeholder='Enter password' type='text' onChange={this.handleChange('password')} value={this.state.password}/>
+                  </li>
+                </ul>
+              </form>
+              <ul className='signup-buttons'>
+                <li>
+                  <button onClick={this.handleSubmit} className='submit-signup'>{this.props.formType}</button>
+                </li>
+                <li>
+                  <button className='guest-login' onClick={this.handleGuestLogin}>Guest Login</button>
+                </li>
+              </ul>
               <br/>
-              <label className='first-name-signup'> first name
-                <input type='text' onChange={this.handleChange('first_name')} value={this.state.first_name} />
-              </label>
-              <br/>
-              <label className='last-name-signup'>last name
-                <input type='text' onChange={this.handleChange('last_name')} value={this.state.last_name}/>
-              </label>
-              <br/>
-              <label className='password-signup'> password
-                <input type='text' onChange={this.handleChange('password')} value={this.state.password}/>
-              </label>
-              <br/>
-              <button type='submit-signup-signup'>{this.props.formType}</button>
-              <br/>
-              <button type='guest-login-signup' onClick={this.handleGuestLogin()}>Guest Login</button>
-          </form>
+
         </section>
         )
       }
   }
     return (
-      <section>
-        {link}
-        {form}
-      <ul>
+      <section >
+
+            {form}
+
+      <ul className='errors'>
         {errors}
       </ul>
     </section>
@@ -117,3 +151,13 @@ class SessionForm extends React.Component {
 }
 
 export default SessionForm;
+
+
+
+
+
+// <ul className='session-ul'>
+//   <li>
+//     {link}
+//   </li>
+// </ul>
