@@ -4,7 +4,7 @@ import Root from './components/root'
 import configureStore from './store/store';
 import { login, logout, signUp } from './actions/session_actions';
 import { fetchEvent, fetchEvents, createEvent, updateEvent, deleteEvent} from './actions/event_actions';
-
+import { fetchCategories } from './actions/category_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 //testing
+window.fetchCategories = fetchCategories;
 window.fetchEvent = fetchEvent;
 window.fetchEvents = fetchEvents;
 window.createEvent = createEvent;
