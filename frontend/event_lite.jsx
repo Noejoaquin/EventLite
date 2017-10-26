@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import Root from './components/root'
 import configureStore from './store/store';
 import { login, logout, signUp } from './actions/session_actions';
-
+import { fetchEvent, fetchEvents, createEvent, updateEvent, deleteEvent} from './actions/event_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,7 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-  // window.currentUser = currentUser;
+//testing
+window.fetchEvent = fetchEvent;
+window.fetchEvents = fetchEvents;
+window.createEvent = createEvent;
+window.updateEvent = updateEvent;
+window.deleteEvent = deleteEvent;
+window.getState = store.getState;
+window.dispatch = store.dispatch;
   const root = document.getElementById('root');
   ReactDom.render(<Root store={store} />, root)
 })
