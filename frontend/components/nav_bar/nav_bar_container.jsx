@@ -4,7 +4,7 @@ import * as SessionActions from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser;
-  return { currentUser };
+  return { currentUser, ownProps };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

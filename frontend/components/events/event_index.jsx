@@ -5,7 +5,6 @@ import { isEmpty } from 'lodash';
 class EventIndex extends React.Component {
   constructor(props){
     super(props);
-    debugger
     // this.findCategoryName = this.findCategoryName.bind(this)
   }
 
@@ -14,7 +13,7 @@ class EventIndex extends React.Component {
   }
 
   findCategoryName(event, categories){
-    debugger
+
     let categoryId = event.category_id;
     let name = this.props.categories[categoryId].name
     return name
@@ -28,7 +27,6 @@ class EventIndex extends React.Component {
       return <EventIndexItem key={event.id} event={event} category={ category } />
       })
     }
-    // {events}
     return (
       <div>
         <ul>

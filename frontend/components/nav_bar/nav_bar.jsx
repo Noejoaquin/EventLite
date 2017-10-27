@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 class NavBar extends React.Component {
 
 
+  // let linkToCreate = this.props.match.path === '/events/new' ? '' : '/events/'
   render(){
 
     let nav;
