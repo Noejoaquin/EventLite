@@ -19,6 +19,7 @@
 #
 
 class Event < ApplicationRecord
+
   validates :name, :description, :location, :ticket_type, :price, :start_time, presence: true
 
   belongs_to :category,
@@ -30,5 +31,8 @@ class Event < ApplicationRecord
   primary_key: :id,
   class_name: 'User',
   foreign_key: :organizer_id
+
+  has_attached_file :image, default_url: "default-event.jpg"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 end
