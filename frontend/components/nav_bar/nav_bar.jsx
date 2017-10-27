@@ -13,19 +13,20 @@ class NavBar extends React.Component {
         <nav className='main-nav'>
 
           <ul>
-            <h2>{this.props.currentUser.first_name}</h2>
-            <button onClick={() => this.props.logout()}>logout</button>
+            <li><h2>{this.props.currentUser.first_name}</h2></li>
+            <li><button onClick={() => this.props.logout()}>logout</button></li>
+            <li><Link to='/events/new'>Create An Event</Link></li>
           </ul>
       </nav>
       );
     } else {
       nav = (
         <nav className='main-nav'>
-          
+
           <ul>
-            <Link to='/signup'>Sign Up</Link>
-            <br/>
-            <Link to='/login'>Login</Link>
+            <li><Link to='/signup'>Sign Up</Link></li>
+            <li><Link to='/login'>Login</Link></li>
+            <li><Link to='/login'>Create An Event</Link></li>
           </ul>
         </nav>
       );

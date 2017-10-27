@@ -6,7 +6,7 @@ const EventsReducer = (state = {}, action) => {
 
   switch(action.type){
     case RECEIVE_EVENTS:
-      return merge({}, action.events);
+      return action.events;
     case RECEIVE_EVENT:
       return merge({}, state, { [action.event.id]: action.event} );
     case REMOVE_EVENT:

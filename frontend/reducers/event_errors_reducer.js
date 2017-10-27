@@ -3,7 +3,6 @@ import merge from 'lodash/merge';
 
 
 const EventErrorsReducer = (state = [], action) => {
-  debugger
   switch(action.type){
     case RECEIVE_EVENT_ERRORS:
       return action.errors;
