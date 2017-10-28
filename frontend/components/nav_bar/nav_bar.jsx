@@ -11,25 +11,50 @@ class NavBar extends React.Component {
     let nav;
     if (this.props.currentUser){
       nav = (
-        <nav className='main-nav'>
+        <header>
+          <div>
+            <div className='header-title-container'>
+              <Link className='header-title' to='/'>eventLite</Link>
 
-          <ul>
-            <li><h2>{this.props.currentUser.first_name}</h2></li>
-            <li><button onClick={() => this.props.logout()}>logout</button></li>
-            <li><Link to='/events/new'>Create An Event</Link></li>
-          </ul>
-      </nav>
+              <nav className='links-container' >
+                <ul className='nav-links'>
+                  <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
+
+                  <li>
+                    <div className='dropdown'>
+                      <button className='dropbtn'>{this.props.currentUser.first_name}
+                        <i className="fa fa-caret-down" aria-hidden='true'></i>
+                      </button>
+                      <div className='dropdown-content'>
+                        <li><button id='logout-button' onClick={() => this.props.logout()}><Link to='/'>Log out</Link></button></li>
+                      </div>
+                    </div>
+                  </li>
+                  <button id='create-event'><Link to='/events/new'>Create An Event</Link></button>
+                </ul>
+              </nav>
+              <div>
+
+              </div>
+          </div>
+        </div>
+      </header>
       );
     } else {
       nav = (
-        <nav className='main-nav'>
+        <header>
+            <div className='header-title-container'>
+              <Link className='header-title' to='/'>eventLite</Link>
 
-          <ul>
-            <li><Link to='/signup'>Sign Up</Link></li>
-            <li><Link to='/login'>Login</Link></li>
-            <li><Link to='/login'>Create An Event</Link></li>
-          </ul>
-        </nav>
+          <nav className='links-container' >
+            <ul className='nav-links'>
+              <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
+              <button><Link to='/login'>Log In</Link></button>
+              <button id='create-event'><Link to='/login'>Create An Event</Link></button>
+            </ul>
+          </nav>
+        </div>
+      </header>
       );
     }
     return(

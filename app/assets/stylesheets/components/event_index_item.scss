@@ -12,3 +12,20 @@
 .event-cell-category{
   border: 1px solid black;
 }
+
+
+.event-meta-container{
+  width: 85%;
+  margin: auto;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.event-list {
+  margin: auto;
+}
+
+.event-list li {
+  display: inline-block;
+  padding: 5px;
+}

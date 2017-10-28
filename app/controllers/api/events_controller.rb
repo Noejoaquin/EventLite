@@ -5,7 +5,11 @@ class Api::EventsController < ApplicationController
   end
 
   def memberships
-    
+
+    space = current_user.spaces.find(params[:id])
+    @memberships = current_user.s
+
+    render
 
   end
 

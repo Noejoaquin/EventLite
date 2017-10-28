@@ -5,8 +5,10 @@ import EventFormContainer from './events/event_form_container';
 import { Route } from 'react-router-dom';
 
 const MainPage = () => (
-  <div>
-  <NavContainer/>
+  <div className='MainPage'>
+    <div className='header-container'>
+      <NavContainer/>
+    </div>
   <div>
     <Route exact path='/' component={EventIndexContainer} />
   </div>

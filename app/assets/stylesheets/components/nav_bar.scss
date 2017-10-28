@@ -1,0 +1,100 @@
+//
+// put
+// the right most portion
+// of the nav in a ul,
+// then flex the ul and push it to the right
+//
+// keep the eventbrite logo on the left, make it clickable,
+// and make redirect to the root page
+//
+//
+// have drop downs on the nav that pertain to the current user
+// portion
+// inside the that drop down will be the option to logout,
+// manage events
+// as well as see go to user profile page
+//
+
+.header-title-container{
+  display: flex;
+  padding: 3px;
+  border-bottom: 1px solid #EFF2F5;
+}
+
+.links-container ul {
+  display: flex;
+}
+
+.links-container ul:last-child{
+  padding-right: 10px;
+}
+
+#create-event{
+  color: #0278b8;
+}
+
+.header-title{
+  font-family: 'Libre Franklin', sans-serif;
+  color:#f6682F;
+  line-height: 1.4;
+  border-right: 1px solid #EFF2F5;
+  font-size: 39px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.dropdown{
+  overflow: hidden;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #EFF2F5;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.fa {
+  padding-left: 5px;
+}
+
+.dropdown-content li {
+  color: black;
+  padding: 10px;
+  padding-left: 0;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content li:hover {
+  background-color: #F0E8E4  ;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#logout-button{
+  padding: 3px;
+}
+
+.links-container ul button {
+  font-family: 'Libre Franklin', sans-serif;
+  color:#45494E;
+  padding: 22px;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-left: 1px solid #EFF2F5;
+  letter-spacing: .5px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.links-container{
+  position: absolute;
+  top: 0;
+  right: 0;
+}

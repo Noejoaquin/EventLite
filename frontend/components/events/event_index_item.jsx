@@ -2,7 +2,7 @@ import React from 'react';
 
 export const EventIndexItem = ({event, category}) =>{
   return (
-    <div className='event-cell'>
+    <li className='event-cell'>
 
       <img className='event-cell-image' src={event.image_url} />
       <span>{event.ticket_type}</span>
@@ -19,6 +19,6 @@ export const EventIndexItem = ({event, category}) =>{
 
           </div>
       </div>
-    </div>
+    </li>
   )
 }

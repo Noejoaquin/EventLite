@@ -16,9 +16,12 @@
 
  /*reset*/
 @import './base/reset';
+@import 'font-awesome';
 
 @import './components/session_form_sign_in';
 @import './components/session_form_login';
 
 @import './components/event_form';
 @import './components/event_index_item';
+@import './components/nav_bar';
+@import './components/main';

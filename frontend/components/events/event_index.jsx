@@ -28,10 +28,12 @@ class EventIndex extends React.Component {
       })
     }
     return (
-      <div>
-        <ul>
-          {events}
-        </ul>
+      <div className='event-meta-container'>
+        <div className='event-index-container'>
+          <ul className='event-list'>
+            {events}
+          </ul>
+        </div>
       </div>
     )
   }
