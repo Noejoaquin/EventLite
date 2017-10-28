@@ -26,7 +26,7 @@ class NavBar extends React.Component {
                         <i className="fa fa-caret-down" aria-hidden='true'></i>
                       </button>
                       <div className='dropdown-content'>
-                        <li><button id='logout-button' onClick={() => this.props.logout()}><Link to='/'>Log out</Link></button></li>
+                        <button id='logout-button' onClick={() => this.props.logout()}><Link to='/'>Log out</Link></button>
                       </div>
                     </div>
                   </li>

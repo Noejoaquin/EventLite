@@ -15,8 +15,9 @@
 
 
 .event-meta-container{
+  margin: 300px auto;
+  // margin-top: 300px;
   width: 85%;
-  margin: auto;
   justify-content: center;
   border: 1px solid black;
 }
@@ -26,6 +27,6 @@
 }
 
 .event-list li {
-  display: inline-block;
+  // display: inline-block;
   padding: 5px;
 }

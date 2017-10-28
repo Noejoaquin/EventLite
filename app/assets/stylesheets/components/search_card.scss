@@ -1,0 +1,62 @@
+select {
+  -webkit-appearance:none
+}
+
+.LandingImage {
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-image: image_url("melanie-van-leeuwen-83775.jpg")
+}
+
+.meta-search-card{
+  margin-top: 400px;
+  width: 95%;
+  margin: auto;
+  background-color: #fff;
+  border: 1px solid #D8D0CE;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
+
+}
+
+.meta-search-card h1 {
+  font-family: 'Libre Franklin', sans-serif;
+  color:#f6682F;
+  text-align: center;
+  font-size: 45px;
+  font-weight: lighter;
+}
+
+
+.searchform {
+  margin-bottom: 25px
+}
+
+.searchform input {
+  border: 1px solid #D8D0CE;
+  padding: 10px 12px;
+  width:220px;
+
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.searchform select {
+  padding: 11.7px 12px;
+  border: 1px solid #D8D0CE;
+  width:100px;
+  background-color: #fff;
+  font-size: 12px;
+  font-family: 'Libre Franklin', sans-serif;
+  border-radius: none;
+}
+
+.searchform button {
+  margin-top: 1.3px;
+  border: 1px solid #D8D0CE;
+  padding: 10.8px 40px;
+  font-size: 12px;
+  font-family: 'Libre Franklin', sans-serif;
+  background-color: #f6682F;
+  color: #fff;
+}
