@@ -4,20 +4,22 @@ select {
 
 .LandingImage {
   width: 100%;
-  height: 400px;
+  height: 282px;
   background-size: cover;
-  background-image: image_url("melanie-van-leeuwen-83775.jpg")
+  background-image: image_url("fireworks.jpg");
+  position: absolute;
 }
 
 .meta-search-card{
-  margin-top: 400px;
   width: 95%;
   margin: auto;
   background-color: #fff;
   border: 1px solid #D8D0CE;
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
-
+  position: relative;
+  top: 140px;
+  opacity: 0.97;
 }
 
 .meta-search-card h1 {
@@ -26,6 +28,7 @@ select {
   text-align: center;
   font-size: 45px;
   font-weight: lighter;
+  padding-top: 60px;
 }
 
 
@@ -42,7 +45,7 @@ select {
 }
 
 .searchform select {
-  padding: 11.7px 12px;
+  padding: 11.7px 10px;
   border: 1px solid #D8D0CE;
   width:100px;
   background-color: #fff;

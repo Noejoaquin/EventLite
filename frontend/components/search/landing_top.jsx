@@ -3,7 +3,9 @@ import { SearchCard } from './search_card';
 
 export const LandingTop = () => {
   return (
-    <div className='LandingImage'>
+    <div>
+    <img className='LandingImage'></img>
+
       <SearchCard />
     </div>
   )
