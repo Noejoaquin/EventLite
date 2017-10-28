@@ -22,6 +22,9 @@ class User < ApplicationRecord
   validates :email, uniqueness: { scope: [:first_name, :last_name] }
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_attached_file :avatar, default_url: "default-event.jpg"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   has_many :events,
   primary_key: :id,
   class_name: 'Event',

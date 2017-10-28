@@ -7,8 +7,9 @@ import { Route } from 'react-router-dom';
 const MainPage = () => (
   <div>
   <NavContainer/>
-
-  <Route exact path='/' component={EventIndexContainer} />
+  <div>
+    <Route exact path='/' component={EventIndexContainer} />
+  </div>
   <Route exact path='/events/new' component={EventFormContainer} />
   <Route path='/events/:eventId/edit' component={EventFormContainer} />
   </div>

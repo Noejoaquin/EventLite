@@ -4,6 +4,11 @@ class Api::EventsController < ApplicationController
     render :index
   end
 
+  def memberships
+    
+
+  end
+
   def show
     @event = Event.find(params[:id])
     render :show
