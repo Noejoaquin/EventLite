@@ -11,11 +11,11 @@ const MainPage = () => (
       <NavContainer/>
     </div>
     <Route exact path='/' component={LandingTop} />
-    <Route exact path='/' component={EventIndexContainer} />
   </div>
 )
 export default MainPage;
 
+// <Route exact path='/' component={EventIndexContainer} />
 // <Route exact path='/events' component={EventsPageContainer} />
 
 // <Route exact path='/events/:eventId' component={EventShowPage} />
