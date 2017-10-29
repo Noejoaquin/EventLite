@@ -19,7 +19,7 @@ export const EventIndexItem = ({event, category}) =>{
           <Link to={`/events/${category}`}>{category}</Link>
         </div>
           <div className='event-cell-icon'>
-            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+            <i className="fa fa-bookmark-o" aria-hidden="true"></i>
           </div>
       </div>
     </li>
