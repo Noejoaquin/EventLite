@@ -18,7 +18,19 @@
 #  end_time           :datetime
 #
 
+class MyValidator < ActiveModel::Validator
+  def validate(record)
+    if record.ticket_type == 'paid' && (!record.price.is_a?(Float) || record.price == 0)
+      record.errors[:price] << 'must exist if you are using a paid ticket. ex: 20.00'
+    end
+  end
+
+end
+
+
 class Event < ApplicationRecord
+  include ActiveModel::Validations
+  validates_with MyValidator
 
   validates :name, :description, :location, :ticket_type, :price, :start_time, presence: true
 

@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
   let categories = Object.keys(state.entities.categories).map((id) => state.entities.categories[id])
   let errors = state.errors.event
   let formType = 'new'
-  let event = {name: '', description: '', location:'', ticket_type: '', price: 0.0, start_time:'', start_date: '', end_time:'', end_date:'', category_id: null}
+  let event = {name: '', description: '', location:'', ticket_type: '', price: 0.0, start_time:'', end_time:'', category_id: null, imageFile: '', imageUrl: ''}
   if (ownProps.match.path === '/events/:eventId/edit'){
     formType = 'edit';
     event = this.state.entities.event[ownProps.match.params.eventId]

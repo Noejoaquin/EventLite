@@ -19,6 +19,7 @@ class Api::EventsController < ApplicationController
   end
 
   def create
+    debugger
     @event = Event.new(event_params)
     @event.organizer_id = current_user.id
     if @event.save
@@ -35,7 +36,6 @@ class Api::EventsController < ApplicationController
   end
 
   def update
-    debugger
     @event = current_user.events.find(params[:id])
     if @event.update(event_params)
       render :show
@@ -47,7 +47,7 @@ class Api::EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :description, :location,
                                   :ticket_type, :price, :start_time, :start_date,
-                                  :end_date, :end_time, :category_id)
+                                  :end_date, :end_time, :category_id, :image)
 
   end
 end

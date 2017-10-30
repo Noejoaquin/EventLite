@@ -12,13 +12,16 @@ export const fetchEvent = (id) => (
   })
 )
 
-export const createEvent = (event) => (
+export const createEvent = (formData) => {
+  return (
   $.ajax({
     method: 'Post',
     url: '/api/events',
-    data: { event }
+    contentType: false,
+    processData: false,
+    data:  formData,
   })
-)
+)}
 
 export const updateEvent = (event) => (
   $.ajax({

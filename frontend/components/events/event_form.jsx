@@ -1,8 +1,9 @@
 import React from 'react';
-import { DatePicker } from 'react-datepicker';
-import moment from 'moment';
+import  DatePicker  from 'react-datepicker';
 import {Link} from 'react-router-dom';
-import InputMoment from 'input-moment';
+// import InputMoment from 'input-moment';
+import DateTime from 'react-datetime';
+import ReactQuill from 'react-quill';
 // <DatePicker
 //   selected={this.state.startDate}
 //   onChange={this.handleChange}
@@ -16,11 +17,16 @@ import InputMoment from 'input-moment';
 //   prevMonthIcon="ion-ios-arrow-left"
 //   nextMonthIcon="ion-ios-arrow-right"
 //   />
+
+
+
 class EventForm extends React.Component {
   constructor(props){
     super(props);
     this.handleSubmit= this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleFile = this.handleFile.bind(this)
+    this.handleDescription = this.handleDescription.bind(this)
     this.state = this.props.event
   }
 
@@ -33,17 +39,46 @@ class EventForm extends React.Component {
   }
 
   handleSubmit(e){
-    this.props.action(this.state)
+    let formData = new FormData();
+    formData.append("event[name]", this.state.name)
+    formData.append("event[description]", this.state.description)
+    formData.append("event[location]", this.state.location)
+    formData.append("event[ticket_type]", this.state.ticket_type)
+    formData.append("event[price]", this.state.price)
+    formData.append("event[start_time]", this.state.start_time)
+    formData.append("event[end_time]", this.state.end_time)
+    formData.append("event[category_id]", this.state.category_id)
+    formData.append("event[image]", this.state.imageFile)
+    this.props.action(formData)
+  }
+
+  handleDescription(description){
+    this.setState( { description  })
   }
 
   handleChange(field){
     return (e) => {
+      debugger
       this.setState( { [field]:e.target.value } )
     }
   }
 
-  handleSelect(e){
-    this.setState( {category_id}: e.target.value)
+  handleFile(e){
+    let file = e.currentTarget.files[0];
+    let fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: file, imageUrl: fileReader.result })
+    }
+
+    if(file){
+      fileReader.readAsDataURL(file);
+    }
+  }
+
+  handleDate(field){
+    return (moment) => {
+      this.setState( { [field]: moment._d })
+    }
   }
 
 
@@ -59,28 +94,23 @@ class EventForm extends React.Component {
         <div className='event-name-title'>
           <h2 className='event-name'></h2>
         </div>
-        <nav className='form-nav'>
-          <Link to='/'>Event Start</Link>
-        </nav>
         <h1>{title}</h1>
         <div className='wrapper-event-details'>
           <span className='icon-1'></span>
           <h2 className='event-form-section-title-1'></h2>
           <div className='event-details-title'>
             <label>Event Name</label>
-            <input type='text' onChange={this.handleChange('name')}></input>
+            <input type='text' onChange={this.handleChange('name')} value={this.state.name}></input>
           </div>
           <label>Location</label>
-          <input type='text' onChange={this.handleChange('location')}></input>
+          <input type='text' onChange={this.handleChange('location')} value={this.state.location}></input>
           <div className='times'>
             <div className='time-start'>
               <ul className='time-list-inputs-start'>
                 <label className='date-start'>Starts</label>
                 <li>
-                  <input id='datetime' type='datetime-local' onChange={this.handleChange('start_date')}></input>
-                </li>
-                <li>
-                  <input type='time' placeholder='12:00pm' onChange={this.handleChange('start_time')}></input>
+                  <DateTime onChange={this.handleDate('start_time')} value={this.state.start_time} />
+
                 </li>
               </ul>
             </div>
@@ -88,16 +118,15 @@ class EventForm extends React.Component {
               <ul className='time-list-inputs-end'>
                 <label className='date-end'>End</label>
                 <li>
-                  <input id='datetime' type='datetime-local' onChange={this.handleChange('end_date')}></input>
-                </li>
-                <li>
-                  <input type='time' placeholder='12:00pm' onChange={this.handleChange('end_time')}></input>
+                  <DateTime onChange={this.handleDate('end_time')} value={this.state.end_time}/>
                 </li>
               </ul>
             </div>
           </div>
           <div className='Event-image-title-cell'>
             <h3 className='event-image-title'>Event Image</h3>
+            <input type='file' onChange={this.handleFile}></input>
+            <img src={this.state.imageUrl}/>
           </div>
 
           <div className='event-details-description'></div>
@@ -106,7 +135,9 @@ class EventForm extends React.Component {
           </div>
 
           <div className='event-description'>
-            <textarea className='description' onChange={this.handleChange('description')} ></textarea>
+            <ReactQuill
+                  onChange={this.handleDescription} value={this.state.description}/>
+              <textarea value={this.state.description} onChange={this.handleChange('description')}></textarea>
           </div>
 
           <div className='wrapper-ticket'>
@@ -114,9 +145,15 @@ class EventForm extends React.Component {
               <span className='icon-2'></span>
               <h2 className='event-form-section-title-2'>Create Tickets</h2>
             </div>
-            <button className='free-ticket-button'>Free Ticket</button>
-            <button className='paid-ticket-button'>Paid Ticket</button>
-            <button className='donation-ticket-button'>Donation</button>
+
+              <select onChange={this.handleChange('ticket_type')}>
+                <option disabled selected >Select your ticket type</option>
+                <option  value='free'>Free Ticket</option>
+                <option  value='paid' >Paid Ticket</option>
+                <option  value='donation' >Donation</option>
+              </select>
+              <label>If your ticket is paid, how much will it cost?</label>
+            <input className='price' name='ticket-type' onChange={this.handleChange('price')} value={this.props.price}></input>
           </div>
 
           <div className='wrapper-additional-settings'>
@@ -125,7 +162,8 @@ class EventForm extends React.Component {
               <h2 className='event-form-section-title-3'></h2>
             </div>
             <div className='category-select'>
-              <select className='categories'>
+              <select defaultValue='Select a Category' onChange={this.handleChange('category_id')} className='categories'>
+                <option disabled selected>Select a category</option>
                 {options}
               </select>
             </div>

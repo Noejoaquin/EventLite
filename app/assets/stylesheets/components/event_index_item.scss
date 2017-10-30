@@ -4,7 +4,6 @@
 
 .event-index-container{
   margin: 220px auto;
-  border: 1px solid pink;
   width: 92%;
   display: block;
   max-width: 1000px;
@@ -39,7 +38,9 @@
 }
 
 .event-cell-image{
-  height: 30%;
+  height: 150px;
+  background-size: cover;
+  background-position: center center;
 }
 
 

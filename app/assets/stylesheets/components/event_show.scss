@@ -14,11 +14,19 @@
   display: flex;
 }
 
-.show-top img{
-  width: 61%;
-  height: 1%;
-
+.event-image{
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+  width: 1763px;
 }
+
+
+// .show-top img{
+//   width: 61%;
+//   height: 1%;
+//
+// }
 
 .event-details-show{
   font-family: 'Libre Franklin', sans-serif;
