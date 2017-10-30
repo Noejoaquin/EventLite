@@ -1,6 +1,21 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-
+import { DatePicker } from 'react-datepicker';
+import moment from 'moment';
+import {Link} from 'react-router-dom';
+import InputMoment from 'input-moment';
+// <DatePicker
+//   selected={this.state.startDate}
+//   onChange={this.handleChange}
+//   />
+// <InputMoment
+//   moment={this.state.moment}
+//   onChange={this.handleChange}
+//   onSave={this.handleSave}
+//   minStep={1}
+//   hourStep={1}
+//   prevMonthIcon="ion-ios-arrow-left"
+//   nextMonthIcon="ion-ios-arrow-right"
+//   />
 class EventForm extends React.Component {
   constructor(props){
     super(props);
@@ -35,11 +50,11 @@ class EventForm extends React.Component {
 
   render(){
     let title = this.props.formType === 'new' ? 'Create An Event' : 'Edit Event';
-    debugger
     let options = this.props.categories.map((category) => {
       return <option key={category.id} value={category.id}>{category.name}</option>
     })
     return (
+
       <div className='form-container'>
         <div className='event-name-title'>
           <h2 className='event-name'></h2>
@@ -52,8 +67,8 @@ class EventForm extends React.Component {
           <span className='icon-1'></span>
           <h2 className='event-form-section-title-1'></h2>
           <div className='event-details-title'>
-          <label>Event Name</label>
-          <input type='text' onChange={this.handleChange('name')}></input>
+            <label>Event Name</label>
+            <input type='text' onChange={this.handleChange('name')}></input>
           </div>
           <label>Location</label>
           <input type='text' onChange={this.handleChange('location')}></input>
@@ -62,7 +77,7 @@ class EventForm extends React.Component {
               <ul className='time-list-inputs-start'>
                 <label className='date-start'>Starts</label>
                 <li>
-                  <input type='date' placeholder='mm/dd/yy' onChange={this.handleChange('start_date')}></input>
+                  <input id='datetime' type='datetime-local' onChange={this.handleChange('start_date')}></input>
                 </li>
                 <li>
                   <input type='time' placeholder='12:00pm' onChange={this.handleChange('start_time')}></input>
@@ -73,7 +88,7 @@ class EventForm extends React.Component {
               <ul className='time-list-inputs-end'>
                 <label className='date-end'>End</label>
                 <li>
-                  <input type='date' placeholder='mm/dd/yy' onChange={this.handleChange('end_date')}></input>
+                  <input id='datetime' type='datetime-local' onChange={this.handleChange('end_date')}></input>
                 </li>
                 <li>
                   <input type='time' placeholder='12:00pm' onChange={this.handleChange('end_time')}></input>
@@ -82,43 +97,43 @@ class EventForm extends React.Component {
             </div>
           </div>
           <div className='Event-image-title-cell'>
-          <h3 className='event-image-title'>Event Image</h3>
+            <h3 className='event-image-title'>Event Image</h3>
           </div>
 
           <div className='event-details-description'></div>
           <div className='event-description-title-cell'>
-          <h3 className='event-description-title'>Event Description</h3>
+            <h3 className='event-description-title'>Event Description</h3>
           </div>
 
           <div className='event-description'>
             <textarea className='description' onChange={this.handleChange('description')} ></textarea>
-        </div>
-
-        <div className='wrapper-ticket'>
-          <div className='wrapper-ticket-header'>
-            <span className='icon-2'></span>
-            <h2 className='event-form-section-title-2'>Create Tickets</h2>
           </div>
-          <button className='free-ticket-button'>Free Ticket</button>
-          <button className='paid-ticket-button'>Paid Ticket</button>
-          <button className='donation-ticket-button'>Donation</button>
-        </div>
 
-        <div className='wrapper-additional-settings'>
-          <div>
-            <span className='icon-3'></span>
-            <h2 className='event-form-section-title-3'></h2>
+          <div className='wrapper-ticket'>
+            <div className='wrapper-ticket-header'>
+              <span className='icon-2'></span>
+              <h2 className='event-form-section-title-2'>Create Tickets</h2>
+            </div>
+            <button className='free-ticket-button'>Free Ticket</button>
+            <button className='paid-ticket-button'>Paid Ticket</button>
+            <button className='donation-ticket-button'>Donation</button>
           </div>
-          <div className='category-select'>
-            <select className='categories'>
-              {options}
-            </select>
-          </div>
-        </div>
 
-        <button onClick={this.handleSubmit}>Make Your Event Live!</button>
+          <div className='wrapper-additional-settings'>
+            <div>
+              <span className='icon-3'></span>
+              <h2 className='event-form-section-title-3'></h2>
+            </div>
+            <div className='category-select'>
+              <select className='categories'>
+                {options}
+              </select>
+            </div>
+          </div>
+
+          <button onClick={this.handleSubmit}>Make Your Event Live!</button>
+        </div>
       </div>
-    </div>
     )
   }
 }

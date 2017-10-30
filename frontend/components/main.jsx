@@ -5,15 +5,18 @@ import EventFormContainer from './events/event_form_container';
 import EventShowContainer from './events/event_show_container';
 import { Route } from 'react-router-dom';
 import { LandingTop } from './search/landing_top';
-
+import {Switch} from 'react-router-dom';
 
 const MainPage = () => (
   <div className='MainPage'>
     <div className='header-container'>
       <NavContainer/>
     </div>
-    <Route exact path='/' component={LandingTop} />
-    <Route path='/events/:eventId' component={EventShowContainer}/>
+    <Switch>
+      <Route exact path='/' component={LandingTop} />
+      <Route exact path='/events/new' component={EventFormContainer} />
+      <Route exact path='/events/:eventId' component={EventShowContainer}/>
+    </Switch>
   </div>
 )
 export default MainPage;
@@ -26,5 +29,4 @@ export default MainPage;
 
 
 //
-// <Route exact path='/events/new' component={EventFormContainer} />
 // <Route path='/events/:eventId/edit' component={EventFormContainer} />

@@ -14,13 +14,16 @@ export const EventIndexItem = ({event, category}) =>{
           <div className='event-cell-name'>{event.name}</div>
           <div className='event-cell-location'>{event.location}</div>
         </div></Link>
+
         <div className='event-cell-category'>
-          <i className="fa fa-hashtag" aria-hidden='true'></i>
-          <Link to={`/events/${category}`}>{category}</Link>
-        </div>
-          <div className='event-cell-icon'>
-            <i className="fa fa-bookmark-o" aria-hidden="true"></i>
+          <div>
+            <Link to={`/events/${category}`}><i className="fa fa-hashtag" aria-hidden='true'></i>
+            {category}</Link>
           </div>
+        </div>
+      </div>
+      <div className='event-cell-icon'>
+        <i className="fa fa-bookmark-o" aria-hidden="true"></i>
       </div>
     </li>
   )

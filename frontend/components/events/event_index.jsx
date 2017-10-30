@@ -8,15 +8,14 @@ class EventIndex extends React.Component {
     // this.findCategoryName = this.findCategoryName.bind(this)
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.props.fetchEvents().then(this.props.fetchCategories())
   }
 
   findCategoryName(event, categories){
-
     let categoryId = event.category_id;
-    let name = this.props.categories[categoryId].name
-    return name
+    let cat = this.props.categories[categoryId].name
+    return cat
   }
 
   render(){

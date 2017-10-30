@@ -8,10 +8,10 @@
   width: 92%;
   display: block;
   max-width: 1000px;
-  max-height: 800px;
 }
 
 .event-cell {
+  position: relative;
   font-size: 15px;
   line-height: 22px;
   letter-spacing: .5px;
@@ -42,10 +42,6 @@
   height: 30%;
 }
 
-.fa-hashtag{
-  height: 10px;
-  width: 10px;
-}
 
 
 .event-cell-details {
@@ -82,11 +78,27 @@
 .event-cell-category{
   // border: 1px solid black;
   padding-top: 3px;
+  padding-left: 12px;
   margin-left: 4%;
   margin-right: 35%;
   color: #666a73;
+  position: relative;
 }
 
+
+.fa-hashtag:before{
+  // border: 1px solid black;
+  position: absolute;
+  left: 0px;
+  bottom: 3px;
+}
+
+.fa-bookmark-o{
+  // border:1px solid black;
+  position: absolute;
+  right: 20px;
+  bottom: 6px;
+}
 .image-and-price{
   font-family: 'Libre Franklin', sans-serif;
   position: relative;
