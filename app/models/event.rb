@@ -22,6 +22,8 @@ class MyValidator < ActiveModel::Validator
   def validate(record)
     if record.ticket_type == 'paid' && (!record.price.is_a?(Float) || record.price == 0.0)
       record.errors[:price] << 'must exist if you are using a paid ticket. ex: 20.00'
+    elsif record.ticket_type == 'free'  && !record.price.empty?
+      record.errors[:price] << 'You may leave price blank for free tickets or donations' 
     end
   end
 

@@ -82,11 +82,7 @@ class EventForm extends React.Component {
     }
   }
 
-  // errorConstructor(field, error){
-  //   if (error.includes(field)){
-  //     return <li>{error}</li>
-  //   }
-  // }
+
   errorConstructor(field, errors) {
     const error = eval(this.props.errors[field]);
       if (error){
@@ -101,7 +97,7 @@ class EventForm extends React.Component {
         } else if (field === 'start_time'){
           return <p className='error'>start time cannot be blank</p>
         } else if (field === 'description'){
-          return <p id='description-error'>start time cannot be blank</p>
+          return <p id='description-error'>description cannot be blank</p>
         } else {
           return <p className='error' >{field} cannot be blank</p>
         }
@@ -113,16 +109,11 @@ class EventForm extends React.Component {
   render(){
     // the Omar Torres Special
     let errorMessage;
-    // if (this.props.errors){
-    //   errorMessage = <p>Please fill in the required fields above</p>
-    // }
     let title = this.props.formType === 'new' ? 'Create An Event' : 'Edit Event';
     let options = this.props.categories.map((category) => {
       return <option key={category.id} value={category.id}>{category.name}</option>
 
     })
-
-    let errors;
 
     return (
 
@@ -208,14 +199,12 @@ class EventForm extends React.Component {
             </div>
             <div className='category-select'>
               {this.errorConstructor('category', this.props.errors)}
-              <select defaultValue='Select a Category' onChange={this.handleChange('category_id')} className='categories'>
+              <select  onChange={this.handleChange('category_id')} className='categories'>
                 <option disabled selected>Select a category</option>
                 {options}
               </select>
             </div>
-            <ul>
-              {errors}
-            </ul>
+
           </div>
 
           <button className='event-live' onClick={this.handleSubmit}>Make Your Event Live</button>
