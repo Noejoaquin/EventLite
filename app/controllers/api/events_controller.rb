@@ -19,13 +19,12 @@ class Api::EventsController < ApplicationController
   end
 
   def create
-    debugger
     @event = Event.new(event_params)
     @event.organizer_id = current_user.id
     if @event.save
       render :show
     else
-      render json: @event.errors.full_messages, status: 422
+      render json: @event.errors.messages, status: 422
     end
   end
 

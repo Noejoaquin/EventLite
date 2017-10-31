@@ -20,7 +20,7 @@
 
 class MyValidator < ActiveModel::Validator
   def validate(record)
-    if record.ticket_type == 'paid' && (!record.price.is_a?(Float) || record.price == 0)
+    if record.ticket_type == 'paid' && (!record.price.is_a?(Float) || record.price == 0.0)
       record.errors[:price] << 'must exist if you are using a paid ticket. ex: 20.00'
     end
   end

@@ -27,6 +27,7 @@ class EventForm extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleFile = this.handleFile.bind(this)
     this.handleDescription = this.handleDescription.bind(this)
+    this.errorConstructor = this.errorConstructor.bind(this)
     this.state = this.props.event
   }
 
@@ -81,52 +82,93 @@ class EventForm extends React.Component {
     }
   }
 
+  // errorConstructor(field, error){
+  //   if (error.includes(field)){
+  //     return <li>{error}</li>
+  //   }
+  // }
+  errorConstructor(field, errors) {
+    const error = eval(this.props.errors[field]);
+      if (error){
+        if (field === 'category'){
+          return <p className='error'>a category must be selected</p>
+
+        } else if (field === 'ticket_type') {
+          return <p className='error' >a ticket type must be selected</p>
+        } else if (field === 'name') {
+          return <p className='error' > an event must have a title </p>
+
+        } else if (field === 'start_time'){
+          return <p className='error'>start time cannot be blank</p>
+        } else if (field === 'description'){
+          return <p id='description-error'>start time cannot be blank</p>
+        } else {
+          return <p className='error' >{field} cannot be blank</p>
+        }
+      }
+  }
+
 
 
   render(){
+    // the Omar Torres Special
+    let errorMessage;
+    // if (this.props.errors){
+    //   errorMessage = <p>Please fill in the required fields above</p>
+    // }
     let title = this.props.formType === 'new' ? 'Create An Event' : 'Edit Event';
     let options = this.props.categories.map((category) => {
       return <option key={category.id} value={category.id}>{category.name}</option>
+
     })
+
+    let errors;
+
     return (
 
       <div className='form-container'>
-        <div className='event-name-title'>
-          <h2 className='event-name'></h2>
-        </div>
-        <h1>{title}</h1>
+        <h1 className='title-header'>{title}</h1>
+        <div className='gray-bar'></div>
         <div className='wrapper-event-details'>
           <span className='icon-1'></span>
-          <h2 className='event-form-section-title-1'></h2>
-          <div className='event-details-title'>
-            <label>Event Name</label>
-            <input type='text' onChange={this.handleChange('name')} value={this.state.name}></input>
+          <div className='event-form-section-title-1' >
+            <h2 >Event Details</h2>
           </div>
-          <label>Location</label>
-          <input type='text' onChange={this.handleChange('location')} value={this.state.location}></input>
+          <div className='event-details-title'>
+            <label id='title'>Event Title</label>
+            <br/>
+            {this.errorConstructor('name', this.props.errors)}
+            <input type='text' placeholder='Give it a short distinct name' onChange={this.handleChange('name')} value={this.state.name}></input>
+          </div>
+          <div className='event-details-location'>
+            <label>Location</label>
+            <br/>
+            {this.errorConstructor('location', this.props.errors)}
+            <input type='text' placeholder='Specify where it is held' onChange={this.handleChange('location')} value={this.state.location}></input>
+          </div>
           <div className='times'>
             <div className='time-start'>
               <ul className='time-list-inputs-start'>
-                <label className='date-start'>Starts</label>
+                <label>Starts</label>
                 <li>
-                  <DateTime onChange={this.handleDate('start_time')} value={this.state.start_time} />
-
+                  {this.errorConstructor('start_time', this.props.errors)}
+                  <DateTime  id='date-start' onChange={this.handleDate('start_time')} value={this.state.start_time} />
                 </li>
               </ul>
             </div>
             <div className='time-end'>
               <ul className='time-list-inputs-end'>
-                <label className='date-end'>End</label>
+                <label className='date-end'>Ends</label>
                 <li>
-                  <DateTime onChange={this.handleDate('end_time')} value={this.state.end_time}/>
+                  <DateTime  onChange={this.handleDate('end_time')} value={this.state.end_time}/>
                 </li>
               </ul>
             </div>
           </div>
           <div className='Event-image-title-cell'>
             <h3 className='event-image-title'>Event Image</h3>
-            <input type='file' onChange={this.handleFile}></input>
-            <img src={this.state.imageUrl}/>
+            <input id='image' placeholder='ADD EVENT IMAGE' type='file' onChange={this.handleFile}></input>
+            <img id='event-image' src={this.state.imageUrl}/>
           </div>
 
           <div className='event-details-description'></div>
@@ -135,9 +177,11 @@ class EventForm extends React.Component {
           </div>
 
           <div className='event-description'>
-            <ReactQuill
-                  onChange={this.handleDescription} value={this.state.description}/>
-              <textarea value={this.state.description} onChange={this.handleChange('description')}></textarea>
+            {this.errorConstructor('description', this.props.errors)}
+            <div>
+
+              <ReactQuill id='description' onChange={this.handleDescription} value={this.state.description}/>
+            </div>
           </div>
 
           <div className='wrapper-ticket'>
@@ -145,14 +189,15 @@ class EventForm extends React.Component {
               <span className='icon-2'></span>
               <h2 className='event-form-section-title-2'>Create Tickets</h2>
             </div>
-
+              {this.errorConstructor('ticket_type', this.props.errors)}
               <select onChange={this.handleChange('ticket_type')}>
                 <option disabled selected >Select your ticket type</option>
                 <option  value='free'>Free Ticket</option>
                 <option  value='paid' >Paid Ticket</option>
                 <option  value='donation' >Donation</option>
               </select>
-              <label>If your ticket is paid, how much will it cost?</label>
+              <br/>
+              <label>If your ticket is a paid event, how much will it cost?</label>
             <input className='price' name='ticket-type' onChange={this.handleChange('price')} value={this.props.price}></input>
           </div>
 
@@ -162,14 +207,23 @@ class EventForm extends React.Component {
               <h2 className='event-form-section-title-3'></h2>
             </div>
             <div className='category-select'>
+              {this.errorConstructor('category', this.props.errors)}
               <select defaultValue='Select a Category' onChange={this.handleChange('category_id')} className='categories'>
                 <option disabled selected>Select a category</option>
                 {options}
               </select>
             </div>
+            <ul>
+              {errors}
+            </ul>
           </div>
 
-          <button onClick={this.handleSubmit}>Make Your Event Live!</button>
+          <button className='event-live' onClick={this.handleSubmit}>Make Your Event Live</button>
+          {errorMessage}
+          <div className='footer'>
+
+
+          </div>
         </div>
       </div>
     )

@@ -1,8 +1,9 @@
-
-
-
-.wrapper-event-details input {
-  border: 1px solid black;
+@media screen and (min-width: 1100px) {
+  .form-container{
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+  }
 }
 
 .wrapper-event-details textarea {
@@ -11,4 +12,136 @@
 //
 .wrapper-ticket button {
   -webkit-appearance: button;
+}
+
+.form-container{
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.title-header{
+  font-weight: 200;
+  font-size: 30px;
+  padding: 19px;
+  background-color: #fff;
+}
+
+.gray-bar{
+  background-color: #45494e;
+  padding: 22px;
+}
+
+.wrapper-event-details {
+  padding-left: 95px;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  line-height: 22px;
+  color: #282C35;
+  letter-spacing: 0.5px;
+  background-color:  #f5f5f5;
+}
+
+
+.event-form-section-title-1{
+  margin-top: 18px;
+  margin-right: 105px;
+  font-size:25px;
+  line-height: 35px;
+  font-weight: 400;
+  border-bottom: 1px solid #D8D0CE;
+  padding: 4px;
+}
+
+
+.event-details-title {
+  margin-top: 18px;
+  color: #45494e;
+  padding-bottom: 15px;
+}
+
+.wrapper-event-details input {
+  border: 1px solid #D8D0CE;
+  padding: 10px;
+  width: 527px;
+  border-radius: 3.5px;
+  background-color: #fff;
+  color: #918B87;
+}
+
+
+.event-details-location{
+  padding-bottom: 15px;
+}
+
+.time-start{
+  padding-bottom: 15px;
+}
+
+#date-start{
+  width: 150px;
+}
+
+.form-control{
+  display: none;
+}
+
+#image{
+  padding: 2px;
+  width: 211px;
+}
+
+img {
+  background-size: cover;
+  background-position: center center;
+  width: 400px;
+  height: 300px;
+}
+
+.event-description{
+  background-color: #fff;
+  width: 700px;
+  height: 241px;
+  margin-bottom: 20px;
+}
+
+#description{
+  width: 700px;
+  height: 200px;
+}
+
+.wrapper-ticket{
+  margin-bottom: 20px;
+}
+ select{
+  padding: 11.7px 10px;
+  margin-bottom: 20px;
+  border: 1px solid #D8D0CE;
+  width: 180px;
+  background-color: #fff;
+  font-size: 12px;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.event-live{
+  font-weight: 600;
+  background-color: #00ab44;
+  color: #fff;
+  width: 252px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 3.5px;
+  letter-spacing: 0.5px;
+}
+
+.error {
+  color: red;
+  font-size: 10px;
+  margin: 3px;
+}
+
+#description-error {
+  float: right;
+  color: red;
+  font-size: 15px;
+  margin-right: 3px;
 }
