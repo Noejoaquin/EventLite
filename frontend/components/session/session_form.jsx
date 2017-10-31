@@ -151,13 +151,3 @@ class SessionForm extends React.Component {
 }
 
 export default SessionForm;
-
-
-
-
-
-// <ul className='session-ul'>
-//   <li>
-//     {link}
-//   </li>
-// </ul>

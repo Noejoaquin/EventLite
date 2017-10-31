@@ -1,17 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { fetchCategories } from '../../actions/category_actions';
-import {createEvent, updateEvent, fetchEvent } from '../../actions/event_actions';
+import {createEvent, updateEvent, fetchEvent, clearErrors } from '../../actions/event_actions';
 import EventForm from './event_form';
 
 const mapStateToProps = (state, ownProps) => {
   let categories = Object.keys(state.entities.categories).map((id) => state.entities.categories[id])
   let errors = state.errors.event
   let formType = 'new'
-  let event = {name: '', description: '', location:'', ticket_type: '', price: 0.0, start_time:'', end_time:'', category_id: null, imageFile: '', imageUrl: ''}
+  let dummyEvent = {dummy: true, name: '', description: '', location:'', ticket_type: '',
+    price: 0.0, start_time:'', end_time:'', category_id: null, imageFile: '', imageUrl: ''}
+  event = dummyEvent;
   if (ownProps.match.path === '/events/:eventId/edit'){
     formType = 'edit';
-    event = this.state.entities.event[ownProps.match.params.eventId]
+    const tempEvent = state.entities.events[ownProps.match.params.eventId]
+    if (tempEvent){
+      event = tempEvent;
+    }
+  } else {
+    debugger
+    event = dummyEvent;
   }
     return {
     formType,
@@ -26,8 +34,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
     action: (event) => dispatch(action(event)),
-    fetchEvent: (id) => dispatch(action(id)),
-    fetchCategories:() => dispatch(fetchCategories())
+    fetchEvent: (id) => dispatch(fetchEvent(id)),
+    fetchCategories:() => dispatch(fetchCategories()),
+    clearErrors: () => dispatch(clearErrors())
   }
 
 }

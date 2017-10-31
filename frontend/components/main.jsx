@@ -16,6 +16,7 @@ const MainPage = () => (
       <Route exact path='/' component={LandingTop} />
       <Route exact path='/events/new' component={EventFormContainer} />
       <Route exact path='/events/:eventId' component={EventShowContainer}/>
+      <Route exact path='/events/:eventId/edit' component={EventFormContainer} />
     </Switch>
   </div>
 )

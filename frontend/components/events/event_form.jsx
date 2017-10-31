@@ -20,10 +20,28 @@ class EventForm extends React.Component {
   }
 
   componentDidMount(){
+    const set = this.setState.bind(this)
     if (this.props.match.params.eventId){
-      this.props.fetchCategories().then(fetchEvent(this.props.match.params.eventId))
+      this.props.fetchCategories();
+         if (this.props.event.dummy){
+           return this.props.fetchEvent(this.props.match.params.eventId).then((event) =>{
+             set(event.event)
+           })
+         }
     } else {
       this.props.fetchCategories();
+    }
+  }
+
+  revertBackToOriginalState(){
+      this.setState({name: '', description: '', location:'', ticket_type: '',
+        price: 0.0, start_time:'', end_time:'', category_id: null, imageFile: '', imageUrl: ''})
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (this.props.formType !== nextProps.formType){
+      this.props.clearErrors();
+      this.revertBackToOriginalState()
     }
   }
 
@@ -38,7 +56,7 @@ class EventForm extends React.Component {
     formData.append("event[end_time]", this.state.end_time)
     formData.append("event[category_id]", this.state.category_id)
     formData.append("event[image]", this.state.imageFile)
-    debugger
+
     this.props.action(formData).then(({event}) => {
       this.props.history.push(`/events/${event.id}`)
     })
@@ -54,7 +72,6 @@ class EventForm extends React.Component {
 
   handleChange(field){
     return (e) => {
-      debugger
       this.setState( { [field]:e.target.value } )
     }
   }
@@ -114,6 +131,29 @@ class EventForm extends React.Component {
     if (Object.values(this.props.errors).length !==0){
       errorMessage = <p className='error'>You must fill in the required fields</p>
     }
+
+
+    var moment = require('moment');
+    let startDate;
+    if (this.props.formType === 'edit'){
+      startDate = moment(this.state.start_time).format('MMMM Do YYYY, h:mm a');
+    } else {
+      startDate = '';
+    }
+
+    let endDate;
+    if (this.props.formType === 'edit') {
+      if (this.state.end_time === '' || this.state.end_time === null){
+        endDate = ''
+      } else {
+        endDate = moment(this.state.end_time).format('MMMM Do YYYY, h:mm a');
+      }
+    } else {
+      endDate = ''
+    };
+
+    let buttonText = this.props.formType === 'edit' ? 'Update Your Event' : 'Make Your Event Live';
+    const categoryDefault = this.state.category_id ? this.state.category_id : 'default'
     return (
 
       <div className='form-container'>
@@ -133,7 +173,7 @@ class EventForm extends React.Component {
           <div className='event-details-location'>
             <label>Location</label>
             {this.errorConstructor('location', this.props.errors)}
-            <Geosuggest id='location' onSuggestSelect={this.handleLocation} onChange={this.handleLocation} value={this.state.location}/>
+            <Geosuggest initialValue={this.state.location} id='location' onSuggestSelect={this.handleLocation} onChange={this.handleLocation} value={this.state.location}/>
             <br/>
           </div>
           <div className='times'>
@@ -142,7 +182,7 @@ class EventForm extends React.Component {
                 <label>Starts</label>
                 <li>
                   {this.errorConstructor('start_time', this.props.errors)}
-                  <DateTime  id='date-start' onChange={this.handleDate('start_time')} value={this.state.start_time} />
+                  <DateTime  id='date-start' onChange={this.handleDate('start_time')} value={startDate} />
                 </li>
               </ul>
             </div>
@@ -150,7 +190,7 @@ class EventForm extends React.Component {
               <ul className='time-list-inputs-end'>
                 <label className='date-end'>Ends</label>
                 <li>
-                  <DateTime  onChange={this.handleDate('end_time')} value={this.state.end_time}/>
+                  <DateTime  onChange={this.handleDate('end_time')} value={endDate}/>
                 </li>
               </ul>
             </div>
@@ -180,8 +220,8 @@ class EventForm extends React.Component {
               <h2 className='event-form-section-title-2'>Create Tickets</h2>
             </div>
               {this.errorConstructor('ticket_type', this.props.errors)}
-              <select onChange={this.handleChange('ticket_type')}>
-                <option disabled selected >Select your ticket type</option>
+              <select onChange={this.handleChange('ticket_type')} defaultValue={this.state.ticket_type ? this.state.ticket_type : 'default' }>
+                <option value='default' disabled >Select your ticket type</option>
                 <option  value='free'>Free Ticket</option>
                 <option  value='paid' >Paid Ticket</option>
                 <option  value='donation' >Donation</option>
@@ -199,15 +239,16 @@ class EventForm extends React.Component {
             </div>
             <div className='category-select'>
               {this.errorConstructor('category', this.props.errors)}
-              <select  onChange={this.handleChange('category_id')} className='categories'>
-                <option disabled selected>Select a category</option>
+              <select  onChange={this.handleChange('category_id')} className='categories'
+                      defaultValue={categoryDefault}>
+                <option value='default' disabled>Select a category</option>
                 {options}
               </select>
             </div>
 
           </div>
 
-          <button className='event-live' onClick={this.handleSubmit}>Make Your Event Live</button>
+          <button className='event-live' onClick={this.handleSubmit}>{buttonText}</button>
           {errorMessage}
           <div className='footer'>
 

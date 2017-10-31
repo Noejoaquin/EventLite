@@ -5,8 +5,10 @@ import { fetchEvent } from '../../actions/event_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let event = state.entities.events[ownProps.match.params.eventId];
+  let currentUser = state.session.currentUser
   return {
-    event
+    event,
+    currentUser
   }
 };
 
