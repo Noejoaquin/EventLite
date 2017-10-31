@@ -42,6 +42,8 @@
 }
 
 
+
+
 .event-form-section-title-1{
   margin-top: 18px;
   margin-right: 105px;
@@ -62,10 +64,19 @@
 .wrapper-event-details input {
   border: 1px solid #D8D0CE;
   padding: 10px;
-  width: 527px;
+  margin-right: 20px;
+  width: 250px;
   border-radius: 3.5px;
   background-color: #fff;
   color: #918B87;
+}
+
+#title{
+  width: 527px;
+}
+
+#location{
+  width: 527px;
 }
 
 
@@ -73,17 +84,15 @@
   padding-bottom: 15px;
 }
 
+.times{
+  display: flex;
+}
+
+
 .time-start{
   padding-bottom: 15px;
 }
 
-#date-start{
-  width: 150px;
-}
-
-.form-control{
-  display: none;
-}
 
 #image{
   padding: 2px;
@@ -131,6 +140,10 @@ img {
   padding: 10px;
   border-radius: 3.5px;
   letter-spacing: 0.5px;
+}
+
+.event-live:hover{
+  background-color: #1a4718;
 }
 
 .error {

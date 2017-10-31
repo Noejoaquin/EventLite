@@ -55,9 +55,7 @@ class EventShow extends React.Component {
           </div>
 
             <div className='listing-cell'>
-              <div className='description'>
-                <h3 className='title description-header'>description</h3>
-                {this.props.event.description}
+              <div className='description' dangerouslySetInnerHTML={{__html: this.props.event.description}}>
               </div>
               <div className='event-details'>
                 <div className='date-and-time'>

@@ -1,24 +1,11 @@
 import React from 'react';
 import  DatePicker  from 'react-datepicker';
 import {Link} from 'react-router-dom';
-// import InputMoment from 'input-moment';
 import DateTime from 'react-datetime';
 import ReactQuill from 'react-quill';
-// <DatePicker
-//   selected={this.state.startDate}
-//   onChange={this.handleChange}
-//   />
-// <InputMoment
-//   moment={this.state.moment}
-//   onChange={this.handleChange}
-//   onSave={this.handleSave}
-//   minStep={1}
-//   hourStep={1}
-//   prevMonthIcon="ion-ios-arrow-left"
-//   nextMonthIcon="ion-ios-arrow-right"
-//   />
-
-
+import { isEmpty } from 'lodash';
+import shallowCompare from 'react-addons-shallow-compare';
+import Geosuggest from 'react-geosuggest';
 
 class EventForm extends React.Component {
   constructor(props){
@@ -27,6 +14,7 @@ class EventForm extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleFile = this.handleFile.bind(this)
     this.handleDescription = this.handleDescription.bind(this)
+    this.handleLocation = this.handleLocation.bind(this)
     this.errorConstructor = this.errorConstructor.bind(this)
     this.state = this.props.event
   }
@@ -50,11 +38,18 @@ class EventForm extends React.Component {
     formData.append("event[end_time]", this.state.end_time)
     formData.append("event[category_id]", this.state.category_id)
     formData.append("event[image]", this.state.imageFile)
-    this.props.action(formData)
+    debugger
+    this.props.action(formData).then(({event}) => {
+      this.props.history.push(`/events/${event.id}`)
+    })
+  }
+
+  handleLocation(location){
+    this.setState({location: location.description})
   }
 
   handleDescription(description){
-    this.setState( { description  })
+    this.setState( { description  } )
   }
 
   handleChange(field){
@@ -82,39 +77,43 @@ class EventForm extends React.Component {
     }
   }
 
-
+  // the Omar Torres Special
   errorConstructor(field, errors) {
+    let errorMessage;
     const error = eval(this.props.errors[field]);
-      if (error){
-        if (field === 'category'){
-          return <p className='error'>a category must be selected</p>
-
-        } else if (field === 'ticket_type') {
-          return <p className='error' >a ticket type must be selected</p>
-        } else if (field === 'name') {
-          return <p className='error' > an event must have a title </p>
-
-        } else if (field === 'start_time'){
-          return <p className='error'>start time cannot be blank</p>
-        } else if (field === 'description'){
-          return <p id='description-error'>description cannot be blank</p>
-        } else {
-          return <p className='error' >{field} cannot be blank</p>
-        }
+    if (error){
+      errorMessage = <p className='error'>You must fill in the required fields</p>
+      if (field === 'category'){
+        return <p className='error'>a category must be selected</p>
+      } else if (field === 'ticket_type') {
+        return <p className='error' >a ticket type must be selected</p>
+      } else if (field === 'name') {
+        return <p className='error' > an event must have a title </p>
+      } else if (field === 'start_time'){
+        return <p className='error'>start time cannot be blank</p>
+      } else if (field === 'description'){
+        return <p id='description-error'>description cannot be blank</p>
+      } else if (field === 'price') {
+        return <p className='error'>price {`${errors.price}`}</p>
+      } else {
+        return <p className='error' >{field} cannot be blank</p>
       }
+    }
   }
 
 
 
+
   render(){
-    // the Omar Torres Special
-    let errorMessage;
     let title = this.props.formType === 'new' ? 'Create An Event' : 'Edit Event';
     let options = this.props.categories.map((category) => {
       return <option key={category.id} value={category.id}>{category.name}</option>
-
     })
 
+    let errorMessage;
+    if (Object.values(this.props.errors).length !==0){
+      errorMessage = <p className='error'>You must fill in the required fields</p>
+    }
     return (
 
       <div className='form-container'>
@@ -129,13 +128,13 @@ class EventForm extends React.Component {
             <label id='title'>Event Title</label>
             <br/>
             {this.errorConstructor('name', this.props.errors)}
-            <input type='text' placeholder='Give it a short distinct name' onChange={this.handleChange('name')} value={this.state.name}></input>
+            <input id='title' type='text' placeholder='Give it a distinct title' onChange={this.handleChange('name')} value={this.state.name}></input>
           </div>
           <div className='event-details-location'>
             <label>Location</label>
-            <br/>
             {this.errorConstructor('location', this.props.errors)}
-            <input type='text' placeholder='Specify where it is held' onChange={this.handleChange('location')} value={this.state.location}></input>
+            <Geosuggest id='location' onSuggestSelect={this.handleLocation} onChange={this.handleLocation} value={this.state.location}/>
+            <br/>
           </div>
           <div className='times'>
             <div className='time-start'>
@@ -189,7 +188,8 @@ class EventForm extends React.Component {
               </select>
               <br/>
               <label>If your ticket is a paid event, how much will it cost?</label>
-            <input className='price' name='ticket-type' onChange={this.handleChange('price')} value={this.props.price}></input>
+              {this.errorConstructor('price', this.props.errors)}
+            <i className="fa fa-usd" aria-hidden="true"></i><input placeholder='ex. 40.00' className='price' name='ticket-type' onChange={this.handleChange('price')} value={this.props.price}></input>
           </div>
 
           <div className='wrapper-additional-settings'>
