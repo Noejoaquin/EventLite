@@ -1,13 +1,18 @@
 
 
 .session-form-parent-signup{
-  // border: 1px solid black;
   margin: auto;
   margin-top: 40px;
   width: 80%;
   height: 30%;
   display: block;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: thin;
+}
+
+.session-greeting-signup {
+  font-family: 'Roboto', sans-serif;
+  font-weight: thin;
 }
 
 .session-ul{
@@ -33,19 +38,58 @@
 
 .input-list{
   margin-top: 30px;
-  display: flex;
 }
-.signup-buttons{
-  margin-top: 65px;
-  display: flex;
-  justify-content: space-around;
 
+
+.first-last-name{
+  display: flex;
+  justify-content: center;
+}
+
+.email {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.email input {
+  width: 326px;
+}
+
+
+.password {
+  display: flex;
+  justify-content: center;
+}
+
+.password input {
+  width: 326px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-buttons{
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup {
+  margin-bottom: 10px;
 }
 
 .session-form-signup label {
   font-family: sans-serif;
   align-items: center;
-  margin-left: 30px;
+  margin-left: 12px;
   color: #767473;
 }
 
@@ -61,41 +105,34 @@
   flex-direction: column;
 }
 
-
-
-.errors{
-  display: flex;
-  justify-content: space-around;
-}
-
-.errors li {
-  padding-right: 5%;
+.session-error {
   color: red;
-  font-family: sans-serif;
+  font-size: 10px;
+  margin:11px;
+  margin-left: 12px;
 }
 
 .submit-signup{
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   font-size: 19px;
   font-family: serif;
   background-color: #f86004;
   color: #fff;
   border-radius: 100px / 110px;
-  padding-left: 115px;
-  padding-right: 115px;
+  padding-left: 138px;
+  padding-right: 138px;
 }
 
 .guest-login{
-  padding: 15px;
+  padding: 10px;
   font-size: 19px;
   font-family: serif;
   background-color: #f86004;
   color: #fff;
   border-radius: 100px / 110px;
-  padding-left: 100px;
-  padding-right: 100px;
-
+  padding-left: 122px;
+  padding-right: 122px;
 }
 
 input[type=text],[type=email]{

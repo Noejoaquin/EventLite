@@ -26,7 +26,7 @@ export const createEvent = (formData) => {
 export const updateEvent = (formData) => (
   $.ajax({
     method: 'Patch',
-    url: `/api/events/${formData.id}`,
+    url: `/api/events/${formData.get('event[id]')}`,
     contentType: false,
     processData: false,
     data: formData
