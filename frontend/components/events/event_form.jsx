@@ -18,6 +18,7 @@ class EventForm extends React.Component {
     this.handleLocation = this.handleLocation.bind(this)
     this.errorConstructor = this.errorConstructor.bind(this)
     this.state = this.props.event
+    debugger
   }
 
   componentDidMount(){
@@ -182,7 +183,7 @@ class EventForm extends React.Component {
             <label id='title'>Event Title</label>
             <br/>
             {this.errorConstructor('name', this.props.errors)}
-            <input id='title' type='text' placeholder='Give it a distinct title' onChange={this.handleChange('name')} ></input>
+            <input id='title' type='text' placeholder='Give it a distinct title' onChange={this.handleChange('name')} value={this.state.name} ></input>
           </div>
           <div className='event-details-location'>
             <label>Location</label>
