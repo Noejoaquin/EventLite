@@ -24,9 +24,9 @@ class SearchBar extends React.Component {
 
     return (
       <form className='searchform' >
-        <ul className='input-list'>
+        <ul className='input-list-search-card'>
           <li className='searchBar'>
-            <input type='text' placeholder='Search events or categories' onChange={this.handleChange('searchBar')}></input>
+            <input type='text' id='main-search' placeholder='Search events or categories' onChange={this.handleChange('searchBar')}></input>
           </li>
           <li>
             <input type='text' placeholder='location' onChange={this.handleChange('location')}></input>

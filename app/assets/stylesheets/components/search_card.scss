@@ -24,6 +24,12 @@ select {
   opacity: 0.97;
 }
 
+.input-list-search-card{
+  display:flex;
+  justify-content: center;
+  padding-top: 23px;
+}
+
 .meta-search-card h1 {
   font-family: 'Libre Franklin', sans-serif;
   color:#f6682F;
@@ -31,6 +37,10 @@ select {
   font-size: 45px;
   font-weight: lighter;
   padding-top: 60px;
+}
+
+#main-search {
+  width: 250px;
 }
 
 
@@ -42,7 +52,7 @@ select {
   border: 1px solid #D8D0CE;
   padding: 10px 12px;
   width:220px;
-
+  display: flex;
   font-family: 'Libre Franklin', sans-serif;
 }
 

@@ -18,8 +18,6 @@
 @import './base/reset';
 @import 'font-awesome';
 
-@import './components/session_form_sign_in';
-@import './components/session_form_login';
 @import './components/datetime';
 @import './components/event_form';
 @import './components/search_card';
@@ -27,3 +25,6 @@
 @import './components/nav_bar';
 @import './components/event_show';
 @import './components/main';
+
+@import './components/session_form_login';
+@import './components/session_form_sign_in';
