@@ -187,7 +187,7 @@ class EventForm extends React.Component {
           <div className='event-details-location'>
             <label>Location</label>
             {this.errorConstructor('location', this.props.errors)}
-            <Geosuggest initialValue={this.props.event.location} id='location' onSuggestSelect={this.handleLocation} onChange={this.handleLocation} />
+            <Geosuggest value={this.state.location} id='location' onSuggestSelect={this.handleLocation} onChange={this.handleLocation} />
             <br/>
           </div>
           <div className='times'>
