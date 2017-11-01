@@ -31,7 +31,6 @@ class SessionForm extends React.Component {
 
   componentWillReceiveProps(nextProps){
     if (this.props.formType !== nextProps.formType){
-      this.props.clearErrors();
       this.revertBackToOriginalState()
     }
   }
@@ -66,7 +65,7 @@ class SessionForm extends React.Component {
     let form;
     let path = this.props.match.path === '/login' ? '/signup' : '/login'
     let otherFormType = this.props.formType === 'Log In' ? 'Sign Up' : 'Log In';
-    let link=<Link id='session-link' to={path}>{otherFormType}</Link>
+    let link=<Link id='session-link' onClick={this.props.clearErrors} to={path}>{otherFormType}</Link>
     debugger
     if (!this.props.loggedIn){
 
@@ -87,7 +86,6 @@ class SessionForm extends React.Component {
                   <li className='input'>
                     <label className='email-signup'> Email</label>
                     <input type='email' onChange={this.handleChange('email')} value={this.state.email}/>
-                    {this.errorConstructor('email', this.props.errors)}
                   </li>
                 </ul>
               </li>
@@ -96,7 +94,7 @@ class SessionForm extends React.Component {
                   <li className='input'>
                     <label className='password-signup'> Password  </label>
                     <input type='password' onChange={this.handleChange('password')} value={this.state.password}/>
-                    {this.errorConstructor('password', this.props.errors)}
+                    <p id='login-error'>{this.props.errors}</p>
                   </li>
                 </ul>
               </li>
