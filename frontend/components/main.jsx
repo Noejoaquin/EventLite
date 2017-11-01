@@ -4,9 +4,10 @@ import EventIndexContainer from './events/event_index_container';
 import EventFormContainer from './events/event_form_container';
 import EventShowContainer from './events/event_show_container';
 import { Route } from 'react-router-dom';
+import { ProtectedRoute } from '../util/route_util';
 import { LandingTop } from './search/landing_top';
 import {Switch} from 'react-router-dom';
-
+console.log(ProtectedRoute)
 const MainPage = () => (
   <div className='MainPage'>
     <div className='header-container'>
@@ -16,12 +17,13 @@ const MainPage = () => (
       <Route exact path='/' component={LandingTop} />
       <Route exact path='/events/new' component={EventFormContainer} />
       <Route exact path='/events/:eventId' component={EventShowContainer}/>
-      <Route exact path='/events/:eventId/edit' component={EventFormContainer} />
+      <ProtectedRoute exact path='/events/:eventId/edit' component={EventFormContainer} />
     </Switch>
   </div>
 )
 export default MainPage;
 
+<Route exact path='/events/:eventId/edit' component={EventFormContainer} />
 // <Route exact path='/' component={EventIndexContainer} />
 // <Route exact path='/events' component={EventsPageContainer} />
 

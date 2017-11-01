@@ -27,9 +27,6 @@
   color: #646262;
 }
 
-
-
-
 .input-list{
   margin-top: 30px;
 
@@ -73,8 +70,8 @@
     padding-right: 141px;
 }
 
-input[type=text],[type=email]{
-  width: 150px;
+#login-password, #login-email {
+  width: 312px;
 }
 
 .session-form-parent-login button {

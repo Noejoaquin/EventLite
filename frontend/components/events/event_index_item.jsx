@@ -8,11 +8,12 @@ export const EventIndexItem = ({event, category}) =>{
   let month = months[parseInt(event.start_time.split('-')[1])]
   let day = event.start_time.split('T')[0].split('-')[2]
   let date = month + ' ' + day + ',' + ' ' + year
+  let price = event.ticket_type === 'free' || event.price < 1 ? 'FREE' : '$' + event.price;
   return (
   <li className='event-cell'>
       <div className='image-and-price'>
         <Link to={`/events/${event.id}`}><div style={{backgroundImage: `url(${event.image_url})`}} className='event-cell-image'></div></Link>
-        <span className='event-ticket-type'>{event.ticket_type}</span>
+        <span className='event-ticket-type'>{price}</span>
       </div>
       <div>
         <Link to={`/events/${event.id}`}><div className='event-cell-details'>

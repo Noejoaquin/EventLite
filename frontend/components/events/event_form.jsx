@@ -17,6 +17,7 @@ class EventForm extends React.Component {
     this.handleDescription = this.handleDescription.bind(this)
     this.handleLocation = this.handleLocation.bind(this)
     this.errorConstructor = this.errorConstructor.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
     this.state = this.props.event
     debugger
   }
@@ -43,15 +44,15 @@ class EventForm extends React.Component {
 
   revertBackToOriginalState(){
       this.setState({name: '', description: '', location:'', ticket_type: '',
-        price: 0.0, start_time:'', end_time:'', category_id: null, imageFile: '', imageUrl: ''})
+        price: 0.0, start_time:'', end_time:'', category_id: null, imageFile: '', imageUrl: '', image_url:''})
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   if (this.props.formType !== nextProps.formType){
-  //     this.props.clearErrors();
-  //     this.revertBackToOriginalState()
-  //   }
-  // }
+  componentWillReceiveProps(nextProps){
+    if (this.props.formType !== nextProps.formType){
+      this.props.clearErrors();
+      this.revertBackToOriginalState()
+    }
+  }
 
   handleSubmit(e){
     debugger
@@ -100,12 +101,17 @@ class EventForm extends React.Component {
   }
 
   handleDate(field){
-    debugger
     return (moment) => {
       this.setState( { [field]: moment._d })
     }
   }
 
+  handleDelete() {
+    debugger
+    this.props.deleteEvent(this.props.match.params.eventId).then(({event}) => {
+      this.props.history.push(`/users/${this.props.currentUser.id}`)
+    })
+  }
   // the Omar Torres Special
   errorConstructor(field, errors) {
     let errorMessage;
@@ -134,10 +140,6 @@ class EventForm extends React.Component {
 
 
   render(){
-    // if (this.props.event === undefined) {
-    //   return null
-    // } else {
-
     let title = this.props.formType === 'new' ? 'Create An Event' : 'Edit Event';
     let options = this.props.categories.map((category) => {
       return <option key={category.id} value={category.id}>{category.name}</option>
@@ -145,22 +147,21 @@ class EventForm extends React.Component {
 
     let errorMessage;
     if (Object.values(this.props.errors).length !==0){
-      errorMessage = <p className='error'>You must fill in the required fields</p>
+      errorMessage = <p className='event-error'>You must fill in the required fields</p>
     }
-
-    // var dateTime = require('react-datetime')
-    // var yesterday = dateTime.moment().subtract( 1, 'day' );
-    // var valid = function( current ){
-    // return current.isAfter( yesterday );
-    // };
-
+    let cancelButton = <button onClick={this.handleDelete} className='cancel-button'>Cancel Event</button>
+    let startTime = this.state.start_time.length > 0 ? new Date(this.state.start_time) : '';
+    let endTime = this.state.start_time.length > 0 ? new Date(this.state.end_time) : '';
     let buttonText = this.props.formType === 'edit' ? 'Update Your Event' : 'Make Your Event Live';
     const categoryDefault = this.props.event.category_id ? this.props.event.category_id : 'default'
     debugger
     return (
 
       <div className='form-container'>
-        <h1 className='title-header'>{title}</h1>
+        <ul className='create-form-header'>
+          <h1 className='title-header'>{title}</h1>
+          {cancelButton}
+        </ul>
         <div className='gray-bar'></div>
         <div className='wrapper-event-details'>
           <span className='icon-1'></span>
@@ -185,7 +186,7 @@ class EventForm extends React.Component {
                 <label>Starts</label>
                 <li>
                   {this.errorConstructor('start_time', this.props.errors)}
-                  <DateTime  onChange={this.handleDate('start_time')}  value={new Date(this.state.start_time)}/>
+                  <DateTime placeholder=''  onChange={this.handleDate('start_time')}  value={startTime}/>
                 </li>
               </ul>
             </div>
@@ -193,7 +194,7 @@ class EventForm extends React.Component {
               <ul className='time-list-inputs-end'>
                 <label className='date-end'>Ends</label>
                 <li>
-                  <DateTime  onChange={this.handleDate('end_time')} value={new Date(this.state.end_time)} />
+                  <DateTime placeholder='' onChange={this.handleDate('end_time')} value={endTime} />
                 </li>
               </ul>
             </div>

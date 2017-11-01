@@ -85,7 +85,7 @@ class SessionForm extends React.Component {
                 <ul className='email'>
                   <li className='input'>
                     <label className='email-signup'> Email</label>
-                    <input type='email' onChange={this.handleChange('email')} value={this.state.email}/>
+                    <input id='login-email' type='email' onChange={this.handleChange('email')} value={this.state.email}/>
                   </li>
                 </ul>
               </li>
@@ -93,7 +93,7 @@ class SessionForm extends React.Component {
                 <ul className='password'>
                   <li className='input'>
                     <label className='password-signup'> Password  </label>
-                    <input type='password' onChange={this.handleChange('password')} value={this.state.password}/>
+                    <input id='login-password' type='password' onChange={this.handleChange('password')} value={this.state.password}/>
                     <p id='login-error'>{this.props.errors}</p>
                   </li>
                 </ul>

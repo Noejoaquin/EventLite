@@ -33,6 +33,18 @@
 .listing-top{
   padding: 32px;
   height: 62%;
+  position: relative;
+}
+
+.edit-button {
+  top: 12px;
+  right: 13px;
+  position: absolute;
+  font-size: 22px;
+}
+
+.fa-pencil-square-o {
+  color: #f86004;
 }
 
 
@@ -106,7 +118,6 @@
 #register-button:hover{
   background-color: #1a4718;
 }
-
 
 .listing-cell{
   padding-top: 5%;

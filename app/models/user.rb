@@ -2,18 +2,18 @@
 #
 # Table name: users
 #
-#  id                 :integer          not null, primary key
-#  first_name         :string           not null
-#  last_name          :string           not null
-#  email              :string           not null
-#  password_digest    :string           not null
-#  session_token      :string           not null
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  image_file_name    :string
-#  image_content_type :string
-#  image_file_size    :integer
-#  image_updated_at   :datetime
+#  id                  :integer          not null, primary key
+#  first_name          :string           not null
+#  last_name           :string           not null
+#  email               :string           not null
+#  password_digest     :string           not null
+#  session_token       :string           not null
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  avatar_file_name    :string
+#  avatar_content_type :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 
 class User < ApplicationRecord
@@ -29,6 +29,17 @@ class User < ApplicationRecord
   primary_key: :id,
   class_name: 'Event',
   foreign_key: :organizer_id
+
+  has_many :attendances,
+  primary_key: :id,
+  class_name: 'Attendance',
+  foreign_key: :user_id
+
+  has_many :attending_events,
+  through: :attendances,
+  source: :event 
+
+
 
   after_initialize :ensure_session_token!
 

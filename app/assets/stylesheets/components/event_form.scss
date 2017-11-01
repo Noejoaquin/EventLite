@@ -6,10 +6,6 @@
   }
 }
 
-.wrapper-event-details textarea {
-  border: 1px solid black;
-}
-//
 .wrapper-ticket button {
   -webkit-appearance: button;
 }
@@ -23,6 +19,24 @@
   font-size: 30px;
   padding: 19px;
   background-color: #fff;
+}
+
+.create-form-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel-button {
+  margin-right: 114px;
+  margin-top: 20px;
+  color: #fff;
+  background-color: #f86004;
+  border-radius: 71.5px;
+  padding: 0px 13px;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  height: 36px
 }
 
 .gray-bar{
