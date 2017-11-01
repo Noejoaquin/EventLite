@@ -6,6 +6,7 @@ import ReactQuill from 'react-quill';
 import { isEmpty } from 'lodash';
 import shallowCompare from 'react-addons-shallow-compare';
 import Geosuggest from 'react-geosuggest';
+import merge from 'lodash/merge'
 
 class EventForm extends React.Component {
   constructor(props){
@@ -33,6 +34,12 @@ class EventForm extends React.Component {
     }
   }
 
+  // componentDidMount(){
+  //   if (this.props.match.params.eventId) {
+  //     this.props.fetchCategories().then(this.props.fetchEvent(this.props.match.params.eventId))
+  //   }
+  // }
+
   revertBackToOriginalState(){
       this.setState({name: '', description: '', location:'', ticket_type: '',
         price: 0.0, start_time:'', end_time:'', category_id: null, imageFile: '', imageUrl: ''})
@@ -46,6 +53,7 @@ class EventForm extends React.Component {
   }
 
   handleSubmit(e){
+    debugger
     let formData = new FormData();
     formData.append("event[name]", this.state.name)
     formData.append("event[description]", this.state.description)
@@ -122,6 +130,10 @@ class EventForm extends React.Component {
 
 
   render(){
+    // if (this.props.event === undefined) {
+    //   return null
+    // } else {
+
     let title = this.props.formType === 'new' ? 'Create An Event' : 'Edit Event';
     let options = this.props.categories.map((category) => {
       return <option key={category.id} value={category.id}>{category.name}</option>
@@ -136,24 +148,26 @@ class EventForm extends React.Component {
     var moment = require('moment');
     let startDate;
     if (this.props.formType === 'edit'){
-      startDate = moment(this.state.start_time).format('MMMM Do YYYY, h:mm a');
+      debugger
+      startDate = moment(this.props.event.start_time).format('MMMM Do YYYY, h:mm a');
     } else {
       startDate = '';
     }
 
     let endDate;
     if (this.props.formType === 'edit') {
-      if (this.state.end_time === '' || this.state.end_time === null){
+      if (this.props.event.end_time === '' || this.props.event.end_time === null){
         endDate = ''
       } else {
-        endDate = moment(this.state.end_time).format('MMMM Do YYYY, h:mm a');
+        endDate = moment(this.props.event.end_time).format('MMMM Do YYYY, h:mm a');
       }
     } else {
       endDate = ''
     };
 
     let buttonText = this.props.formType === 'edit' ? 'Update Your Event' : 'Make Your Event Live';
-    const categoryDefault = this.state.category_id ? this.state.category_id : 'default'
+    const categoryDefault = this.props.event.category_id ? this.props.event.category_id : 'default'
+    debugger
     return (
 
       <div className='form-container'>
@@ -168,12 +182,12 @@ class EventForm extends React.Component {
             <label id='title'>Event Title</label>
             <br/>
             {this.errorConstructor('name', this.props.errors)}
-            <input id='title' type='text' placeholder='Give it a distinct title' onChange={this.handleChange('name')} value={this.state.name}></input>
+            <input id='title' type='text' placeholder='Give it a distinct title' onChange={this.handleChange('name')} ></input>
           </div>
           <div className='event-details-location'>
             <label>Location</label>
             {this.errorConstructor('location', this.props.errors)}
-            <Geosuggest initialValue={this.state.location} id='location' onSuggestSelect={this.handleLocation} onChange={this.handleLocation} value={this.state.location}/>
+            <Geosuggest initialValue={this.props.event.location} id='location' onSuggestSelect={this.handleLocation} onChange={this.handleLocation} />
             <br/>
           </div>
           <div className='times'>
@@ -182,7 +196,7 @@ class EventForm extends React.Component {
                 <label>Starts</label>
                 <li>
                   {this.errorConstructor('start_time', this.props.errors)}
-                  <DateTime  id='date-start' onChange={this.handleDate('start_time')} value={startDate} />
+                  <DateTime onChange={this.handleDate('start_time')}  />
                 </li>
               </ul>
             </div>
@@ -190,7 +204,7 @@ class EventForm extends React.Component {
               <ul className='time-list-inputs-end'>
                 <label className='date-end'>Ends</label>
                 <li>
-                  <DateTime  onChange={this.handleDate('end_time')} value={endDate}/>
+                  <DateTime  onChange={this.handleDate('end_time')} />
                 </li>
               </ul>
             </div>
@@ -210,7 +224,7 @@ class EventForm extends React.Component {
             {this.errorConstructor('description', this.props.errors)}
             <div>
 
-              <ReactQuill id='description' onChange={this.handleDescription} value={this.state.description}/>
+              <ReactQuill id='description' onChange={this.handleDescription} />
             </div>
           </div>
 
@@ -220,8 +234,8 @@ class EventForm extends React.Component {
               <h2 className='event-form-section-title-2'>Create Tickets</h2>
             </div>
               {this.errorConstructor('ticket_type', this.props.errors)}
-              <select onChange={this.handleChange('ticket_type')} defaultValue={this.state.ticket_type ? this.state.ticket_type : 'default' }>
-                <option value='default' disabled >Select your ticket type</option>
+              <select onChange={this.handleChange('ticket_type') }>
+                <option value='default' disabled selected >Select your ticket type</option>
                 <option  value='free'>Free Ticket</option>
                 <option  value='paid' >Paid Ticket</option>
                 <option  value='donation' >Donation</option>
@@ -229,13 +243,13 @@ class EventForm extends React.Component {
               <br/>
               <label>If your ticket is a paid event, how much will it cost?</label>
               {this.errorConstructor('price', this.props.errors)}
-            <i className="fa fa-usd" aria-hidden="true"></i><input placeholder='ex. 40.00' className='price' name='ticket-type' onChange={this.handleChange('price')} value={this.props.price}></input>
+            <i className="fa fa-usd" aria-hidden="true"></i><input placeholder='ex. 40.00' className='price' name='ticket-type' onChange={this.handleChange('price')} ></input>
           </div>
 
           <div className='wrapper-additional-settings'>
             <div>
               <span className='icon-3'></span>
-              <h2 className='event-form-section-title-3'></h2>
+              <h2 className='event-form-section-title-3'>Category</h2>
             </div>
             <div className='category-select'>
               {this.errorConstructor('category', this.props.errors)}
@@ -251,13 +265,12 @@ class EventForm extends React.Component {
           <button className='event-live' onClick={this.handleSubmit}>{buttonText}</button>
           {errorMessage}
           <div className='footer'>
-
-
           </div>
         </div>
       </div>
     )
-  }
+    }
+  // }
 }
 
 

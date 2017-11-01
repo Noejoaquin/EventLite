@@ -4,21 +4,13 @@ class Api::EventsController < ApplicationController
     render :index
   end
 
-  def memberships
-
-    space = current_user.spaces.find(params[:id])
-    @memberships = current_user.s
-
-    render
-
-  end
-
   def show
     @event = Event.find(params[:id])
     render :show
   end
 
   def create
+    debugger
     @event = Event.new(event_params)
     @event.organizer_id = current_user.id
     if @event.save
