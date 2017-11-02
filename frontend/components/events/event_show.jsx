@@ -4,11 +4,17 @@ import { Link } from 'react-router-dom';
 class EventShow extends React.Component {
   constructor(props){
     super(props);
-
+    this.handleAttendance = this.handleAttendance.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchEvent(this.props.match.params.eventId)
+  }
+
+  handleAttendance(){
+    this.props.createAttendance(this.props.match.params.eventId).then(() => {
+      this.props.history.push(`/users/${this.props.currentUser.id}`)
+    })
   }
 
 
@@ -48,7 +54,7 @@ class EventShow extends React.Component {
 
           <div className='listing-panel'>
 
-              <button id='register-button'>Register</button>
+              <button onClick={this.handleAttendance} id='register-button'>Register</button>
 
               <div className='icon'>
                 <div className='fa fa-bookmark-o' aria-hidden='true'></div>

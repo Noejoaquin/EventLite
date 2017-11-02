@@ -1,0 +1,33 @@
+.profile-page-container {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-header {
+  padding-top: 20px;
+}
+
+
+.primary-header {
+  width: 100%;
+  background-color: #fff;
+  color: #282C35;
+  font-size: 35px;
+  line-height: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.edit-profile {
+  text-align: center;
+  padding-top: 12px;
+}
+
+.edit-profile-link {
+  color: #0278b8;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  font-size: 19px;
+}
