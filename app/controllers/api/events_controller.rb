@@ -35,14 +35,16 @@ class Api::EventsController < ApplicationController
   end
 
   def attend
-    @attendance = Attendance.new(params[:event_id], current_user.id)
+    @attendance = Attendance.new(event_id: params[:event_id], user_id: current_user.id)
     @attendance.save!
+    @user = current_user
     render '/api/users/show'
   end
 
   def unattend
-    @attendance = Attendance.find_by(params[:event_id], current_user.id)
+    @attendance = Attendance.find_by(event_id: params[:event_id], user_id: current_user.id)
     @attendance.destroy!
+    @user = current_user
     render '/api/users/show'
   end
 
