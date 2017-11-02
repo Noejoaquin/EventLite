@@ -1,5 +1,4 @@
 export const createAttendance = (eventId) => {
-  debugger
   return $.ajax({
     method: 'post',
     url: `/api/events/${eventId}/attend`

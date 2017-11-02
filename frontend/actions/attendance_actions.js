@@ -10,10 +10,8 @@ export const recieveCurrentUser = (currentUser) => ({
 })
 
 export const createAttendance = (eventId) => dispatch => {
-  debugger
   return AttendanceApiUtil.createAttendance(eventId)
                           .then((currentUser) => {
-                             debugger
                              dispatch(recieveCurrentUser(currentUser))
                           })
 }

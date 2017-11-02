@@ -6,6 +6,7 @@ import { login, logout, signUp } from './actions/session_actions';
 import { fetchEvent, fetchEvents, createEvent, updateEvent, deleteEvent} from './actions/event_actions';
 import { fetchCategories } from './actions/category_actions';
 import { createAttendance, deleteAttendance } from './actions/attendance_actions'
+import { createSave, deleteSave } from './actions/save_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -17,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 //testing
+window.createSave = createSave;
+window.deleteSave = deleteSave;
 window.createAttendance = createAttendance;
 window.deleteAttendance = deleteAttendance;
 window.fetchCategories = fetchCategories;

@@ -26,8 +26,8 @@ class EventProfileTabs extends React.Component{
 
     const tabs = tabNames.map( (name, idx) => {
       if (idx === this.state.tabsIndex) {
-        return <div className="active tab">
-          <h1  idx={idx} key={idx}>{name}</h1>
+        return <div key={idx} className="active tab">
+          <h1  idx={idx} >{name}</h1>
           <div className='active-border'></div>
         </div>
       } else {

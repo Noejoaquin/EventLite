@@ -79,20 +79,22 @@
 //
 .event-cell-category{
   // border: 1px solid black;
-  padding-top: 3px;
+  padding-top: 0px;
   padding-left: 12px;
   margin-left: 4%;
   margin-right: 35%;
   color: #666a73;
   position: relative;
+  bottom: -13px;
 }
 
 
-.fa-hashtag:before{
-  // border: 1px solid black;
+#icon-bookmark-index{
   position: absolute;
-  left: 0px;
-  bottom: 3px;
+  right: 8px;
+  bottom: 18px;
+  width: 33px;
+  font-size: 20px;
 }
 
 .fa-bookmark-o{

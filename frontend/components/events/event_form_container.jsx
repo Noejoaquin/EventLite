@@ -15,12 +15,10 @@ const mapStateToProps = (state, ownProps) => {
   if (ownProps.match.path === '/events/:eventId/edit'){
     formType = 'edit';
     const tempEvent = state.entities.events[ownProps.match.params.eventId]
-    debugger
     if (tempEvent){
       event = tempEvent;
     }
   } else {
-    debugger
     event = dummyEvent;
   }
     return {

@@ -48,6 +48,20 @@ class Api::EventsController < ApplicationController
     render '/api/users/show'
   end
 
+  def save
+    @save = SavedEvent.new(event_id: params[:event_id], user_id: current_user.id)
+    @save.save!
+    @user = current_user
+    render 'api/users/show'
+  end
+
+  def unsave
+    @save = SavedEvent.find_by(event_id: params[:event_id], user_id: current_user.id)
+    @user = current_user
+    @save.destroy!
+    render 'api/users/show'
+  end
+
   def event_params
     params.require(:event).permit(:name, :description, :location,
                                   :ticket_type, :price, :start_time, :start_date,

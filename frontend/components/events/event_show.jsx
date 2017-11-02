@@ -6,6 +6,9 @@ class EventShow extends React.Component {
     super(props);
     this.handleAttendance = this.handleAttendance.bind(this);
     this.handleCancellation = this.handleCancellation.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+    this.handleUnsave = this.handleUnsave.bind(this);
+    this.state = this.props.currentUser
   }
 
   componentDidMount(){
@@ -13,15 +16,19 @@ class EventShow extends React.Component {
   }
 
   handleAttendance(){
-    this.props.createAttendance(this.props.match.params.eventId).then(() => {
-      this.props.history.push(`/users/${this.props.currentUser.id}`)
-    })
+    this.props.createAttendance(this.props.match.params.eventId)
   }
 
   handleCancellation() {
-    this.props.deleteAttendance(this.props.match.params.eventId).then(() => {
-      this.props.history.push(`/users/${this.props.currentUser.id}`)
-    })
+    this.props.deleteAttendance(this.props.match.params.eventId)
+  }
+
+  handleSave(){
+    this.props.createSave(this.props.match.params.eventId)
+  }
+
+  handleUnsave(){
+    this.props.deleteSave(this.props.match.params.eventId)
   }
 
 
@@ -30,11 +37,9 @@ class EventShow extends React.Component {
     if (this.props.event === undefined) {
       return null
     } else {
-      debugger
         var editButton;
         if (this.props.currentUser){
           if (this.props.event.organizer_id === this.props.currentUser.id){
-            debugger
             editButton = <Link to={`/events/${this.props.event.id}/edit`}>
               <div className='edit-button'>
                 <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -44,11 +49,21 @@ class EventShow extends React.Component {
             }
         }
         var attendanceButton;
-        if (this.props.currentUser.attending_events.includes(this.props.match.params.eventId)) {
-          attendanceButton = <button onClick={this.handleAttendance} id='register-button'>Register</button>
+        if (this.props.currentUser.attending_events.includes(parseInt(this.props.match.params.eventId))) {
+          attendanceButton = <button onClick={this.handleCancellation} id='cancellation-button'>Cancel Registration</button>
         } else {
-          attendanceButton = <button onClick={this.handleCancellation} id='cancellation-button'>Cancel</button>
-        }
+          attendanceButton = <button onClick={this.handleAttendance} id='register-button'>Register</button>
+          }
+        var saveButton;
+        if (this.props.currentUser.saved_events.includes(parseInt(this.props.match.params.eventId))) {
+          saveButton = <button className='save-button' onClick={this.handleUnsave}><div>
+                          <div className="fa fa-bookmark" id='icon-bookmark-show-save' aria-hidden='true'></div>
+                        </div></button>
+                    } else {
+                      saveButton = <button onClick={this.handleSave}><div>
+                                      <div className='fa fa-bookmark-o' id='icon-bookmark-show' aria-hidden='true'></div>
+                                    </div></button>
+                    }
         var moment = require('moment');
         let date = moment(this.props.event.start_time).format('MMMM Do');
         let time = moment(this.props.event.start_time).format('hh:mm a');
@@ -73,9 +88,7 @@ class EventShow extends React.Component {
 
               {attendanceButton}
 
-              <div className='icon'>
-                <div className='fa fa-bookmark-o' aria-hidden='true'></div>
-              </div>
+              {saveButton}
 
           </div>
 
