@@ -105,7 +105,6 @@
   width: 33%;
   text-align: center;
   height: 66%;
-  border: 1px solid black;
   background-color: #00ab44;
   color: #fff;
   text-transform: uppercase;
@@ -117,6 +116,26 @@
 
 #register-button:hover{
   background-color: #1a4718;
+}
+
+
+#cancellation-button {
+  margin-right: 2.3%;
+  margin-top: .9%;
+  width: 33%;
+  text-align: center;
+  height: 66%;
+  background-color: #C9220A;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  font-family: 'Libre Franklin', sans-serif;
+  -moz-transition:color .2s ease-in;
+}
+
+#cancellation-button:hover {
+  background-color: #9B2C1C;
 }
 
 .listing-cell{

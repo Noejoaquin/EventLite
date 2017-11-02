@@ -5,6 +5,7 @@ class EventShow extends React.Component {
   constructor(props){
     super(props);
     this.handleAttendance = this.handleAttendance.bind(this);
+    this.handleCancellation = this.handleCancellation.bind(this);
   }
 
   componentDidMount(){
@@ -13,6 +14,12 @@ class EventShow extends React.Component {
 
   handleAttendance(){
     this.props.createAttendance(this.props.match.params.eventId).then(() => {
+      this.props.history.push(`/users/${this.props.currentUser.id}`)
+    })
+  }
+
+  handleCancellation() {
+    this.props.deleteAttendance(this.props.match.params.eventId).then(() => {
       this.props.history.push(`/users/${this.props.currentUser.id}`)
     })
   }
@@ -36,6 +43,12 @@ class EventShow extends React.Component {
               editButton = <div></div>
             }
         }
+        var attendanceButton;
+        if (this.props.currentUser.attending_events.includes(this.props.match.params.eventId)) {
+          attendanceButton = <button onClick={this.handleAttendance} id='register-button'>Register</button>
+        } else {
+          attendanceButton = <button onClick={this.handleCancellation} id='cancellation-button'>Cancel</button>
+        }
         var moment = require('moment');
         let date = moment(this.props.event.start_time).format('MMMM Do');
         let time = moment(this.props.event.start_time).format('hh:mm a');
@@ -58,7 +71,7 @@ class EventShow extends React.Component {
 
           <div className='listing-panel'>
 
-              <button onClick={this.handleAttendance} id='register-button'>Register</button>
+              {attendanceButton}
 
               <div className='icon'>
                 <div className='fa fa-bookmark-o' aria-hidden='true'></div>
