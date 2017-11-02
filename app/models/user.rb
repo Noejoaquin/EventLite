@@ -37,7 +37,16 @@ class User < ApplicationRecord
 
   has_many :attending_events,
   through: :attendances,
-  source: :event 
+  source: :event
+
+  has_many :saves,
+  primary_key: :id,
+  foreign_key: :user_id,
+  class_name: 'SavedEvent'
+
+  has_many :saved_events,
+  through: :saves,
+  source: :event
 
 
 
