@@ -23,15 +23,19 @@ class EventShow extends React.Component {
     if (this.props.event === undefined) {
       return null
     } else {
-        let editButton;
-        if (this.props.event.organizer_id === this.props.currentUser.id){
-          editButton = <Link to={`/events/${this.props.event.id}/edit`}>
-                        <div className='edit-button'>
-                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </div></Link>
-                    } else {
-                      editButton = <div></div>
-                    }
+      debugger
+        var editButton;
+        if (this.props.currentUser){
+          if (this.props.event.organizer_id === this.props.currentUser.id){
+            debugger
+            editButton = <Link to={`/events/${this.props.event.id}/edit`}>
+              <div className='edit-button'>
+                <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+              </div></Link>
+            } else {
+              editButton = <div></div>
+            }
+        }
         var moment = require('moment');
         let date = moment(this.props.event.start_time).format('MMMM Do');
         let time = moment(this.props.event.start_time).format('hh:mm a');

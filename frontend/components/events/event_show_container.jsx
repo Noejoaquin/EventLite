@@ -7,6 +7,7 @@ import { createAttendance } from '../../actions/attendance_actions';
 const mapStateToProps = (state, ownProps) => {
   let event = state.entities.events[ownProps.match.params.eventId];
   let currentUser = state.session.currentUser
+  debugger 
   return {
     event,
     currentUser
