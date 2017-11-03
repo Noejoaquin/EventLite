@@ -7,25 +7,28 @@ class Profile extends React.Component {
     super(props);
 
   }
+
+  componentDidMount(){
+    this.props.fetchUsers()
+  }
+
   render(){
-    let name = this.props.currentUser.first_name + ' ' + this.props.currentUser.last_name
-    return (
-      <div className='meta-profile-page-container'>
-        <div className='profile-page-container'>
-          <div className='profile-header'>
-            <div className='primary-header'>
-              {name}
-            </div>
-            <div className='edit-profile'>
-              <a className='edit-profile-link'>Edit Profile</a>
+      let name = this.props.currentUser.first_name + ' ' + this.props.currentUser.last_name
+      return (
+        <div className='meta-profile-page-container'>
+          <div className='profile-page-container'>
+            <div className='profile-header'>
+              <div className='primary-header'>
+                {name}
+              </div>
+              <div className='edit-profile'>
+                <a className='edit-profile-link'>Edit Profile</a>
+              </div>
             </div>
           </div>
-      </div>
           <EventProfileTabsContainer/>
-      </div>
-    )
-
-
+        </div>
+      )
   }
 }
 

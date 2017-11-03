@@ -12,7 +12,7 @@ class EventShow extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchEvent(this.props.match.params.eventId)
+    this.props.fetchEvent(this.props.match.params.eventId).then(() => fetchUsers())
   }
 
   handleAttendance(){
@@ -87,8 +87,8 @@ class EventShow extends React.Component {
               <div className='listing-top'>
                 <time id='listing-time'>{date}</time>
                 <div id='listing-name'>{this.props.event.name}</div>
-                <div id='listing-organizer'>
-                  {this.props.event.organizer}</div>
+                <Link to={`/users/${event.organizer_id}`}><div id='listing-organizer'>
+                  {this.props.event.organizer}</div></Link>
                 {editButton}
               </div>
               <div className='events-price-show'>{ticketPrice}</div>

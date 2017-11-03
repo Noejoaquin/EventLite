@@ -4,6 +4,7 @@ import EventShow from './event_show';
 import { fetchEvent } from '../../actions/event_actions';
 import { createAttendance, deleteAttendance } from '../../actions/attendance_actions';
 import { createSave, deleteSave } from '../../actions/save_actions';
+import { fetchUsers } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let event = state.entities.events[ownProps.match.params.eventId];
@@ -21,7 +22,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createAttendance: (id) => dispatch(createAttendance(id)),
     deleteAttendance: (id) => dispatch(deleteAttendance(id)),
     createSave: (id) => dispatch(createSave(id)),
-    deleteSave: (id) => dispatch(deleteSave(id))
+    deleteSave: (id) => dispatch(deleteSave(id)),
+    fetchUsers: () => dispatch(fetchUsers()),
   }
 }
 

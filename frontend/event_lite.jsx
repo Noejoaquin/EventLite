@@ -7,7 +7,7 @@ import { fetchEvent, fetchEvents, createEvent, updateEvent, deleteEvent} from '.
 import { fetchCategories } from './actions/category_actions';
 import { createAttendance, deleteAttendance } from './actions/attendance_actions'
 import { createSave, deleteSave } from './actions/save_actions';
-
+import { fetchUsers } from './actions/user_actions';
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser) {
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 //testing
+window.fetchUsers = fetchUsers;
 window.createSave = createSave;
 window.deleteSave = deleteSave;
 window.createAttendance = createAttendance;

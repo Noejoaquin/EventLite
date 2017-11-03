@@ -1,11 +1,11 @@
 import React from 'react';
-import SavedEventsContainer from './saved_events_container';
-import UpcomingEventsContainer from './upcoming_events_container';
-import PastEventsContainer from './past_events_container';
-import ManagedEventsContainer from './managed_events_container';
+// import SavedEventsContainer from './saved_events_container';
+// import UpcomingEventsContainer from './upcoming_events_container';
+// import PastEventsContainer from './past_events_container';
+// import ManagedEventsContainer from './managed_events_container';
 
-const tabNames = ['Upcoming Events','Saved Events', 'Past Events', 'Managed Events']
-const panes = [UpcomingEventsContainer,SavedEventsContainer, PastEventsContainer, ManagedEventsContainer]
+// const tabNames = ['Upcoming Events','Saved Events', 'Past Events', 'Managed Events']
+// const panes = [UpcomingEventsContainer,SavedEventsContainer, PastEventsContainer, ManagedEventsContainer]
 
 
 class EventProfileTabs extends React.Component{
@@ -25,7 +25,7 @@ class EventProfileTabs extends React.Component{
 
   render(){
 
-    const tabs = tabNames.map( (name, idx) => {
+    const tabs = this.props.tabNames.map( (name, idx) => {
       if (idx === this.state.tabsIndex) {
         return <div key={idx} className="active tab">
           <h1  idx={idx} >{name}</h1>
@@ -36,7 +36,7 @@ class EventProfileTabs extends React.Component{
       }
     });
 
-    const Component = panes[this.state.tabsIndex];
+    const Component = this.props.panes[this.state.tabsIndex];
     return (
       <div className='event-indicies'>
         <div className='tabs-container'>

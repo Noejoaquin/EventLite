@@ -13,8 +13,7 @@ const Auth = ({component: Component, path, loggedIn}) => (
   )}/>
 );
 
-const Protected = ({component: Component, path, loggedIn}) => {
-  debugger 
+const Protected = ({component: Component, path, loggedIn}) => { 
   return (
   <Route path={path} render={(props) => (
     loggedIn ? (

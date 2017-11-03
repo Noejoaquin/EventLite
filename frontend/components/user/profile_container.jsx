@@ -3,18 +3,27 @@ import { connect } from 'react-redux';
 import Profile from './profile';
 import { fetchEvents } from '../../actions/event_actions';
 import { deleteAttendance } from '../../actions/attendance_actions';
-
+import { fetchUsers } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  let currentUser;
+  // if (ownProps.match.params.userId === state.session.currentUser.id){
+    currentUser = state.session.currentUser
+  // } else {
+  //   // this will be the organizer's data being selected
+    // currentUser = state.entities.users[ownProps.match.params.userId]
+  // }
+
   return {
-    currentUser: state.session.currentUser
+    currentUser
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchEvents: () => dispatch(fetchEvents()),
-    deleteAttendance: (id) => dispatch(deleteAttendance(id))
+    deleteAttendance: (id) => dispatch(deleteAttendance(id)),
+    fetchUsers: () => dispatch(fetchUsers())
   }
 }
 
