@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const EventIndexItem = ({event, category}) =>{
+export const EventIndexItem = ({event, category, createSave, deleteSave, currentUser}) =>{
 
   const months = { 1: 'January', 2: 'Feburary', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
       7: 'July', 8:'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
@@ -11,6 +11,29 @@ export const EventIndexItem = ({event, category}) =>{
   let date = month + ' ' + day + ',' + ' ' + year
   let price = event.ticket_type === 'free' || event.price < 1 ? 'FREE' : '$' + event.price;
   debugger
+    var saveButton;
+    if (currentUser){
+      if (currentUser.saved_events.includes(event.id)) {
+        saveButton = <button className='save-button' onClick={(e) => {
+                      e.preventDefault();
+                      deleteSave(event.id)}}>
+                      <div className="fa fa-bookmark" id='icon-bookmark-index-save'
+                         aria-hidden='true'></div>
+                      </button>
+      } else {
+        saveButton = saveButton = <button className='save-button' onClick={(e) => {
+                      e.preventDefault();
+                      createSave(event.id)}}>
+                      <div className="fa fa-bookmark-o" id='icon-bookmark-index'
+                         aria-hidden='true'></div>
+                      </button>
+      }
+    } else {
+      saveButton = <button className='save-button'><Link to={'/signup'}>
+                    <div className="fa fa-bookmark-o" id='icon-bookmark-index-save'
+                       aria-hidden='true'></div></Link>
+                    </button>
+    }
   // if (currentUser.saved_events.includes(event.id)) {
   //   saveButton = <button className='save-button' onClick={this.handleUnsave}>
   //                   <div className="fa fa-bookmark" id='icon-bookmark-index-save' aria-hidden='true'></div>
@@ -39,15 +62,16 @@ export const EventIndexItem = ({event, category}) =>{
             {category}</Link>
           </div>
         </div>
+        {saveButton}
       </div>
-      <button>
-        <div className='fa fa-bookmark-o' id='icon-bookmark-index' aria-hidden='true'></div>
-      </button>
     </li>
   )
 }
 
 
+// <button>
+//   <div className='fa fa-bookmark-o' id='icon-bookmark-index' aria-hidden='true'></div>
+// </button>
 
 // class EventIndexItem extends React.Component {
 //   constructor({event, category, currentUser, deleteSave, createSave}) {

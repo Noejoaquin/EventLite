@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser
   let events = Object.keys(state.entities.events).map((id) => state.entities.events[id]);
   return {
+    currentUser,
     events,
     categories
   }

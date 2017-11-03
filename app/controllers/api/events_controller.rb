@@ -49,6 +49,7 @@ class Api::EventsController < ApplicationController
   end
 
   def save
+    debugger
     @save = SavedEvent.new(event_id: params[:event_id], user_id: current_user.id)
     @save.save!
     @user = current_user
@@ -56,6 +57,7 @@ class Api::EventsController < ApplicationController
   end
 
   def unsave
+    debugger 
     @save = SavedEvent.find_by(event_id: params[:event_id], user_id: current_user.id)
     @user = current_user
     @save.destroy!

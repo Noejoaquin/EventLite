@@ -23,7 +23,9 @@ class EventIndex extends React.Component {
     if (!(isEmpty(this.props.categories))) {
       events = this.props.events.map((event) => {
       let category = this.findCategoryName(event, this.props.categories)
-      return <EventIndexItem key={event.id} event={event} category={ category }  />
+      return <EventIndexItem key={event.id} event={event} category={ category }
+                deleteSave={this.props.deleteSave} createSave={this.props.createSave}
+                currentUser={this.props.currentUser}/>
       })
     }
     return (

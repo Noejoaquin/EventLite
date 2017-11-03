@@ -78,7 +78,6 @@
 }
 //
 .event-cell-category{
-  // border: 1px solid black;
   padding-top: 0px;
   padding-left: 12px;
   margin-left: 4%;
@@ -89,6 +88,15 @@
 }
 
 
+#icon-bookmark-index-save{
+  position: absolute;
+  right: 8px;
+  bottom: 18px;
+  width: 33px;
+  font-size: 20px;
+  color: #0278b8;
+}
+
 #icon-bookmark-index{
   position: absolute;
   right: 8px;
@@ -98,7 +106,6 @@
 }
 
 .fa-bookmark-o{
-  // border:1px solid black;
   position: absolute;
   right: 20px;
   bottom: 6px;
