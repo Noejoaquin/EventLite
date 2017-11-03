@@ -17,20 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-//testing
-window.fetchUsers = fetchUsers;
-window.createSave = createSave;
-window.deleteSave = deleteSave;
-window.createAttendance = createAttendance;
-window.deleteAttendance = deleteAttendance;
-window.fetchCategories = fetchCategories;
-window.fetchEvent = fetchEvent;
-window.fetchEvents = fetchEvents;
-window.createEvent = createEvent;
-window.updateEvent = updateEvent;
-window.deleteEvent = deleteEvent;
-window.getState = store.getState;
-window.dispatch = store.dispatch;
+
   const root = document.getElementById('root');
   ReactDom.render(<Root store={store} />, root)
 })

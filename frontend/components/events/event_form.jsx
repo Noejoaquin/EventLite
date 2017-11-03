@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import DateTime from 'react-datetime';
 import ReactQuill from 'react-quill';
 import { isEmpty } from 'lodash';
-import shallowCompare from 'react-addons-shallow-compare';
 import Geosuggest from 'react-geosuggest';
 import merge from 'lodash/merge'
 
@@ -133,7 +132,7 @@ class EventForm extends React.Component {
 
 
   render(){
-    
+
     let title = this.props.formType === 'new' ? 'Create An Event' : 'Edit Event';
     let options = this.props.categories.map((category) => {
       return <option key={category.id} value={category.id}>{category.name}</option>
@@ -145,11 +144,11 @@ class EventForm extends React.Component {
     }
     let cancelButton = <button onClick={this.handleDelete} className='cancel-button'>Cancel Event</button>
     let startTime = this.state.start_time.length > 0 ? new Date(this.state.start_time) : '';
-    
+
     let endTime = this.state.end_time === null ? '' : this.state.end_time
     let buttonText = this.props.formType === 'edit' ? 'Update Your Event' : 'Make Your Event Live';
     const categoryDefault = this.props.event.category_id ? this.props.event.category_id : 'default'
-    
+
     return (
 
       <div className='form-container'>
