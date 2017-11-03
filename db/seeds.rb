@@ -217,22 +217,17 @@ event21 =Event.create(category_id: cat11.id, organizer_id: user4.id, name:'Custo
 West Chicago, IL 60185", ticket_type:'paid', price: 35.00, start_time:Time.zone.now, image:"https://cdn6-thechristianpost.netdna-ssl.com/full/115869/590-386/tennessee-megachurch-charity-event.png")
 
 
-
-
-
 event22 =Event.create(category_id: cat18.id, organizer_id: user4.id, name:'Food Truck Festival', description:"Following our worship service on the Friday of Annual Convention, join us for some great food featuring local food trucks at St. Paul's, Riverside! This will be a fun and relaxed atmosphere, perfect for connecting with colleagues and friends from all over Connecticut.",
    location:"7836 Blackburn Dr.
 Hartford, CT 92111", ticket_type:'free', price: 0.00, start_time:Time.zone.now, image:"http://www.chicagomusic.org/wp-content/uploads/2015/11/AwesometownGourmetFoodTruckFestivalValenciaCA.jpg")
 
+debugger
 
-
-
-
-event23 =Event.create(category_id: cat18.id, organizer_id: user3.id, name:'Lax Dunes Community Restoration Event', description:"The LAX/El Segundo Dunes is the largest dune complex in Southern California and home to hundreds of species many only found in the area. Volunteers are needed to remove invasive plants that crowd out native species. Through community efforts, plants and wildlife are returning to the area but much work is still needed.
-This is a unique opportunity as the site is normally closed to the public. Tools and a limited number of gloves will be available, so please bring your favorite gardening gloves. Water and snacks area provided.",
-   location:"7836 Blackburn Dr.
-San Diego, CA 92111", ticket_type:'free', price: 0.00, start_time:Time.zone.now, image:"http://www.trbimg.com/img-591351c0/turbine/la-me-ln-santa-monica-beach-20170510")
-
+# event23 =Event.new(category_id: cat8.id, organizer_id: user3.id, name:'Lax Dunes Community Restoration Event', description:"The LAX/El Segundo Dunes is the largest dune complex in Southern California and home to hundreds of species many only found in the area. Volunteers are needed to remove invasive plants that crowd out native species. Through community efforts, plants and wildlife are returning to the area but much work is still needed.
+# This is a unique opportunity as the site is normally closed to the public. Tools and a limited number of gloves will be available, so please bring your favorite gardening gloves. Water and snacks area provided.",
+#    location:"7836 Blackburn Dr.
+# San Diego, CA 92111", ticket_type:'free', price: 0.00, start_time:Time.zone.now, image:"http://www.trbimg.com/img-591351c0/turbine/la-me-ln-santa-monica-beach-20170510")
+#
 
 
 event24 =Event.create(category_id: cat11.id, organizer_id: user4.id, name:'Alexis Charity Ball: Costumed', description:"You are cordially invited to a Charity Costume Ball, where you will enjoy a delicious dinner, dancing and a special show by Jon Stetson. Known as America’s master mentalist, Jon blends the art of mystery with the study of psychology, the predictability of human nature and the power of intuition, with a disarming sense of humor. Jon has performed for three United States presidents, the King of Sweden and the Royal family of Monaco. He has also appeared on several major television networks.The event is organized to support the intense work of the Ukrainian Federation of America. Proceeds will benefit UFA's humanitarian medical projects, and those who are affected by the current war on Ukraine. By attending, you will contribute to this noble cause and bring relief to those who truly need it.",

@@ -49,21 +49,31 @@ class EventShow extends React.Component {
             }
         }
         var attendanceButton;
-        if (this.props.currentUser.attending_events.includes(parseInt(this.props.match.params.eventId))) {
-          attendanceButton = <button onClick={this.handleCancellation} id='cancellation-button'>Cancel Registration</button>
-        } else {
-          attendanceButton = <button onClick={this.handleAttendance} id='register-button'>Register</button>
+        if (this.props.currentUser){
+          if (this.props.currentUser.attending_events.includes(parseInt(this.props.match.params.eventId))) {
+            attendanceButton = <button onClick={this.handleCancellation} id='cancellation-button'>Cancel Registration</button>
+          } else {
+            attendanceButton = <button onClick={this.handleAttendance} id='register-button'>Register</button>
           }
+        } else {
+          attendanceButton = <button id='register-button'><Link to={'/login'}>Register</Link></button>
+        }
         var saveButton;
-        if (this.props.currentUser.saved_events.includes(parseInt(this.props.match.params.eventId))) {
-          saveButton = <button className='save-button' onClick={this.handleUnsave}><div>
-                          <div className="fa fa-bookmark" id='icon-bookmark-show-save' aria-hidden='true'></div>
-                        </div></button>
-                    } else {
-                      saveButton = <button onClick={this.handleSave}><div>
-                                      <div className='fa fa-bookmark-o' id='icon-bookmark-show' aria-hidden='true'></div>
-                                    </div></button>
-                    }
+        if (this.props.currentUser){
+          if (this.props.currentUser.saved_events.includes(parseInt(this.props.match.params.eventId))) {
+            saveButton = <button className='save-button' onClick={this.handleUnsave}><div>
+              <div className="fa fa-bookmark" id='icon-bookmark-show-save' aria-hidden='true'></div>
+            </div></button>
+          } else {
+            saveButton = <button onClick={this.handleSave}><div>
+              <div className='fa fa-bookmark-o' id='icon-bookmark-show' aria-hidden='true'></div>
+            </div></button>
+          }
+        } else {
+          saveButton = <button onClick={this.handleSave}><Link to={'/signup'}><div>
+            <div className='fa fa-bookmark-o' id='icon-bookmark-show' aria-hidden='true'></div>
+          </div></Link></button>
+        }
         var moment = require('moment');
         let date = moment(this.props.event.start_time).format('MMMM Do');
         let time = moment(this.props.event.start_time).format('hh:mm a');
