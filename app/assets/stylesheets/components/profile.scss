@@ -26,6 +26,7 @@
 }
 
 .edit-profile-link {
+  display:none;
   color: #0278b8;
   text-decoration: none;
   letter-spacing: 0.5px;
@@ -51,7 +52,10 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-family: 'Open Sans', sans-serif;
+}
 
+.non-active:hover {
+  cursor: pointer;
 }
 
 .active-border {

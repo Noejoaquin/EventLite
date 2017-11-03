@@ -6,10 +6,11 @@ import EventIndex from '../events/event_index';
 import { createSave, deleteSave } from '../../actions/save_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  debugger
   let categories = state.entities.categories
   let currentUser = state.session.currentUser
   let allEvents = Object.keys(state.entities.events).map((id) => state.entities.events[id])
-  let events = allEvents.filter((event) => state.session.currentUser.attending_events.includes(event.id))
+  let events = allEvents.filter((event) => state.session.currentUser.managed_events.includes(event.id))
   return {
     currentUser,
     events,

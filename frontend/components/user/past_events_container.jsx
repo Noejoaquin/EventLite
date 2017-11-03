@@ -8,11 +8,13 @@ import EventIndex from '../events/event_index';
 
 const mapStateToProps = (state, ownProps) => {
   let categories = state.entities.categories
+  let currentUser = state.session.currentUser
   let allEvents = Object.keys(state.entities.events).map((id) => state.entities.events[id])
   let currentUserEvents = allEvents.filter((event) => state.session.currentUser.attending_events.includes(event.id))
   let events = currentUserEvents.filter((event) => event.start_time < new Date() )
 
   return {
+    currentUser,
     events,
     categories
   }
@@ -22,7 +24,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchEvents: () => dispatch(fetchEvents()),
-    deleteAttendance: (id) => dispatch(deleteAttendance(id)),
+    createSave: (id) => dispatch(createSave(id)),
+    deleteSave: (id) => dispatch(deleteSave(id)),
     fetchCategories: () => dispatch(fetchCategories())
   }
 }

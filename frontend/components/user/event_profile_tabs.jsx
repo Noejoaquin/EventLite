@@ -2,9 +2,10 @@ import React from 'react';
 import SavedEventsContainer from './saved_events_container';
 import UpcomingEventsContainer from './upcoming_events_container';
 import PastEventsContainer from './past_events_container';
+import ManagedEventsContainer from './managed_events_container';
 
-const tabNames = ['Upcoming Events','Saved Events', 'Past Events']
-const panes = [UpcomingEventsContainer,SavedEventsContainer, PastEventsContainer]
+const tabNames = ['Upcoming Events','Saved Events', 'Past Events', 'Managed Events']
+const panes = [UpcomingEventsContainer,SavedEventsContainer, PastEventsContainer, ManagedEventsContainer]
 
 
 class EventProfileTabs extends React.Component{
