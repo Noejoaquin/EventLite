@@ -66,7 +66,7 @@ class SessionForm extends React.Component {
     let path = this.props.match.path === '/login' ? '/signup' : '/login'
     let otherFormType = this.props.formType === 'Log In' ? 'Sign Up' : 'Log In';
     let link=<Link id='session-link' onClick={this.props.clearErrors} to={path}>{otherFormType}</Link>
-    debugger
+    
     if (!this.props.loggedIn){
 
       if (this.props.match.path === '/login'){

@@ -2,6 +2,10 @@ select {
   -webkit-appearance:none
 }
 
+.event-meta-container {
+  height: 100%;
+}
+
 .LandingImage {
   width: 100%;
   height: 282px;
@@ -22,12 +26,14 @@ select {
   position: relative;
   top: 140px;
   opacity: 0.97;
+  height: 210px; // without searchcard
 }
 
 .input-list-search-card{
   display:flex;
   justify-content: center;
   padding-top: 23px;
+  display: none;
 }
 
 .meta-search-card h1 {
@@ -36,7 +42,8 @@ select {
   text-align: center;
   font-size: 45px;
   font-weight: lighter;
-  padding-top: 60px;
+  padding-top: 81px; // without the search card
+
 }
 
 #main-search {

@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     // this will be the organizer's data being selected
     currentUser = state.entities.users[ownProps.match.params.userId]
   }
-  debugger
+  
   return {
     currentUser
   }

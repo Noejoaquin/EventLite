@@ -52,7 +52,7 @@ In the contra community, Swingin’ Tern is known both as a beginner-friendly da
 LOCATION: The First Presbyterian Church Parish House, 14 Hanover Road, East Hanover, NJ
 First and third Saturday every month. WORKSHOP: 7:30 - 8:00 PM DANCE: 8 – 11 PM
 COST: $10 adult, $5 student (certain special dances may be higher) ", location:'71 Pilgrim Avenue
-Chevy Chase, MD 20815', ticket_type:'free', price: 0.00, start_time: Time.zone.now, image:'http://fairsnsquares.com/Images/David-Alice-lg.jpg')
+Chevy Chase, MD 20815', ticket_type:'free', price: 0.00, start_time: Time.zone.now, image:'http://lititzrecord.com/wp-content/uploads/2014/10/LR20141002_CSquareDance3.jpg')
 
 event2 = Event.create(category_id: cat2.id, organizer_id: user3.id, name:'Investing Group Discussion', description:"While the holidays are coming, this is NOT the time to take your eyes off the markets. Bubbles are everywhere and like balloons, they can rise only so high before they burst.
 Stocks are still in rally mode, but US indices are severely overbought. The Dow Jones is overbought on the daily, weekly and monthly charts. At the very least a short-term correction will be needed to take the pressure off. It could easily become a long-term one, but that remains to be seen. Meanwhile under priced commodities are beginning to stir. Oil is attempting a major breakout.

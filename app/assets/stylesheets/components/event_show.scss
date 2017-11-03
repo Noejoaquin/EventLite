@@ -9,6 +9,31 @@
   max-width: 1100px;
 }
 
+.description-contents ol ul {
+  list-style: georgian;
+}
+
+.description-contents html body div span {
+  font-size: 14px;
+  line-height: 15px;
+}
+
+.description-contents h1 {font-size: 35px}
+
+.description-contents h2 {font-size: 30px;}
+
+.description-contents h3 {font-size: 25px}
+
+.description-contents h4 {font-size: 20px}
+
+.description-contents h4 h3 h2 h1 { font-weight: bold}
+
+.description-contents p { color: black }
+
+
+
+
+
 
 .show-top{
   display: flex;
@@ -54,11 +79,12 @@
 
 
 #listing-time{
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 600px;
   line-height: 15px;
   letter-spacing: 0.5px;
   text-transform: capitalize;
+  color: #666A73;
 }
 
 #listing-name{
@@ -76,11 +102,13 @@
   line-height: 22px;
   font-weight: 400;
   padding-top: 35px;
+  font-size: 21px;
 }
 
 .events-price-show{
   padding-left: 32px;
   margin-top: 26px;
+  color: #666A73;
 }
 
 
@@ -95,18 +123,32 @@
 }
 
 #icon-bookmark-show-save {
+  // position: absolute;
+  // left: 20px;
+  // bottom: 15px;
+  // font-size: 29px;
+  // color: #0278b8;
+
   position: absolute;
   right: 20px;
-  bottom: 75px;
-  font-size: 35px;
-  color: #0278b8;  
+  bottom: 77px;
+  font-size: 29px;
+  color: #0278b8;
+
 }
 
 #icon-bookmark-show {
+  // position: absolute;
+  // left: 20px;
+  // bottom: 15px;
+  // font-size: 29px;
+  // color: #0278b8;
   position: absolute;
   right: 20px;
-  bottom: 75px;
-  font-size: 35px;
+  bottom: 77px;
+  font-size: 29px;
+  color: #0278b8;
+
 }
 
 

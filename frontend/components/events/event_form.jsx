@@ -42,13 +42,12 @@ class EventForm extends React.Component {
 
   componentWillReceiveProps(nextProps){
     if (this.props.formType !== nextProps.formType){
-      this.props.clearErrors();
+      // this.props.clearErrors();
       this.revertBackToOriginalState()
     }
   }
 
   handleSubmit(e){
-    debugger
     let formData = new FormData();
     this.state.id ? formData.append('event[id]', this.state.id) : null
     formData.append("event[name]", this.state.name)
@@ -59,8 +58,10 @@ class EventForm extends React.Component {
     formData.append("event[start_time]", this.state.start_time)
     formData.append("event[end_time]", this.state.end_time)
     formData.append("event[category_id]", this.state.category_id)
-    formData.append("event[image]", this.state.imageFile)
-    debugger
+    if (this.state.imageFile) {
+      formData.append("event[image]", this.state.imageFile)
+    }
+    this.props.clearErrors();
     this.props.action(formData).then(({event}) => {
       this.props.history.push(`/events/${event.id}`)
     })
@@ -85,7 +86,7 @@ class EventForm extends React.Component {
     let file = e.currentTarget.files[0];
     let fileReader = new FileReader();
     fileReader.onloadend = () => {
-      this.setState({ imageFile: file, imageUrl: fileReader.result })
+      this.setState({ imageFile: file, image_url: fileReader.result })
     }
 
     if(file){
@@ -100,7 +101,6 @@ class EventForm extends React.Component {
   }
 
   handleDelete() {
-    debugger
     this.props.deleteEvent(this.props.match.params.eventId).then(({event}) => {
       this.props.history.push(`/users/${this.props.currentUser.id}`)
     })
@@ -133,6 +133,7 @@ class EventForm extends React.Component {
 
 
   render(){
+    
     let title = this.props.formType === 'new' ? 'Create An Event' : 'Edit Event';
     let options = this.props.categories.map((category) => {
       return <option key={category.id} value={category.id}>{category.name}</option>
@@ -144,11 +145,11 @@ class EventForm extends React.Component {
     }
     let cancelButton = <button onClick={this.handleDelete} className='cancel-button'>Cancel Event</button>
     let startTime = this.state.start_time.length > 0 ? new Date(this.state.start_time) : '';
-    debugger
-    let endTime = this.state.start_time.length > 0 ? new Date(this.state.end_time) : '';
+    
+    let endTime = this.state.end_time === null ? '' : this.state.end_time
     let buttonText = this.props.formType === 'edit' ? 'Update Your Event' : 'Make Your Event Live';
     const categoryDefault = this.props.event.category_id ? this.props.event.category_id : 'default'
-    debugger
+    
     return (
 
       <div className='form-container'>
@@ -196,7 +197,7 @@ class EventForm extends React.Component {
           <div className='Event-image-title-cell'>
             <h3 className='event-image-title'>Event Image</h3>
             <input id='image' placeholder='ADD EVENT IMAGE' type='file' onChange={this.handleFile}></input>
-            <img id='event-image' src={this.state.imageUrl || window.image_url}/>
+            <img id='event-image' src={this.state.image_url || window.image_url}/>
           </div>
 
           <div className='event-details-description'></div>

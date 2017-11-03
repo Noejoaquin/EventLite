@@ -15,7 +15,6 @@ class NavBar extends React.Component {
 
               <nav className='links-container' >
                 <ul className='nav-links'>
-                  <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
 
                   <li>
                     <div className='dropdown'>
@@ -53,7 +52,6 @@ class NavBar extends React.Component {
 
           <nav className='links-container' >
             <ul className='nav-links'>
-              <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
               <button><Link to='/login'>Log In</Link></button>
               <button id='create-event'><Link to='/login'>Create An Event</Link></button>
             </ul>
@@ -69,3 +67,12 @@ class NavBar extends React.Component {
 }
 
 export default NavBar;
+
+
+
+
+
+// <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
+
+
+// <button id='browse-events'><Link to='/events'>Browse Events</Link></button>

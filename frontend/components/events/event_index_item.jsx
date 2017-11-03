@@ -10,7 +10,7 @@ export const EventIndexItem = ({event, category, createSave, deleteSave, current
   let day = event.start_time.split('T')[0].split('-')[2]
   let date = month + ' ' + day + ',' + ' ' + year
   let price = event.ticket_type === 'free' || event.price < 1 ? 'FREE' : '$' + event.price;
-  debugger
+
     var saveButton;
     if (currentUser){
       if (currentUser.saved_events.includes(event.id)) {
@@ -49,10 +49,7 @@ export const EventIndexItem = ({event, category, createSave, deleteSave, current
         </div></Link>
 
         <div className='event-cell-category'>
-          <div>
-            <Link to={`/events/${category}`}><i className="fa fa-hashtag" aria-hidden='true'></i>
-            {category}</Link>
-          </div>
+          <div className='category'>#{category}</div>
         </div>
         {saveButton}
       </div>
@@ -60,6 +57,7 @@ export const EventIndexItem = ({event, category, createSave, deleteSave, current
   )
 }
 
+// <i className="fa fa-hashtag" aria-hidden='true'></i>
 
 // <button>
 //   <div className='fa fa-bookmark-o' id='icon-bookmark-index' aria-hidden='true'></div>
@@ -83,13 +81,13 @@ export const EventIndexItem = ({event, category, createSave, deleteSave, current
 //   render () {
 //     const months = { 1: 'January', 2: 'Feburary', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
 //       7: 'July', 8:'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
-//       debugger
+//
 //       let year = event.start_time.split('-')[0]
 //       let month = months[parseInt(event.start_time.split('-')[1])]
 //       let day = event.start_time.split('T')[0].split('-')[2]
 //       let date = month + ' ' + day + ',' + ' ' + year
 //       let price = event.ticket_type === 'free' || event.price < 1 ? 'FREE' : '$' + event.price;
-//       debugger
+//
 //       if (currentUser.saved_events.includes(event.id)) {
 //         saveButton = <button className='save-button' onClick={this.handleUnsave}>
 //           <div className="fa fa-bookmark" id='icon-bookmark-index-save' aria-hidden='true'></div>
