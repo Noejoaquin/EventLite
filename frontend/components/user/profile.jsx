@@ -13,6 +13,10 @@ class Profile extends React.Component {
   }
 
   render(){
+    if (this.props.currentUser === undefined) {
+      return null
+    } else {
+
       let name = this.props.currentUser.first_name + ' ' + this.props.currentUser.last_name
       return (
         <div className='meta-profile-page-container'>
@@ -26,9 +30,10 @@ class Profile extends React.Component {
               </div>
             </div>
           </div>
-          <EventProfileTabsContainer/>
+          <EventProfileTabsContainer currentUser={this.props.currentUser}/>
         </div>
       )
+    }
   }
 }
 
