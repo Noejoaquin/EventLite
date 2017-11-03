@@ -87,7 +87,8 @@ class EventShow extends React.Component {
               <div className='listing-top'>
                 <time id='listing-time'>{date}</time>
                 <div id='listing-name'>{this.props.event.name}</div>
-                <div id='listing-organizer'>{this.props.event.organizer}</div>
+                <div id='listing-organizer'>
+                  {this.props.event.organizer}</div>
                 {editButton}
               </div>
               <div className='events-price-show'>{ticketPrice}</div>
