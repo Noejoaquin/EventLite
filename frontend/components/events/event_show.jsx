@@ -56,7 +56,7 @@ class EventShow extends React.Component {
             attendanceButton = <button onClick={this.handleAttendance} id='register-button'>Register</button>
           }
         } else {
-          attendanceButton = <button id='register-button'><Link to={'/login'}>Register</Link></button>
+          attendanceButton = <button id='register-button'><Link to={'/signup'}><div>Register</div></Link></button>
         }
         var saveButton;
         if (this.props.currentUser){
@@ -70,7 +70,7 @@ class EventShow extends React.Component {
             </div></button>
           }
         } else {
-          saveButton = <button onClick={this.handleSave}><Link to={'/signup'}><div>
+          saveButton = <button><Link to={'/signup'}><div>
             <div className='fa fa-bookmark-o' id='icon-bookmark-show' aria-hidden='true'></div>
           </div></Link></button>
         }

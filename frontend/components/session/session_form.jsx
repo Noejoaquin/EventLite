@@ -138,7 +138,7 @@ class SessionForm extends React.Component {
                           <label className='first-name-signup'> First Name</label>
                         </li>
                         <li>
-                          <input type='text' onChange={this.handleChange('first_name')} value={this.state.first_name} />
+                          <input type='text' id='input-first-name' onChange={this.handleChange('first_name')} value={this.state.first_name} />
                           {this.errorConstructor('first_name', this.props.errors)}
                         </li>
                       </ul>
@@ -148,7 +148,7 @@ class SessionForm extends React.Component {
                             <label className='last-name-signup'>Last Name</label>
                           </li>
                           <li>
-                            <input type='text' onChange={this.handleChange('last_name')} value={this.state.last_name}/>
+                            <input type='text' id='input-last-name' onChange={this.handleChange('last_name')} value={this.state.last_name}/>
                             {this.errorConstructor('last_name', this.props.errors)}
                           </li>
                         </ul>

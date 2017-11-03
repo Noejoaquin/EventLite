@@ -71,6 +71,10 @@
   flex-direction: column;
 }
 
+#input-first-name, #input-last-name {
+  width: 149px;
+}
+
 .login-buttons{
   margin-top: 36px;
   display: flex;
