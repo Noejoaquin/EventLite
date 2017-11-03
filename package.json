@@ -50,5 +50,8 @@
   "bugs": {
     "url": "https://github.com/Noejoaquin/EventLite/issues"
   },
-  "homepage": "https://github.com/Noejoaquin/EventLite#readme"
+  "homepage": "https://github.com/Noejoaquin/EventLite#readme",
+  "devDependencies": {
+    "react-geosuggest": "^2.5.0"
+  }
 }
