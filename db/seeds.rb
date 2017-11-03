@@ -154,7 +154,7 @@ And knowing that the money you’ve raised will help make sure generations to co
 The fundraising cutoff for the prize will be the following Friday 24th November at 11.59pm and the top fundraiser will be awarded on Saturday 25th November.
 The Saving the Elephants Run is in aid of Save the Elephants and their relentless work to ensure a brighter future for elephants, on the ground in Kenya and across the world",
  location:'552 Valley Street
-Battle Ground, WA 98604', ticket_type:'donation', price: 0.00, start_time:Time.zone.now + 4.days, image:"https://i.pinimg.com/originals/7e/33/92/7e3392ae4d23902ba28756e4e1cf6389.jpg")
+Battle Ground, WA 98604', ticket_type:'donation', price: 0.00, start_time:Time.zone.now - 4.days, image:"https://i.pinimg.com/originals/7e/33/92/7e3392ae4d23902ba28756e4e1cf6389.jpg")
 
 
 
@@ -234,6 +234,7 @@ attend2 = Attendance.create(user_id: guest_user.id, event_id: event2.id)
 attend3 = Attendance.create(user_id: guest_user.id, event_id: event4.id)
 attend4 = Attendance.create(user_id: guest_user.id, event_id: event12.id)
 attend5 = Attendance.create(user_id: guest_user.id, event_id: event13.id)
+attend6 = Attendance.create(user_id: guest_user.id, event_id: event11.id)
 
 SavedEvent.destroy_all
 save1 = SavedEvent.create(user_id: guest_user.id, event_id: event5.id)

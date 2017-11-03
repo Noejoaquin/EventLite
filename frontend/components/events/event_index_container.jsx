@@ -6,7 +6,6 @@ import { fetchCategories } from '../../actions/category_actions';
 import { createSave, deleteSave } from '../../actions/save_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   let categories = state.entities.categories
   let currentUser = state.session.currentUser
   let events = Object.keys(state.entities.events).map((id) => state.entities.events[id]);

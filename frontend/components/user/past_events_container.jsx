@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser
   let allEvents = Object.keys(state.entities.events).map((id) => state.entities.events[id])
   let currentUserEvents = allEvents.filter((event) => state.session.currentUser.attending_events.includes(event.id))
-  let events = currentUserEvents.filter((event) => event.start_time < new Date() )
+  let events = currentUserEvents.filter((event) => Date.parse(event.start_time) < Date.parse(new Date()) )
 
   return {
     currentUser,

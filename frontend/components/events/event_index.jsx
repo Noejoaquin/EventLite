@@ -18,7 +18,6 @@ class EventIndex extends React.Component {
   }
 
   render(){
-    debugger
     let events;
     if (!(isEmpty(this.props.categories))) {
       events = this.props.events.map((event) => {

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 class NavBar extends React.Component {
 
   render(){
-    debugger
     let nav;
     if (this.props.currentUser){
       nav = (

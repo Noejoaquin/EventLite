@@ -36,12 +36,6 @@ class EventForm extends React.Component {
     }
   }
 
-  // componentDidMount(){
-  //   if (this.props.match.params.eventId) {
-  //     this.props.fetchCategories().then(this.props.fetchEvent(this.props.match.params.eventId))
-  //   }
-  // }
-
   revertBackToOriginalState(){
       this.setState({name: '', description: '', location:'', ticket_type: '',
         price: 0.0, start_time:'', end_time:'', category_id: null, imageFile: '', imageUrl: '', image_url:''})
@@ -151,6 +145,7 @@ class EventForm extends React.Component {
     }
     let cancelButton = <button onClick={this.handleDelete} className='cancel-button'>Cancel Event</button>
     let startTime = this.state.start_time.length > 0 ? new Date(this.state.start_time) : '';
+    debugger
     let endTime = this.state.start_time.length > 0 ? new Date(this.state.end_time) : '';
     let buttonText = this.props.formType === 'edit' ? 'Update Your Event' : 'Make Your Event Live';
     const categoryDefault = this.props.event.category_id ? this.props.event.category_id : 'default'
@@ -202,7 +197,7 @@ class EventForm extends React.Component {
           <div className='Event-image-title-cell'>
             <h3 className='event-image-title'>Event Image</h3>
             <input id='image' placeholder='ADD EVENT IMAGE' type='file' onChange={this.handleFile}></input>
-            <img id='event-image' src={this.state.image_url || window.image_url}/>
+            <img id='event-image' src={this.state.imageUrl || window.image_url}/>
           </div>
 
           <div className='event-details-description'></div>

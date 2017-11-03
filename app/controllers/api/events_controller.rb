@@ -26,6 +26,7 @@ class Api::EventsController < ApplicationController
   end
 
   def update
+    debugger 
     @event = current_user.events.find(params[:id])
     if @event.update(event_params)
       render :show
