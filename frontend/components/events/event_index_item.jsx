@@ -10,7 +10,7 @@ export const EventIndexItem = ({event, category, createSave, deleteSave, current
   let day = event.start_time.split('T')[0].split('-')[2]
   let date = month + ' ' + day + ',' + ' ' + year
   let price = event.ticket_type === 'free' || event.price < 1 ? 'FREE' : '$' + event.price;
-
+  debugger
     var saveButton;
     if (currentUser){
       if (currentUser.saved_events.includes(event.id)) {
@@ -34,7 +34,7 @@ export const EventIndexItem = ({event, category, createSave, deleteSave, current
                        aria-hidden='true'></div></Link>
                     </button>
     }
-  
+
   return (
   <li className='event-cell'>
       <div className='image-and-price'>

@@ -11,7 +11,7 @@ class EventShow extends React.Component {
     this.state = this.props.currentUser
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.props.fetchEvent(this.props.match.params.eventId).then(() => fetchUsers())
   }
 
@@ -78,6 +78,7 @@ class EventShow extends React.Component {
         let date = moment(this.props.event.start_time).format('MMMM Do');
         let time = moment(this.props.event.start_time).format('hh:mm a');
       let ticketPrice = this.props.event.price === 0 ? 'Free' : '$'.concat(this.props.event.price)
+      debugger
       return (
         <div className='whole-container'>
         <div className='show-container'>
@@ -87,7 +88,7 @@ class EventShow extends React.Component {
               <div className='listing-top'>
                 <time id='listing-time'>{date}</time>
                 <div id='listing-name'>{this.props.event.name}</div>
-                <Link to={`/users/${event.organizer_id}`}><div id='listing-organizer'>
+                <Link to={`/users/${this.props.event.organizer_id}`}><div id='listing-organizer'>
                   {this.props.event.organizer}</div></Link>
                 {editButton}
               </div>

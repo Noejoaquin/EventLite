@@ -9,12 +9,12 @@ const mapStateToProps = (state, ownProps) => {
   debugger
   let categories = state.entities.categories
   let currentUser;
-  // if (ownProps.match.params.userId === state.session.currentUser.id){
+  if (ownProps.match.params.userId === state.session.currentUser.id){
     currentUser = state.session.currentUser
-  // } else {
+  } else {
     // this will be the organizer's data being selected
-    // currentUser = state.entities.users[ownProps.match.params.userId]
-  // }
+    currentUser = state.entities.users[ownProps.match.params.userId]
+  }
 
   let allEvents = Object.keys(state.entities.events).map((id) => state.entities.events[id])
   let events = allEvents.filter((event) => state.session.currentUser.managed_events.includes(event.id))

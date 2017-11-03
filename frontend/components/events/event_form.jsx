@@ -19,7 +19,6 @@ class EventForm extends React.Component {
     this.errorConstructor = this.errorConstructor.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.state = this.props.event
-    debugger
   }
 
   componentDidMount(){
