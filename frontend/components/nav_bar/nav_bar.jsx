@@ -4,10 +4,8 @@ import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
 
-
-  // let linkToCreate = this.props.match.path === '/events/new' ? '' : '/events/'
   render(){
-
+    debugger
     let nav;
     if (this.props.currentUser){
       nav = (
@@ -26,8 +24,16 @@ class NavBar extends React.Component {
                         <i className="fa fa-caret-down" aria-hidden='true'></i>
                       </button>
                       <div className='dropdown-content'>
-                        <button id='logout-button' onClick={() => this.props.logout()}><Link to='/'>Log out</Link></button>
+                        <ul className='dropdown-links'>
+                          <li>
+                            <button id='organizer-profile-link'><Link to={`/users/${this.props.currentUser.id}`}>Profile</Link></button>
+                          </li>
+                          <li>
+                            <button id='logout-button' onClick={() => this.props.logout()}><Link to='/'>Log out</Link></button>
+                          </li>
+                        </ul>
                       </div>
+
                     </div>
                   </li>
                   <button id='create-event'><Link to='/events/new'>Create An Event</Link></button>
