@@ -11,18 +11,18 @@ const mapStateToProps = (state, ownProps) => {
   let currentUser;
   let panes;
   let tabNames;
-  
-  if (ownProps.currentUser.id === state.session.currentUser.id){
+
+  // if (ownProps.currentUser.id === state.session.currentUser.id){
     currentUser = state.session.currentUser
     tabNames = ['Upcoming Events','Saved Events', 'Past Events', 'Managed Events']
     panes = [UpcomingEventsContainer,SavedEventsContainer, PastEventsContainer, ManagedEventsContainer]
-  } else {
+  // } else {
     // this will be the organizer's data being selected
-    
-    currentUser = ownProps
-    tabNames = ['Managed Events']
-    panes = [ManagedEventsContainer]
-  }
+
+    // currentUser = ownProps
+    // tabNames = ['Managed Events']
+    // panes = [ManagedEventsContainer]
+  // }
   return {
     currentUser,
     tabNames,

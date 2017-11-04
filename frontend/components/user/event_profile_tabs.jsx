@@ -16,6 +16,7 @@ class EventProfileTabs extends React.Component{
 
 
   clickHandler(e) {
+    debugger
     var idx = e.target.getAttribute("idx");
     idx = parseInt(idx);
     this.setState({tabsIndex: idx});
@@ -24,15 +25,15 @@ class EventProfileTabs extends React.Component{
 
 
   render(){
-
+    debugger
     const tabs = this.props.tabNames.map( (name, idx) => {
       if (idx === this.state.tabsIndex) {
         return <div key={idx} className="active tab">
-          <h1  idx={idx} >{name}</h1>
+          <h1>{name}</h1>
           <div className='active-border'></div>
         </div>
       } else {
-        return <h1 className='non-active tab' idx={idx} key={idx} onClick={this.clickHandler.bind(this)}>{name}</h1>;
+        return <h1 className='non-active tab' key={idx} onClick={this.clickHandler.bind(this)}>{name}</h1>;
       }
     });
 
