@@ -144,8 +144,13 @@ class EventForm extends React.Component {
     }
     let cancelButton = <button onClick={this.handleDelete} className='cancel-button'>Cancel Event</button>
     let startTime = this.state.start_time.length > 0 ? new Date(this.state.start_time) : '';
+<<<<<<< HEAD
 
     let endTime = this.state.end_time === null ? '' : this.state.end_time
+=======
+debugger
+    let endTime = this.state.end_time === null ||  this.state.end_time === '' ? '' : new Date(this.state.end_time)
+>>>>>>> EventsBackEnd
     let buttonText = this.props.formType === 'edit' ? 'Update Your Event' : 'Make Your Event Live';
     const categoryDefault = this.props.event.category_id ? this.props.event.category_id : 'default'
 
@@ -231,7 +236,7 @@ class EventForm extends React.Component {
               {this.errorConstructor('price', this.props.errors)}
 
             <i className="fa fa-usd" aria-hidden="true"></i><input placeholder='ex. 40.00'
-               className='price' name='ticket-type' onChange={this.handleChange('price')} ></input>
+               className='price' name='ticket-type' value={this.state.price} onChange={this.handleChange('price')} ></input>
           </div>
 
           <div className='wrapper-additional-settings'>
