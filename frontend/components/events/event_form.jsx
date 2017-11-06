@@ -41,7 +41,6 @@ class EventForm extends React.Component {
 
   componentWillReceiveProps(nextProps){
     if (this.props.formType !== nextProps.formType){
-      // this.props.clearErrors();
       this.revertBackToOriginalState()
     }
   }
@@ -81,7 +80,6 @@ class EventForm extends React.Component {
   }
 
   handleFile(e){
-    //must adjust for the edit form
     let file = e.currentTarget.files[0];
     let fileReader = new FileReader();
     fileReader.onloadend = () => {
@@ -104,6 +102,7 @@ class EventForm extends React.Component {
       this.props.history.push(`/users/${this.props.currentUser.id}`)
     })
   }
+
   // the Omar Torres Special
   errorConstructor(field, errors) {
     let errorMessage;
@@ -128,9 +127,6 @@ class EventForm extends React.Component {
     }
   }
 
-
-
-
   render(){
 
     let title = this.props.formType === 'new' ? 'Create An Event' : 'Edit Event';
@@ -142,10 +138,10 @@ class EventForm extends React.Component {
     if (Object.values(this.props.errors).length !==0){
       errorMessage = <p className='event-error'>You must fill in the required fields</p>
     }
-    let cancelButton = <button onClick={this.handleDelete} className='cancel-button'>Cancel Event</button>
     let startTime = this.state.start_time.length > 0 ? new Date(this.state.start_time) : '';
-
     let endTime = this.state.end_time === null ||  this.state.end_time === '' ? '' : new Date(this.state.end_time)
+
+    let cancelButton = <button onClick={this.handleDelete} className='cancel-button'>Cancel Event</button>
     let buttonText = this.props.formType === 'edit' ? 'Update Your Event' : 'Make Your Event Live';
     const categoryDefault = this.props.event.category_id ? this.props.event.category_id : 'default'
 

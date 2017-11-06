@@ -6,18 +6,11 @@ import EventIndex from '../events/event_index';
 import { createSave, deleteSave } from '../../actions/save_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  
   let categories = state.entities.categories
-  let currentUser;
-  // if (ownProps.match.params.userId === state.session.currentUser.id){
-    currentUser = state.session.currentUser
-  // } else {
-    // this will be the organizer's data being selected
-    // currentUser = state.entities.users[ownProps.match.params.userId]
-  // }
-
+  let currentUser = state.session.currentUser
   let allEvents = Object.keys(state.entities.events).map((id) => state.entities.events[id])
   let events = allEvents.filter((event) => state.session.currentUser.managed_events.includes(event.id))
+
   return {
     currentUser,
     events,

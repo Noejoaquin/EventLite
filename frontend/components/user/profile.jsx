@@ -16,7 +16,6 @@ class Profile extends React.Component {
     if (this.props.currentUser === undefined) {
       return null
     } else {
-
       let name = this.props.currentUser.first_name + ' ' + this.props.currentUser.last_name
       return (
         <div className='meta-profile-page-container'>
