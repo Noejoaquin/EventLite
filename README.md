@@ -30,3 +30,8 @@ user's dashboard. The creation and destruction of attendances and saves only req
 Another issue I came a across during the project was that of the user's profile page/dashboard.
 It is a page that consists of many different event indexes, and in order to keep my code DRY, I created an Event Index component, along with an Event Index Item component, which could take in different lists of events, and produce the desired views. These two components' flexibility afforded
 a solution which involved creating different containers through which the correct state and functions could be mapped to the the same Event Index component, and allow the generation of completely different indexes.
+
+#### Various Indexes Available on User Profile Page 
+![screen shot 2017-11-06 at 10 10 41 am](https://user-images.githubusercontent.com/28831849/32447762-f54d8dda-c2da-11e7-813c-0802abd7bd4a.png)
+
+Here are the [live indexes](https://eventlite.herokuapp.com/#/users/15), accessible by clicking on the tabs beneath the user's name. 
