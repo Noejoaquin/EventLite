@@ -22,7 +22,7 @@ Upon establishing CRUD for my main resource, events, I had to then do the same f
 user's dashboard. The creation and destruction of attendances and saves only required the id's of the event in question and the current user, but where to put these actions brought with it an interesting dilemma. The creation of separate controllers for attendances and saves would keep my state flatter on my frontend, but I felt that these particular pieces of data would not be out of place in the events' controller, and could be easily accessed while under the user's slice of state. It presented an opportunity to create four custom routes under the namespace of my events' api controller, reorganize the data being sent via my jbuilder views, and keep my state relatively flat.   
 
 #### Custom Routes
-(https://github.com/Noejoaquin/EventLite/blob/master/app/assets/images/custom_routes.jpg)
+![screen shot 2017-11-06 at 9 14 57 am](https://user-images.githubusercontent.com/28831849/32447182-4eaf2778-c2d9-11e7-85f2-8077846ff95f.png)
 
 #### Users' Slice of state
 (https://github.com/Noejoaquin/EventLite/blob/master/app/assets/images/example_of_user_slice_of_state.jpg)
