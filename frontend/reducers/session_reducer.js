@@ -5,8 +5,6 @@ const defaultState = ({
   currentUser: null
 });
 
-
-
 const SessionReducer = (state = defaultState, action) => {
   let newState;
   switch (action.type) {

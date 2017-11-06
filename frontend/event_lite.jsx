@@ -21,10 +21,3 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
   ReactDom.render(<Root store={store} />, root)
 })
-
-// //testing
-// window.login = login;
-// window.logout =logout;
-// window.signUp = signUp;
-// window.getState = store.getState;
-// window.dispatch = store.dispatch;

@@ -3,7 +3,6 @@ import NavContainer from './nav_bar/nav_bar_container';
 import EventIndexContainer from './events/event_index_container';
 import EventFormContainer from './events/event_form_container';
 import EventShowContainer from './events/event_show_container';
-
 import { Route } from 'react-router-dom';
 import { ProtectedRoute } from '../util/route_util';
 import { LandingTop } from './search/landing_top';
@@ -26,15 +25,3 @@ const MainPage = () => (
   </div>
 )
 export default MainPage;
-
-// <Route exact path='/users/:userId' component={ManagedEventsContainer} />
-<Route exact path='/events/:eventId/edit' component={EventFormContainer} />
-// <Route exact path='/' component={EventIndexContainer} />
-// <Route exact path='/events' component={EventsPageContainer} />
-
-// <Route exact path='/events/:eventId' component={EventShowPage} />
-
-
-
-//
-// <Route path='/events/:eventId/edit' component={EventFormContainer} />

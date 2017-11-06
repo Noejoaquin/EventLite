@@ -13,9 +13,6 @@ class SearchBar extends React.Component {
     }
   }
 
-
-
-
   render(){
     let dateTypes = ['All Dates', 'Today', 'Tomorrow', 'This Weekend', 'This Week', 'Next Week', "Next Month"]
     const dates = dateTypes.map( (dateType, i) => {
