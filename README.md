@@ -25,7 +25,7 @@ user's dashboard. The creation and destruction of attendances and saves only req
 ![screen shot 2017-11-06 at 9 14 57 am](https://user-images.githubusercontent.com/28831849/32447182-4eaf2778-c2d9-11e7-85f2-8077846ff95f.png)
 
 #### Users' Slice of state
-(https://github.com/Noejoaquin/EventLite/blob/master/app/assets/images/example_of_user_slice_of_state.jpg)
+![screen shot 2017-11-06 at 9 18 52 am](https://user-images.githubusercontent.com/28831849/32447408-006098f8-c2da-11e7-8f1c-ef2a9f8726c2.png)
 
 Another issue I came a across during the project was that of the user's profile page/dashboard.
 It is a page that consists of many different event indexes, and in order to keep my code DRY, I created an Event Index component, along with an Event Index Item component, which could take in different lists of events, and produce the desired views. These two components' flexibility afforded
