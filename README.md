@@ -5,7 +5,7 @@ save them to their profile page/dashboard, as well as create and update their ow
 landing page and main event index, you can see the categories of each event, and whether
 you have them saved to your dashboard or not.
 
-[Checkout the site](https://eventlite.herokuapp.com/#/)!
+[Checkout the site](http://www.eventlite.club/#/)!
 
 
 ## Technologies
@@ -34,4 +34,4 @@ a solution which involved creating different containers through which the correc
 #### Various Indexes Available on User Profile Page
 ![screen shot 2017-11-06 at 10 10 41 am](https://user-images.githubusercontent.com/28831849/32447762-f54d8dda-c2da-11e7-813c-0802abd7bd4a.png)
 
-Here are the [live indexes](https://eventlite.herokuapp.com/#/users/15), accessible by clicking on the tabs beneath the user's name. 
+Here are the [live indexes](http://www.eventlite.club/#/users/15), accessible by clicking on the tabs beneath the user's name.
