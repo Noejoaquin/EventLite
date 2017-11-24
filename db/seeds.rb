@@ -74,7 +74,7 @@ Orlando, FL 32806', ticket_type:'free', price: 0.00, start_time:Time.zone.now + 
 event4 = Event.create(category_id: cat5.id, organizer_id: guest_user.id, name:"New Year's Eve Practice Run at Time SQ.", description:"New Year's Eve
 Every year as the clock nears midnight on December 31, the eyes of the world turn once more to the dazzling lights and bustling energy of Times Square. Anticipation runs high. New Year's Eve at the symbolic center of New York City has become more than just a celebration - it's a global tradition.
 So let's get some practice in before thehe big day! The world holds its breath, and cheers as the clocks strike twelve. We gotta practice.
-Watch midnight from Times Square New Year's Eve 2017:", location:'Time Sq. 42nd Street, NY, NY', ticket_type:'paid', price: 90.00, start_time:Time.zone.now + 2.weeks, image:"http://crucafe.com/wp-content/uploads/2015/12/newyearseve2013_fullsize_story1.jpg")
+Watch midnight from Times Square New Year's Eve 2017:", location:'Time Sq. 42nd Street, NY, NY', ticket_type:'paid', price: 90.00, start_time:Time.zone.now + 1.month, image:"http://crucafe.com/wp-content/uploads/2015/12/newyearseve2013_fullsize_story1.jpg")
 
 
 
