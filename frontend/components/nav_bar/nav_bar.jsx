@@ -43,7 +43,7 @@ class NavBar extends React.Component {
 
               <nav className='links-container' >
                 <ul className='nav-links'>
-
+                  <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
                   <li>
                     <div className='dropdown'>
                       <button className='dropbtn'>{this.props.currentUser.first_name}
@@ -84,6 +84,7 @@ class NavBar extends React.Component {
               {landingPageLink}
           <nav className='links-container' >
             <ul className='nav-links'>
+              <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
               <button><Link to='/login'>Log In</Link></button>
               <button id='create-event'><Link to='/login'>Create An Event</Link></button>
             </ul>
