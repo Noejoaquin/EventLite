@@ -21,7 +21,7 @@ class NavBar extends React.Component {
     let landingPageLink;
     let browseEventsLink;
     if (this.props.currentUser){
-      debugger
+      
       if (this.props.location.pathname.includes('events')){
         browseEventsLink = <button id='browse-events'>Browse Events</button>
       } else {

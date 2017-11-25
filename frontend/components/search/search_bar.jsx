@@ -3,7 +3,7 @@ import React from 'react';
 class SearchBar extends React.Component {
   constructor(){
     super();
-    this.state = { searchBar: '', location:'', dates: ''}
+    this.state = {searchBar: '', location:'', dates: ''}
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -14,13 +14,14 @@ class SearchBar extends React.Component {
   }
 
   render(){
+    debugger
     let dateTypes = ['All Dates', 'Today', 'Tomorrow', 'This Weekend', 'This Week', 'Next Week', "Next Month"]
     const dates = dateTypes.map( (dateType, i) => {
       return <option value={dateType} key={i} >{dateType}</option>
     })
 
     return (
-      <form className='searchform' >
+      <form className='searchform'>
         <ul className='input-list-search-card'>
           <li className='searchBar'>
             <input type='text' id='main-search' placeholder='Search events or categories' onChange={this.handleChange('searchBar')}></input>

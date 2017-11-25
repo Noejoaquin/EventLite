@@ -14,15 +14,15 @@ import {Switch} from 'react-router-dom';
 const MainPage = () => (
   <div className='MainPage'>
     <div className='header-container'>
-      <Route  path='/' component={NavContainer} />
+      <Route  path='/' component={NavContainer}/>
     </div>
     <Switch>
-      <Route exact path='/' component={LandingTop} />
       <ProtectedRoute exact path='/events/new' component={EventFormContainer}/>
-      <Route exact path ='/events' component={BrowseEventsContainer} />
+        <Route exact path='/' component={LandingTop}/>
+      <Route exact path ='/events' component={BrowseEventsContainer}/>
       <Route exact path='/events/:eventId' component={EventShowContainer}/>
-      <ProtectedRoute exact path='/users/:userId' component={ProfileContainer} />
-      <ProtectedRoute exact path='/events/:eventId/edit' component={EventFormContainer} />
+      <ProtectedRoute exact path='/users/:userId' component={ProfileContainer}/>
+      <ProtectedRoute exact path='/events/:eventId/edit' component={EventFormContainer}/>
     </Switch>
   </div>
 )
