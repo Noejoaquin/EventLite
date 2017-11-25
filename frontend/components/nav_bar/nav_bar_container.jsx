@@ -3,7 +3,6 @@ import NavBar from './nav_bar';
 import * as SessionActions from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   let currentUser = state.session.currentUser;
   return { currentUser, ownProps };
 }

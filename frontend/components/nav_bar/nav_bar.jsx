@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// <button id='create-event'>Create An Event</button>
 
 
 class NavBar extends React.Component {
@@ -9,6 +10,18 @@ class NavBar extends React.Component {
 
   render(){
     let nav;
+    let createEventLink;
+    let profileLink;
+    if (this.props.location.pathname === '/events/new' ){
+      createEventLink = <button id='create-event'>Create An Event</button>
+    } else {
+      createEventLink = <button id='create-event' ><Link to='/events/new'>Create An Event</Link></button>
+    }
+    if (this.props.location.pathname === `/users/${this.props.currentUser.id}`){
+      profileLink = <button id='organizer-profile-link'>Profile</button>
+    } else {
+      profileLink = <button id='organizer-profile-link'><Link to={`/users/${this.props.currentUser.id}`}>Profile</Link></button>
+    }
     if (this.props.currentUser){
       nav = (
         <header>
@@ -27,7 +40,7 @@ class NavBar extends React.Component {
                       <div className='dropdown-content'>
                         <ul className='dropdown-links'>
                           <li>
-                            <button id='organizer-profile-link'><Link to={`/users/${this.props.currentUser.id}`}>Profile</Link></button>
+                            {profileLink}
                           </li>
                           <li>
                             <button id='logout-button' onClick={() => this.props.logout()}><Link to='/'>Log out</Link></button>
@@ -37,7 +50,7 @@ class NavBar extends React.Component {
 
                     </div>
                   </li>
-                  <button id='create-event'><Link to='/events/new'>Create An Event</Link></button>
+                  {createEventLink}
                 </ul>
               </nav>
               <div>

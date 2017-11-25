@@ -140,8 +140,13 @@ class EventForm extends React.Component {
     }
     let startTime = this.state.start_time.length > 0 ? new Date(this.state.start_time) : '';
     let endTime = this.state.end_time === null ||  this.state.end_time === '' ? '' : new Date(this.state.end_time)
-
-    let cancelButton = <button onClick={this.handleDelete} className='cancel-button'>Cancel Event</button>
+    debugger
+    let cancelButton;
+    if (this.props.location.pathname === '/events/new'){
+      cancelButton = <div></div>
+    } else {
+      cancelButton = <button onClick={this.handleDelete} className='cancel-button'>Cancel Event</button>
+    }
     let buttonText = this.props.formType === 'edit' ? 'Update Your Event' : 'Make Your Event Live';
     const categoryDefault = this.props.event.category_id ? this.props.event.category_id : 'default'
 
