@@ -19,7 +19,14 @@ class NavBar extends React.Component {
     let createEventLink;
     let profileLink;
     let landingPageLink;
+    let browseEventsLink;
     if (this.props.currentUser){
+      debugger
+      if (this.props.location.pathname.includes('events')){
+        browseEventsLink = <button id='browse-events'>Browse Events</button>
+      } else {
+        browseEventsLink = <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
+      }
       if (this.props.location.pathname === '/'){
         landingPageLink = <button className='header-title'>eventLite</button>
         } else {
@@ -43,7 +50,7 @@ class NavBar extends React.Component {
 
               <nav className='links-container' >
                 <ul className='nav-links'>
-                  <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
+                  {browseEventsLink}
                   <li>
                     <div className='dropdown'>
                       <button className='dropbtn'>{this.props.currentUser.first_name}
@@ -73,6 +80,11 @@ class NavBar extends React.Component {
       </header>
       );
     } else {
+      if (this.props.location.pathname.includes('events')){
+        browseEventsLink = <button id='browse-events'>Browse Events</button>
+      } else {
+        browseEventsLink = <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
+      }
       if (this.props.location.pathname === '/'){
         landingPageLink = <button className='header-title'>eventLite</button>
         } else {
@@ -84,7 +96,7 @@ class NavBar extends React.Component {
               {landingPageLink}
           <nav className='links-container' >
             <ul className='nav-links'>
-              <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
+              {browseEventsLink}
               <button><Link to='/login'>Log In</Link></button>
               <button id='create-event'><Link to='/login'>Create An Event</Link></button>
             </ul>
