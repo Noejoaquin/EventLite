@@ -17,9 +17,9 @@ const MainPage = () => (
     </div>
     <Switch>
       <Route exact path='/' component={LandingTop} />
-      <Route exact path='/events/new' component={EventFormContainer} />
+      <ProtectedRoute exact path='/events/new' component={EventFormContainer} />
       <Route exact path='/events/:eventId' component={EventShowContainer}/>
-      <Route exact path='/users/:userId' component={ProfileContainer} />
+      <ProtectedRoute exact path='/users/:userId' component={ProfileContainer} />
       <ProtectedRoute exact path='/events/:eventId/edit' component={EventFormContainer} />
     </Switch>
   </div>
