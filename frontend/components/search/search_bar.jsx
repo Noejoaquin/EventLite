@@ -5,7 +5,7 @@ import { Redirect } from 'react-router';
 class SearchBar extends React.Component {
   constructor(){
     super();
-    this.state = {searchbar: '', location:'', dates: ''}
+    this.state = {searchBar: '', location:'', dates: ''}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }

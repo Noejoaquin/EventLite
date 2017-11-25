@@ -5,12 +5,15 @@ import { fetchEvents } from '../../actions/event_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  return {}
+  let query = state.query
+  return {
+    query
+  }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchEvents: (data) => dispatch(fetchEvents(data))
+    fetchEvents:(data) => dispatch(fetchEvents(data))
   }
 }
 
