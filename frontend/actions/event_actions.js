@@ -6,6 +6,8 @@ export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";
 export const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS"
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const RECEIVE_QUERY = 'RECEIVE_QUERY';
+export const REMOVE_QUERY = 'REMOVE_QUERY';
 
 export const receiveErrors = (errors) => ({
   type: RECEIVE_EVENT_ERRORS,
@@ -31,8 +33,17 @@ export const removeEvent = (eventId) => ({
   eventId
 })
 
-export const fetchEvents = () => dispatch => {
-  return EventApiUtil.fetchEvents()
+export const receiveQuery = (query) => ({
+  type: RECEIVE_QUERY,
+  query
+})
+
+export const removeQuery = () => ({
+  type: REMOVE_QUERY
+})
+
+export const fetchEvents = (data) => dispatch => {
+  return EventApiUtil.fetchEvents(data)
                      .then((events) => dispatch(receiveEvents(events)),
                       (errors) => dispatch(receiveErrors(errors.responseJSON))
                     );

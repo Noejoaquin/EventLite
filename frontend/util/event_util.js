@@ -1,7 +1,8 @@
-export const fetchEvents = () => (
+export const fetchEvents = (data) => (
   $.ajax({
     method: 'Get',
-    url: '/api/events'
+    url: '/api/events',
+    data: data,
   })
 )
 
