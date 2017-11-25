@@ -1,11 +1,11 @@
 import { RECEIVE_QUERY, REMOVE_QUERY } from '../actions/event_actions';
 
-const QueryReducer = (state = [], action) => {
+const QueryReducer = (state = null, action) => {
   switch (action.type){
     case RECEIVE_QUERY:
       return action.query;
     case REMOVE_QUERY:
-      return [];
+      return null;
     default:
       return state;
   }

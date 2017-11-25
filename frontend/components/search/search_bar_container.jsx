@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchEvents } from '../../actions/event_actions';
+import { fetchEvents, receiveQuery, removeQuery } from '../../actions/event_actions';
 import SearchBar from './search_bar';
 
 const mapStateToProps = (state, ownProps) => {
-  return {}
+  let passedProps = ownProps.props.props
+  return passedProps
 }
 
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchEvents: () => dispatch(fetchEvents()),
+    receiveQuery: (string) => dispatch(receiveQuery(string)),
+    removeQuery: () => dispatch(removeQuery())
   }
 }
 

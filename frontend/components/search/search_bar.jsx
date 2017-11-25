@@ -1,10 +1,13 @@
 import React from 'react';
+import { Redirect } from 'react-router';
+
 
 class SearchBar extends React.Component {
   constructor(){
     super();
     this.state = {searchBar: '', location:'', dates: ''}
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(field){
@@ -13,8 +16,13 @@ class SearchBar extends React.Component {
     }
   }
 
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.receiveQuery(this.state);
+    this.props.history.push('/events')
+  }
+
   render(){
-    debugger
     let dateTypes = ['All Dates', 'Today', 'Tomorrow', 'This Weekend', 'This Week', 'Next Week', "Next Month"]
     const dates = dateTypes.map( (dateType, i) => {
       return <option value={dateType} key={i} >{dateType}</option>
@@ -35,7 +43,7 @@ class SearchBar extends React.Component {
             </select>
           </li>
           <li>
-            <button type='submit'>SEARCH</button>
+            <button type='submit' onClick={this.handleSubmit}>SEARCH</button>
           </li>
         </ul>
       </form>

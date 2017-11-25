@@ -6,7 +6,8 @@ import EventShowContainer from './events/event_show_container';
 import BrowseEventsContainer from './events/event_browse_container';
 import { Route } from 'react-router-dom';
 import { ProtectedRoute } from '../util/route_util';
-import { LandingTop } from './search/landing_top';
+// import { LandingTop } from './search/landing_top';
+import LandingContainer from './search/landing_container';
 import ProfileContainer from './user/profile_container';
 import {Switch} from 'react-router-dom';
 
@@ -18,7 +19,7 @@ const MainPage = () => (
     </div>
     <Switch>
       <ProtectedRoute exact path='/events/new' component={EventFormContainer}/>
-        <Route exact path='/' component={LandingTop}/>
+      <Route exact path='/' component={LandingContainer}/>
       <Route exact path ='/events' component={BrowseEventsContainer}/>
       <Route exact path='/events/:eventId' component={EventShowContainer}/>
       <ProtectedRoute exact path='/users/:userId' component={ProfileContainer}/>
