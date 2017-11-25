@@ -103,7 +103,7 @@ class EventForm extends React.Component {
     })
   }
 
-  // the Omar Torres Special
+  // An idea passed on from Omar Torres, fellow classmate
   errorConstructor(field, errors) {
     let errorMessage;
     const error = eval(this.props.errors[field]);
@@ -215,10 +215,10 @@ class EventForm extends React.Component {
             </div>
               {this.errorConstructor('ticket_type', this.props.errors)}
               <select onChange={this.handleChange('ticket_type') } value={this.state.ticket_type === '' ? 'default' : this.state.ticket_type}>
-                <option value='default' disabled selected >Select your ticket type</option>
+                <option value='default' disabled >Select your ticket type</option>
                 <option  value='free'>Free Ticket</option>
                 <option  value='paid' >Paid Ticket</option>
-                <option  value='donation' >Donation</option>
+                <option  value='donation'>Donation</option>
               </select>
 
               <br/>
@@ -238,7 +238,7 @@ class EventForm extends React.Component {
             <div className='category-select'>
               {this.errorConstructor('category', this.props.errors)}
               <select  onChange={this.handleChange('category_id')} className='categories'
-                      defaultValue={categoryDefault} value={this.state.category_id === null ? 'default' : this.state.category_id}>
+                       value={this.state.category_id === null ? 'default' : this.state.category_id}>
                 <option value='default' disabled>Select a category</option>
                 {options}
               </select>
@@ -256,6 +256,8 @@ class EventForm extends React.Component {
     }
   // }
 }
+
+
 
 
 export default EventForm;

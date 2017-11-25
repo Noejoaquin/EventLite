@@ -12,7 +12,7 @@ class EventShow extends React.Component {
   }
 
   componentWillMount(){
-    this.props.fetchEvent(this.props.match.params.eventId).then(() => fetchUsers())
+    this.props.fetchEvent(this.props.match.params.eventId).then(() => this.props.fetchUsers())
   }
 
   handleAttendance(){

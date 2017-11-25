@@ -13,7 +13,7 @@ import {Switch} from 'react-router-dom';
 const MainPage = () => (
   <div className='MainPage'>
     <div className='header-container'>
-      <NavContainer/>
+      <Route  path='/' component={NavContainer} />
     </div>
     <Switch>
       <Route exact path='/' component={LandingTop} />
