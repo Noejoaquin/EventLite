@@ -25,6 +25,7 @@ class EventIndex extends React.Component {
           name:this.props.query.name,
         }
       ).then(this.props.fetchCategories())
+    this.props.removeQuery()
   }
 
   findCategoryName(event, categories){

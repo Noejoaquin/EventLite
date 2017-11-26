@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EventIndex from './event_index';
-import { fetchEvents } from '../../actions/event_actions';
+import { fetchEvents, removeQuery } from '../../actions/event_actions';
 import { fetchCategories } from '../../actions/category_actions';
 import { createSave, deleteSave } from '../../actions/save_actions';
 
@@ -24,7 +24,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchEvents: (data) => dispatch(fetchEvents(data)),
     fetchCategories: () => dispatch(fetchCategories()),
     createSave: (id) => dispatch(createSave(id)),
-    deleteSave: (id) => dispatch(deleteSave(id))
+    deleteSave: (id) => dispatch(deleteSave(id)),
+    removeQuery: () => dispatch(removeQuery())
+
   }
 }
 
