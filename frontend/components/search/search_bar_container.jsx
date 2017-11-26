@@ -4,7 +4,7 @@ import { fetchEvents, receiveQuery, removeQuery } from '../../actions/event_acti
 import SearchBar from './search_bar';
 
 const mapStateToProps = (state, ownProps) => {
-  let passedProps = ownProps.props.props
+  let passedProps = ownProps.props
   return passedProps
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // <button id='create-event'>Create An Event</button>
-
+import SearchBarContainer from '../search/search_bar_container';
 
 class NavBar extends React.Component {
   constructor(props){
@@ -10,7 +10,6 @@ class NavBar extends React.Component {
   }
 
   handleLogout(){
-
     this.props.logout();
   }
 
@@ -20,6 +19,7 @@ class NavBar extends React.Component {
     let profileLink;
     let landingPageLink;
     let browseEventsLink;
+    let searchBar = this.props.location.pathname === '/' ? <div></div> : <SearchBarContainer props={this.props}/>
     if (this.props.currentUser){
 
       if (this.props.location.pathname.includes('events') && !this.props.location.pathname.includes('events/')){
@@ -47,7 +47,7 @@ class NavBar extends React.Component {
           <div>
             <div className='header-title-container'>
               {landingPageLink}
-
+              {searchBar}
               <nav className='links-container' >
                 <ul className='nav-links'>
                   {browseEventsLink}

@@ -19,7 +19,9 @@ class SearchBar extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.receiveQuery(this.state);
-    this.props.history.push('/events')
+    if (this.props.location.pathname !== '/events'){
+      this.props.history.push('/events')
+    }
   }
 
   render(){

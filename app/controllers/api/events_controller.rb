@@ -1,20 +1,6 @@
 class Api::EventsController < ApplicationController
   def index
-    # debugger
-    # event_search_params
-    # debugger
-    # if params.nil?
-    #   debugger
-    #   @events = Event.all
-    #   render :index
-    # else
-    #   debugger
-    #   @events = Event.all
-    #   render :index
-    # end
     @events = Event.all
-
-    # @events = Event.all
     @events = @events.where(["name LIKE ?", "#{params[:name]}"]) if params[:name] != ""
     # debugger
   end
