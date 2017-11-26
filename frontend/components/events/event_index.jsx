@@ -8,29 +8,21 @@ import { isEmpty } from 'lodash';
 class EventIndex extends React.Component {
   constructor(props){
     super(props);
+    this.alreadyOnSearchPage = false;
   }
 
   componentDidMount(){
-    debugger
+    // debugger
     if (this.props.query.name === '' && this.props.searchIndex === false){
-      debugger
+      // debugger
       this.props.fetchEvents(
         {
           name: '',
         }
       ).then(this.props.fetchCategories())
       this.props.removeQuery()
-    }
-    // else if (this.props.query.name === '' && this.props.searchIndex){
-    //   // debugger
-    //   this.props.fetchEvents(
-    //     {
-    //       name: '',
-    //     }
-    //   ).then(this.props.fetchCategories())
-    // }
-    else if (this.props.searchIndex){
-      debugger
+    } else if (this.props.searchIndex){
+      // debugger
       this.props.fetchEvents(
         {
           name: this.props.query.name,
@@ -41,38 +33,16 @@ class EventIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    debugger
+    // debugger
 
     if (this.props.searchIndex && this.props.query.name !== newProps.query.name && newProps.query.name !== ''){
-      debugger
+      // debugger
       this.props.fetchEvents({
         name: newProps.query.name
       }).then(this.props.fetchCategories())
       this.props.removeQuery()
-      // setTimeout(() => this.props.removeQuery(), 2000)
-
     }
   }
-    // this.props.query.name = newProps.query.name
-    // debugger
-    // if (this.props.query.name === '' && this.props.query.name !== newProps.query.name ){
-    //   this.props.fetchEvents(
-    //     {
-    //      name: '',
-    //     }
-    //   ).then(this.props.fetchCategories())
-    // }
-    // // this.props.removeQuery()
-    //
-    // if (this.props.query.name !== newProps.query.name){
-    //    this.props.fetchEvents(
-    //      {
-    //       name: this.props.query.name,
-    //      }
-    //    ).then(this.props.fetchCategories())
-    //      // this.props.removeQuery()
-    //  }
-
 
   findCategoryName(event, categories){
     let categoryId = event.category_id;

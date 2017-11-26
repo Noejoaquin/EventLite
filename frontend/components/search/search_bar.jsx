@@ -3,11 +3,12 @@ import { Redirect } from 'react-router';
 
 
 class SearchBar extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {name: ''}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    debugger
   }
 
   handleChange(field){
@@ -29,11 +30,12 @@ class SearchBar extends React.Component {
     const dates = dateTypes.map( (dateType, i) => {
       return <option value={dateType} key={i} >{dateType}</option>
     })
-
+    let formClass = this.props.location.pathname === '/' ? 'searchform' : 'SEARCH'
+    debugger
     return (
-      <form className='searchform'>
-        <ul className='input-list-search-card'>
-          <li className='searchBar'>
+      <form className={this.props.location.pathname === '/' ? 'searchform' : 'nav-search-form'}>
+        <ul className={this.props.location.pathname === '/' ? 'input-list-search-card' : 'nav-input-list-search-card'}>
+          <li className={this.props.location.pathname === '/' ? 'searchBar' : 'nav-searchBar' }>
             <input type='text' id='main-search' placeholder='Search events or categories' onChange={this.handleChange('name')}></input>
           </li>
           <li>
