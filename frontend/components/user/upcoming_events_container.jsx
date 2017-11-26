@@ -12,11 +12,13 @@ const mapStateToProps = (state, ownProps) => {
   let events = allEvents.filter((event) => state.session.currentUser.attending_events.includes(event.id)
                           && Date.parse(event.start_time) > Date.parse(new Date()))
   let query = state.query
+  let searchIndex = false;
   return {
     currentUser,
     events,
     categories,
-    query
+    query,
+    searchIndex
   }
 }
 

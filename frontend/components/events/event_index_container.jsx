@@ -10,11 +10,13 @@ const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser
   let query = state.query
   let events = Object.keys(state.entities.events).map((id) => state.entities.events[id]);
+  let searchIndex = false;
   return {
     currentUser,
     events,
     categories,
-    query
+    query,
+    searchIndex
   }
 }
 

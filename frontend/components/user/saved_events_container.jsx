@@ -11,11 +11,13 @@ const mapStateToProps = (state, ownProps) => {
   let allEvents = Object.keys(state.entities.events).map((id) => state.entities.events[id])
   let events = allEvents.filter((event) => state.session.currentUser.saved_events.includes(event.id))
   let query = state.query;
+  let searchIndex = false;
   return {
     currentUser,
     events,
     categories,
-    query
+    query,
+    searchIndex
   }
 }
 
