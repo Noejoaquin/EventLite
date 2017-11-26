@@ -43,6 +43,8 @@
   padding-right: 10px;
 }
 
+
+
 .dropdown{
   overflow: hidden;
 }
@@ -132,4 +134,41 @@
   position: absolute;
   top: 0;
   right: 0;
+}
+
+
+.nav-search-form {
+  margin-top: 20px;
+  width: 400px;
+  margin-left: 20px;
+}
+
+.nav-search-items {
+  display: flex;
+}
+
+.nav-search-button {
+  height: 20px;
+  width: 20px;
+  padding-right: 5px;
+}
+
+.fa-search {
+  font-size: 15px;
+  color: #BCC2CD;
+}
+
+.nav-input::placeholder {
+  color: #BCC2CD;
+}
+
+.nav-search-input {
+  width: 400px;
+}
+
+.nav-input {
+  width: 100%;
+  font-weight: lighter;
+  font-family: 'Libre Franklin', sans-serif;
+  color: #878B93;
 }

@@ -25,7 +25,7 @@ select {
   box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
   position: relative;
   top: 140px;
-  height: 210px; 
+  height: 210px;
 }
 
 .input-list-search-card{
@@ -45,7 +45,7 @@ select {
 }
 
 #main-search {
-  width: 250px;
+  // width: 250px;
 }
 
 
@@ -53,11 +53,17 @@ select {
   margin-bottom: 25px
 }
 
+.searchform input::placeholder {
+  color: #BCC2CD;
+}
+
 .searchform input {
   border: 1px solid #D8D0CE;
+  border-radius: 4px 0 0 4px;
   padding: 10px 12px;
-  width:220px;
+  width:475px;
   display: flex;
+  color: #878B93;
   font-family: 'Libre Franklin', sans-serif;
 }
 
@@ -72,11 +78,15 @@ select {
 }
 
 .searchform button {
-  margin-top: 1.3px;
   border: 1px solid #D8D0CE;
-  padding: 10.8px 40px;
+  padding: 12.2px 40px;
   font-size: 12px;
+  border-radius: 0 4px 4px 0;
   font-family: 'Libre Franklin', sans-serif;
   background-color: #f6682F;
   color: #fff;
+}
+
+.searchform button:hover {
+  background-color:  #b73a08;
 }
