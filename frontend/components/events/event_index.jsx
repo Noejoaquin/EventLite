@@ -12,36 +12,36 @@ class EventIndex extends React.Component {
   }
 
   componentDidMount(){
-    // debugger
+    debugger
     if (this.props.query.name === '' && this.props.searchIndex === false){
-      // debugger
+      debugger
       this.props.fetchEvents(
         {
           name: '',
         }
       ).then(this.props.fetchCategories())
-      this.props.removeQuery()
     } else if (this.props.searchIndex){
-      // debugger
+      debugger
       this.props.fetchEvents(
         {
           name: this.props.query.name,
         }
       ).then(this.props.fetchCategories())
-      this.props.removeQuery()
     }
   }
 
   componentWillReceiveProps(newProps){
-    // debugger
+    debugger
 
-    if (this.props.searchIndex && this.props.query.name !== newProps.query.name && newProps.query.name !== ''){
-      // debugger
+    if (this.props.searchIndex && this.props.query.name !== newProps.query.name) { 
       this.props.fetchEvents({
         name: newProps.query.name
       }).then(this.props.fetchCategories())
-      this.props.removeQuery()
     }
+  }
+
+  componentWillUnmount(){
+    this.props.removeQuery();
   }
 
   findCategoryName(event, categories){
