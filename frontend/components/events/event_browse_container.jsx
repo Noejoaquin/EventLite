@@ -5,10 +5,7 @@ import { fetchEvents } from '../../actions/event_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  let query = state.query
-  return {
-    query
-  }
+  return {}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

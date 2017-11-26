@@ -5,7 +5,7 @@ import { Redirect } from 'react-router';
 class SearchBar extends React.Component {
   constructor(){
     super();
-    this.state = {searchBar: '', location:'', dates: ''}
+    this.state = {name: ''}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -32,7 +32,7 @@ class SearchBar extends React.Component {
       <form className='searchform'>
         <ul className='input-list-search-card'>
           <li className='searchBar'>
-            <input type='text' id='main-search' placeholder='Search events or categories' onChange={this.handleChange('searchBar')}></input>
+            <input type='text' id='main-search' placeholder='Search events or categories' onChange={this.handleChange('name')}></input>
           </li>
           <li>
             <input type='text' placeholder='location' onChange={this.handleChange('location')}></input>

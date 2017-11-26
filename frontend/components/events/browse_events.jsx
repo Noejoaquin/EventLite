@@ -7,21 +7,21 @@ class BrowseEvents extends React.Component {
     super(props);
   }
 
-  componentWillMount(){
-    if (this.props.query === null){
-      this.props.fetchEvents()
-    } else {
-      debugger
-      this.props.fetchEvents(
-        {
-          name:this.props.query.searchBar,
-          category: this.props.query.searchBar,
-          location: this.props.query.location,
-          dates: this.props.query.dates
-        }
-      )
-    }
-  }
+  // componentWillMount(){
+  //   if (this.props.query === null){
+  //     this.props.fetchEvents()
+  //   } else {
+  //     debugger
+  //     this.props.fetchEvents(
+  //       {
+  //         name:this.props.query.searchBar,
+  //         category: this.props.query.searchBar,
+  //         location: this.props.query.location,
+  //         dates: this.props.query.dates
+  //       }
+  //     )
+  //   }
+  // }
 
   render(){
     return (

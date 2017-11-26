@@ -10,18 +10,19 @@ const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser
   let allEvents = Object.keys(state.entities.events).map((id) => state.entities.events[id])
   let events = allEvents.filter((event) => state.session.currentUser.saved_events.includes(event.id))
-
+  let query = state.query;
   return {
     currentUser,
     events,
-    categories
+    categories,
+    query
   }
 }
 
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchEvents: () => dispatch(fetchEvents()),
+    fetchEvents: (data) => dispatch(fetchEvents(data)),
     createSave: (id) => dispatch(createSave(id)),
     deleteSave: (id) => dispatch(deleteSave(id)),
     fetchCategories: () => dispatch(fetchCategories())

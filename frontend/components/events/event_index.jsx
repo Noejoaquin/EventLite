@@ -1,6 +1,9 @@
 import React from 'react';
 import {EventIndexItem} from './event_index_item';
 import { isEmpty } from 'lodash';
+// category: this.props.query.searchBar,
+// location: this.props.query.location,
+// dates: this.props.query.dates
 
 class EventIndex extends React.Component {
   constructor(props){
@@ -8,7 +11,20 @@ class EventIndex extends React.Component {
   }
 
   componentWillMount(){
-    this.props.fetchEvents().then(this.props.fetchCategories())
+    // if (this.props.query.name !== ''){
+    //   this.props.fetchEvents(
+    //     {
+    //       name:this.props.query.name,
+    //     }
+    //   ).then(this.props.fetchCategories()) //.then(this.props.removeQuery())
+    // } else {
+    //   this.props.fetchEvents().then(this.props.fetchCategories())
+    // }
+    this.props.fetchEvents(
+        {
+          name:this.props.query.name,
+        }
+      ).then(this.props.fetchCategories())
   }
 
   findCategoryName(event, categories){

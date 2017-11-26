@@ -1,7 +1,22 @@
 class Api::EventsController < ApplicationController
   def index
+    # debugger
+    # event_search_params
+    # debugger
+    # if params.nil?
+    #   debugger
+    #   @events = Event.all
+    #   render :index
+    # else
+    #   debugger
+    #   @events = Event.all
+    #   render :index
+    # end
     @events = Event.all
-    render :index
+
+    # @events = Event.all
+    @events = @events.where(["name LIKE ?", "#{params[:name]}"]) if params[:name] != ""
+    # debugger
   end
 
   def show
@@ -66,6 +81,5 @@ class Api::EventsController < ApplicationController
     params.require(:event).permit(:name, :description, :location,
                                   :ticket_type, :price, :start_time, :start_date,
                                   :end_date, :end_time, :category_id, :image)
-
   end
 end
