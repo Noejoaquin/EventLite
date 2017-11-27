@@ -8,7 +8,6 @@ class SearchBar extends React.Component {
     this.state = {name: ''}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    debugger
   }
 
   handleChange(field){
@@ -67,7 +66,6 @@ class SearchBar extends React.Component {
       </form>
       )
     }
-    debugger
     return (
       searchForm
     )

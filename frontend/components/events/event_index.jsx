@@ -33,7 +33,7 @@ class EventIndex extends React.Component {
   componentWillReceiveProps(newProps){
     debugger
 
-    if (this.props.searchIndex && this.props.query.name !== newProps.query.name) { 
+    if (this.props.searchIndex && this.props.query.name !== newProps.query.name) {
       this.props.fetchEvents({
         name: newProps.query.name
       }).then(this.props.fetchCategories())
@@ -41,6 +41,7 @@ class EventIndex extends React.Component {
   }
 
   componentWillUnmount(){
+    if (this.props.searchIndex !== false)
     this.props.removeQuery();
   }
 
