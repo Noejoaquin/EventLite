@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const EventIndexItem = ({event, searchIndex, category, createSave, deleteSave, currentUser}) =>{
+export const EventIndexItem = ({event, fetchEvents, searchIndex, category, createSave, deleteSave, currentUser}) =>{
 
   const months = { 1: 'January', 2: 'Feburary', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
       7: 'July', 8:'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
@@ -17,25 +17,24 @@ export const EventIndexItem = ({event, searchIndex, category, createSave, delete
         saveButton = <button className='save-button' onClick={(e) => {
                       e.preventDefault();
                       deleteSave(event.id)}}>
-                      <div className="fa fa-bookmark" id='icon-bookmark-index-save'
+                      <div className={searchIndex ? "fa fa-bookmark bookmark-search" : "fa fa-bookmark bookmark-regular" } id={searchIndex ? 'icon-bookmark-index-save-search' : 'icon-bookmark-index-save' }
                          aria-hidden='true'></div>
                       </button>
       } else {
         saveButton = saveButton = <button className='save-button' onClick={(e) => {
                       e.preventDefault();
                       createSave(event.id)}}>
-                      <div className="fa fa-bookmark-o" id='icon-bookmark-index'
+                      <div className={searchIndex ? "fa fa-bookmark-o bookmark-search" : "fa fa-bookmark-o bookmark-regular" } id={searchIndex ? 'icon-bookmark-index-search' : 'icon-bookmark-index' }
                          aria-hidden='true'></div>
                       </button>
       }
     } else {
       saveButton = <button className='save-button'><Link to={'/signup'}>
-                    <div className="fa fa-bookmark-o" id='icon-bookmark-index-save'
+                    <div className={searchIndex ? "fa fa-bookmark-o bookmark-search" : "fa fa-bookmark-o bookmark-regular" } id={searchIndex ? 'icon-bookmark-index-save-search' : 'icon-bookmark-index-save' }
                        aria-hidden='true'></div></Link>
                     </button>
     }
-    // <div style={{backgroundImage: `url(${event.image_url})`}} className='event-cell-image-search'>
-    // </div>
+
     let indexItem;
     if (searchIndex){
       indexItem = (
@@ -60,12 +59,14 @@ export const EventIndexItem = ({event, searchIndex, category, createSave, delete
             </li>
 
           </ul>
+          <div className='bottom-container'>
 
             <ul className='event-cell-category-search'>
               <li className='event-ticket-type-search'>{price}</li>
-              <li className='category-search'>#{category}</li>
+              <li onclick={() => fetchEvents({name: category})} className='category-search'>#{category}</li>
+              <li className='save-button'>  {saveButton} </li>
             </ul>
-            {saveButton}
+              </div>
           </li>
       )
     } else {

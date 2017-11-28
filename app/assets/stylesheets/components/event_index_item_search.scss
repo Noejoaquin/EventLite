@@ -20,6 +20,10 @@
 //   height: 100%;
 // }
 
+.event-cell-search {
+  position: relative;
+}
+
 
 .event-index-container-search{
   border: 1px solid red;
@@ -102,15 +106,10 @@
 }
 
 .event-cell-category-search{
-  // padding-top: 0px;
-  // padding-left: 12px;
-  // margin-left: 4%;
-  // margin-right: 35%;
   display: flex;
   color: #666a73;
   height: 35px;
-  // position: relative;
-  // bottom: -13px;
+  width: 100%;
 }
 
 .event-cell-category-search li {
@@ -118,48 +117,54 @@
 }
 
 .event-ticket-type-search{
-  // position: absolute;
-  // top: 8px;
-  // right: 9px;
-  // padding: 1px 5px;
   background-color: #f5f5f5;
   border: 1px solid #eee;
   line-height: 18px;
   color: #666a73;
   font-size: 14px;
+  width: 200px;
+  padding-top: 10px;
+  padding-left: 7px;
+}
+
+.category-search {
+  padding-top: 10px;
+  font-size: 14px;
+  margin-left: 20px;
+  // border-right: .3px solid #EAE8E6;
+}
+
+.category-search:hover {
+  cursor: pointer;
 }
 
 
-#icon-bookmark-index-save{
-  position: absolute;
+#icon-bookmark-index-save-search{
+  // position: absolute;
   right: 8px;
   bottom: 5px;
   width: 33px;
-  font-size: 20px;
   color: #0278b8;
-  font-size: 23px;
 }
 
-#icon-bookmark-index{
-  position: absolute;
+#icon-bookmark-index-search{
+  // position: absolute;
   right: 8px;
   bottom: 5px;
   width: 33px;
-  font-size: 23px;
+  // font-size: 45px;
   color: #0278b8;
 }
 
-.fa-bookmark-o{
-  position: absolute;
-  right: 20px;
-  bottom: 6px;
+.bookmark-search {
+  position:absolute;
+  bottom: 2px;
+  right: 0px;
+  font-size: 22px;
+  border-left: .3px solid #EAE8E6;
 }
 
-.category {
-  position: absolute;
-  left: 2px;
-  bottom: -21;
-}
+
 
 .image-and-price{
   font-family: 'Open Sans', sans-serif;

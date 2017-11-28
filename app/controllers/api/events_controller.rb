@@ -1,6 +1,6 @@
 class Api::EventsController < ApplicationController
   def index
-
+    debugger
     category_names = Category.all.map do |cat|
       cat.name
     end

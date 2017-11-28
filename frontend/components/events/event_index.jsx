@@ -52,7 +52,8 @@ class EventIndex extends React.Component {
       let category = this.findCategoryName(event, this.props.categories)
       return <EventIndexItem key={event.id} event={event} category={ category }
                 deleteSave={this.props.deleteSave} createSave={this.props.createSave}
-                currentUser={this.props.currentUser} searchIndex={this.props.searchIndex}/>
+                currentUser={this.props.currentUser} searchIndex={this.props.searchIndex}
+                fetchEvents={this.props.fetchEvents}/>
       })
     }
 
