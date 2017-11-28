@@ -55,7 +55,7 @@ class Event < ApplicationRecord
   foreign_key: :event_id
 
 
-  has_attached_file :image, default_url: "default-event.jpg"
+  has_attached_file :image,  default_url: "default-event.jpg", styles: { thumb: '200X100' }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 end

@@ -4,9 +4,8 @@ class Api::EventsController < ApplicationController
     category_names = Category.all.map do |cat|
       cat.name
     end
-  
+
     if category_names.include?(params[:name])
-      debugger
       category_id = Category.all.where(["name LIKE '#{params[:name]}'"]).ids[0]
       category_id.to_i
       @events = Event.all.where(["category_id = ?", category_id])
@@ -15,9 +14,6 @@ class Api::EventsController < ApplicationController
       @events = @events.where(["name LIKE ?", "#{params[:name]}"]) if params[:name] != ""
     end
 
-
-
-    # debugger
   end
 
   def show

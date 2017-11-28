@@ -46,25 +46,48 @@ class EventIndex extends React.Component {
 
   render(){
     let events;
+    let eventIndex;
     if (!(isEmpty(this.props.categories))) {
       events = this.props.events.map((event) => {
       let category = this.findCategoryName(event, this.props.categories)
       return <EventIndexItem key={event.id} event={event} category={ category }
                 deleteSave={this.props.deleteSave} createSave={this.props.createSave}
-                currentUser={this.props.currentUser}/>
+                currentUser={this.props.currentUser} searchIndex={this.props.searchIndex}/>
       })
     }
-    return (
-      <div className='event-meta-container'>
+
+    if (this.props.searchIndex){
+      eventIndex = (
+        <div className='event-meta-container-search'>
+          <div className='event-index-container-search'>
+            <ul className='event-list-search'>
+              {events}
+            </ul>
+          </div>
+        </div>
+      )
+    } else {
+      eventIndex = (<div className='event-meta-container'>
         <div className='event-index-container'>
           <ul className='event-list'>
             {events}
           </ul>
         </div>
       </div>
+      )
+    }
+    return (
+      eventIndex
     )
   }
 }
 
+// <div className='event-meta-container'>
+//   <div className='event-index-container'>
+//     <ul className='event-list'>
+//       {events}
+//     </ul>
+//   </div>
+// </div>
 
 export default EventIndex;

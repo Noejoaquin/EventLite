@@ -1,0 +1,167 @@
+//
+// .event-cell {
+//   position: relative;
+//   font-size: 15px;
+//   line-height: 22px;
+//   letter-spacing: .5px;
+//   box-sizing: border-box;
+//   display: inline-block;
+//   vertical-align: top;
+//   width: 30%;
+//   overflow: hidden;
+// }
+//
+// .event-list {
+//   display: flex;
+//   justify-content: space-between;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   width: 100%;
+//   height: 100%;
+// }
+
+
+.event-index-container-search{
+  border: 1px solid red;
+  margin: 100px auto;
+  width: 810px;
+  display: block;
+  max-width: 1000px;
+}
+
+.search-img-details-list {
+  display: flex;
+  border-bottom: .3px solid #EAE8E6;
+  height: 100px;
+}
+
+.event-cell-image-search {
+  display: inline-block;
+  height: 100px;
+  width: 200px;
+  object-fit: cover;
+}
+.event-list-search > li {
+  // border: 1px solid black;
+  background-color: #fff;
+  box-sizing: border-box;
+  margin: 1%;
+  border: 1px solid #eee;
+  padding-bottom: 10px;
+  height: 136px;
+  width: 780px;
+
+}
+
+.event-details-container-search {
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.event-cell-details-search {
+  padding-top: 3px;
+  margin-left: 20px;
+}
+
+.above-category {
+  height: 128px;
+  border: 1px solid #eee;
+}
+
+
+
+.image-price-search {
+  border-bottom: none;
+}
+
+.event-cell-time-search {
+   color: #666a73;
+  // color: #45494E;
+  font-size: 15px;
+  line-height: 18px;
+  height: 18px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  padding: 5px 0 0;
+}
+
+.event-cell-name-search {
+  color: #282C35;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 19px;
+  height: 51px;
+  padding-top: 2px;
+}
+
+.event-cell-location-search{
+  color: #666A73;
+  font-size:  12px;
+  line-height: 18px;
+  height: 30px;
+}
+
+.event-cell-category-search{
+  // padding-top: 0px;
+  // padding-left: 12px;
+  // margin-left: 4%;
+  // margin-right: 35%;
+  display: flex;
+  color: #666a73;
+  height: 35px;
+  // position: relative;
+  // bottom: -13px;
+}
+
+.event-cell-category-search li {
+  height: 35px;
+}
+
+.event-ticket-type-search{
+  // position: absolute;
+  // top: 8px;
+  // right: 9px;
+  // padding: 1px 5px;
+  background-color: #f5f5f5;
+  border: 1px solid #eee;
+  line-height: 18px;
+  color: #666a73;
+  font-size: 14px;
+}
+
+
+#icon-bookmark-index-save{
+  position: absolute;
+  right: 8px;
+  bottom: 5px;
+  width: 33px;
+  font-size: 20px;
+  color: #0278b8;
+  font-size: 23px;
+}
+
+#icon-bookmark-index{
+  position: absolute;
+  right: 8px;
+  bottom: 5px;
+  width: 33px;
+  font-size: 23px;
+  color: #0278b8;
+}
+
+.fa-bookmark-o{
+  position: absolute;
+  right: 20px;
+  bottom: 6px;
+}
+
+.category {
+  position: absolute;
+  left: 2px;
+  bottom: -21;
+}
+
+.image-and-price{
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const EventIndexItem = ({event, category, createSave, deleteSave, currentUser}) =>{
+export const EventIndexItem = ({event, searchIndex, category, createSave, deleteSave, currentUser}) =>{
 
   const months = { 1: 'January', 2: 'Feburary', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
       7: 'July', 8:'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
@@ -34,28 +34,85 @@ export const EventIndexItem = ({event, category, createSave, deleteSave, current
                        aria-hidden='true'></div></Link>
                     </button>
     }
+    // <div style={{backgroundImage: `url(${event.image_url})`}} className='event-cell-image-search'>
+    // </div>
+    let indexItem;
+    if (searchIndex){
+      indexItem = (
+        <li className='event-cell-search'>
+          <ul className='search-img-details-list'>
+
+            <li className='image-and-price-search'>
+              <Link to={`/events/${event.id}`}>
+                <img src={event.image_url} className='event-cell-image-search'>
+                </img>
+              </Link>
+            </li>
+
+            <li className='event-details-container-search'>
+              <Link to={`/events/${event.id}`}>
+                <div className='event-cell-details-search'>
+                <time className='event-cell-time-search'>{date}</time>
+                <div className='event-cell-name-search'>{event.name}</div>
+                <div className='event-cell-location-search'>{event.location}</div>
+                </div>
+              </Link>
+            </li>
+
+          </ul>
+
+            <ul className='event-cell-category-search'>
+              <li className='event-ticket-type-search'>{price}</li>
+              <li className='category-search'>#{category}</li>
+            </ul>
+            {saveButton}
+          </li>
+      )
+    } else {
+      indexItem = (
+         <li className='event-cell'>
+          <div className='image-and-price'>
+            <Link to={`/events/${event.id}`}><div style={{backgroundImage: `url(${event.image_url})`}} className='event-cell-image'></div></Link>
+            <span className='event-ticket-type'>{price}</span>
+          </div>
+          <div>
+            <Link to={`/events/${event.id}`}><div className='event-cell-details'>
+              <time className='event-cell-time'>{date}</time>
+              <div className='event-cell-name'>{event.name}</div>
+              <div className='event-cell-location'>{event.location}</div>
+            </div></Link>
+
+            <div className='event-cell-category'>
+              <div className='category'>#{category}</div>
+            </div>
+            {saveButton}
+          </div>
+        </li>
+      )
+    }
 
   return (
-  <li className='event-cell'>
-      <div className='image-and-price'>
-        <Link to={`/events/${event.id}`}><div style={{backgroundImage: `url(${event.image_url})`}} className='event-cell-image'></div></Link>
-        <span className='event-ticket-type'>{price}</span>
-      </div>
-      <div>
-        <Link to={`/events/${event.id}`}><div className='event-cell-details'>
-          <time className='event-cell-time'>{date}</time>
-          <div className='event-cell-name'>{event.name}</div>
-          <div className='event-cell-location'>{event.location}</div>
-        </div></Link>
-
-        <div className='event-cell-category'>
-          <div className='category'>#{category}</div>
-        </div>
-        {saveButton}
-      </div>
-    </li>
+    indexItem
   )
 }
+// <li className='event-cell'>
+//   <div className='image-and-price'>
+//     <Link to={`/events/${event.id}`}><div style={{backgroundImage: `url(${event.image_url})`}} className='event-cell-image'></div></Link>
+//       <span className='event-ticket-type'>{price}</span>
+//       </div>
+//       <div>
+//         <Link to={`/events/${event.id}`}><div className='event-cell-details'>
+//           <time className='event-cell-time'>{date}</time>
+//             <div className='event-cell-name'>{event.name}</div>
+//               <div className='event-cell-location'>{event.location}</div>
+//               </div></Link>
+//
+//               <div className='event-cell-category'>
+//                 <div className='category'>#{category}</div>
+//                 </div>
+//                 {saveButton}
+//               </div>
+//             </li>
 
 // <i className="fa fa-hashtag" aria-hidden='true'></i>
 
