@@ -3,11 +3,11 @@ class Api::EventsController < ApplicationController
     category_names = Category.all.map do |cat|
       cat.name
     end
-
+    # category_names = category_names.map(&:downcase) # don't map, do each
     # ILIKE %?%
-
-    if category_names.include?(params[:name])
-      category_id = Category.all.where(["name LIKE '#{params[:name]}'"]).ids[0]
+    # debugger
+    if category_names.include?(params[:name]) #changing the category... problem for the backend.
+      category_id = Category.all.where(["name LIKE ?", "#{params[:name]}").ids[0]
       category_id.to_i
       @events = Event.all.where(["category_id = ?", category_id])
     else
