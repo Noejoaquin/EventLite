@@ -44,6 +44,12 @@ class EventIndex extends React.Component {
     }
   }
 
+  componentWillUnmount(){
+    if(this.props.searchIndex){
+      this.props.removeQuery()
+    }
+  }
+
 
 
   findCategoryName(event, categories){
@@ -64,7 +70,7 @@ class EventIndex extends React.Component {
                 deleteSave={this.props.deleteSave} createSave={this.props.createSave}
                 currentUser={this.props.currentUser} searchIndex={this.props.searchIndex}
                 fetchEvents={this.props.fetchEvents} ownProps={this.props} receiveQuery={this.props.receiveQuery}
-                profileContainer={this.props.profileContainer}/>
+                profileContainer={this.props.profileContainer} removeQuery={this.props.removeQuery}/>
       })
     }
 

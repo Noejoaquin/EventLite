@@ -6,7 +6,6 @@ import { fetchCategories } from '../../actions/category_actions';
 import { createSave, deleteSave } from '../../actions/save_actions';
 
 const mapStateToProps = (state, ownProps) => {
-
   let routeInfo = ownProps.props.props
   let categories = state.entities.categories
   let currentUser = state.session.currentUser

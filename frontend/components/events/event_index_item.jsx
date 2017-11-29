@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Redirect from 'react-router-dom';
 
-export const EventIndexItem = ({event, ownProps, profileContainer, receiveQuery, fetchEvents, searchIndex, category, createSave, deleteSave, currentUser}) =>{
+export const EventIndexItem = ({event, ownProps, removeQuery, profileContainer, receiveQuery, fetchEvents, searchIndex, category, createSave, deleteSave, currentUser}) =>{
   const months = { 1: 'January', 2: 'Feburary', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
       7: 'July', 8:'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
   let year = event.start_time.split('-')[0]
