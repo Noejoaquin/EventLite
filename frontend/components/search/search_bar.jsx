@@ -5,7 +5,7 @@ import { Redirect } from 'react-router';
 class SearchBar extends React.Component {
   constructor(props){
     super(props);
-    this.state = {name: ''}
+    this.state = {name: this.props.query}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -19,8 +19,15 @@ class SearchBar extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.receiveQuery(this.state);
-    if (this.props.location.pathname !== '/events'){
-      this.props.history.push('/events')
+    if (this.props.passedProps.location.pathname !== '/events'){
+      this.props.passedProps.history.push('/events')
+    }
+  }
+
+  componentWillMount(){
+    if (this.props.passedProps.location.pathname === '/'){
+      debugger
+      this.props.removeQuery();
     }
   }
 
@@ -38,12 +45,13 @@ class SearchBar extends React.Component {
         //   </li>
     })
     let searchForm;
-    if (this.props.location.pathname === '/'){
+    let input = this.props.passedProps.location.pathname === '/' ? '' : this.props.query
+    if (this.props.passedProps.location.pathname === '/'){
       searchForm = (
         <form className='searchform'>
         <ul className='input-list-search-card'>
           <li className= 'searchBar'>
-            <input type='text' id='main-search' placeholder='Search events or categories' onChange={this.handleChange('name')}></input>
+            <input type='text' id='main-search' placeholder='Search events or categories' defaultValue={input} onChange={this.handleChange('name')}></input>
           </li>
           <li>
             <button type='submit' onClick={this.handleSubmit}>SEARCH</button>
@@ -60,7 +68,7 @@ class SearchBar extends React.Component {
               </button>
           </li>
           <li className='nav-search-input'>
-            <input className='nav-input'type='text' id='main-search' placeholder='Search by events or categories' onChange={this.handleChange('name')}></input>
+            <input className='nav-input'type='text' id='main-search' placeholder='Search by events or categories' defaultValue={input}  onChange={this.handleChange('name')}></input>
           </li>
         </ul>
       </form>

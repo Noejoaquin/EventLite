@@ -6,6 +6,8 @@ class EventIndex extends React.Component {
   constructor(props){
     super(props);
     this.alreadyOnSearchPage = false;
+    // debugger
+    this.state = this.props.query
   }
 
   componentDidMount(){
@@ -16,7 +18,15 @@ class EventIndex extends React.Component {
           name: '',
         }
       ).then(this.props.fetchCategories())
+    } else if (this.props.searchIndex & this.props.ownProps.history.action === 'PUSH'){
+      debugger
+      this.props.fetchEvents(
+        {
+          name: this.props.query.name,
+        }
+      ).then(this.props.fetchCategories())
     } else if (this.props.searchIndex){
+      debugger
       this.props.fetchEvents(
         {
           name: this.props.query.name,
@@ -26,17 +36,17 @@ class EventIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
+    debugger
     if (this.props.searchIndex && this.props.query.name !== newProps.query.name) {
+
+      debugger
       this.props.fetchEvents({
         name: newProps.query.name
       }).then(this.props.fetchCategories())
     }
   }
 
-  componentWillUnmount(){
-    if (this.props.searchIndex !== false)
-    this.props.removeQuery();
-  }
+
 
   findCategoryName(event, categories){
     let categoryId = event.category_id;
@@ -44,16 +54,18 @@ class EventIndex extends React.Component {
     return cat
   }
 
+
   render(){
     let events;
     let eventIndex;
     if (!(isEmpty(this.props.categories))) {
       events = this.props.events.map((event) => {
       let category = this.findCategoryName(event, this.props.categories)
+      debugger
       return <EventIndexItem key={event.id} event={event} category={ category }
                 deleteSave={this.props.deleteSave} createSave={this.props.createSave}
                 currentUser={this.props.currentUser} searchIndex={this.props.searchIndex}
-                fetchEvents={this.props.fetchEvents}/>
+                fetchEvents={this.props.fetchEvents} ownProps={this.props} receiveQuery={this.props.receiveQuery}/>
       })
     }
 

@@ -26,7 +26,7 @@ class BrowseEvents extends React.Component {
   render(){
     return (
       <div>
-        <EventSearchContainer/>
+        <EventSearchContainer ownProps={this.props.ownProps}/>
       </div>
     )
   }

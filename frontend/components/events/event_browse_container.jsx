@@ -5,7 +5,9 @@ import { fetchEvents } from '../../actions/event_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  return {}
+  return {
+    ownProps
+  }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

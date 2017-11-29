@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Redirect from 'react-router-dom';
 
-export const EventIndexItem = ({event, fetchEvents, searchIndex, category, createSave, deleteSave, currentUser}) =>{
-
+export const EventIndexItem = ({event, ownProps, receiveQuery, fetchEvents, searchIndex, category, createSave, deleteSave, currentUser}) =>{
   const months = { 1: 'January', 2: 'Feburary', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
       7: 'July', 8:'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
   let year = event.start_time.split('-')[0]
@@ -34,7 +34,9 @@ export const EventIndexItem = ({event, fetchEvents, searchIndex, category, creat
                        aria-hidden='true'></div></Link>
                     </button>
     }
-
+    // debugger
+    // setState(state.name:category)
+    // ownProps.ownProps.props.history.push('/events')
     let indexItem;
     if (searchIndex){
       indexItem = (
@@ -63,7 +65,9 @@ export const EventIndexItem = ({event, fetchEvents, searchIndex, category, creat
 
             <ul className='event-cell-category-search'>
               <li className='event-ticket-type-search'>{price}</li>
-              <li onclick={() => fetchEvents({name: category})} className='category-search'>#{category}</li>
+              <li onClick={() => {
+                fetchEvents({name:category})}
+              } className='category-search'>#{category}</li>
               <li className='save-button'>  {saveButton} </li>
             </ul>
               </div>
@@ -84,7 +88,12 @@ export const EventIndexItem = ({event, fetchEvents, searchIndex, category, creat
             </div></Link>
 
             <div className='event-cell-category'>
-              <div className='category'>#{category}</div>
+              <div onClick={ () => {
+
+                receiveQuery({name:category})
+                ownProps.ownProps.props.history.push('/events')
+              }
+              } className='category'>#{category}</div>
             </div>
             {saveButton}
           </div>
@@ -96,6 +105,8 @@ export const EventIndexItem = ({event, fetchEvents, searchIndex, category, creat
     indexItem
   )
 }
+
+// <Redirect to='/events'></Redirect>
 // <li className='event-cell'>
 //   <div className='image-and-price'>
 //     <Link to={`/events/${event.id}`}><div style={{backgroundImage: `url(${event.image_url})`}} className='event-cell-image'></div></Link>

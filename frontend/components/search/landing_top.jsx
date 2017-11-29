@@ -17,7 +17,7 @@ class LandingTop extends React.Component {
             <h1>Find your next Experience</h1>
               <SearchBarContainer props={this.props}/>
           </div>
-        <EventIndexContainer/>
+        <EventIndexContainer props={this.props}/>
       </div>
     )
   }

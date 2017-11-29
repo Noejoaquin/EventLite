@@ -1,9 +1,10 @@
 class Api::EventsController < ApplicationController
   def index
-    debugger
     category_names = Category.all.map do |cat|
       cat.name
     end
+
+    # ILIKE %?%
 
     if category_names.include?(params[:name])
       category_id = Category.all.where(["name LIKE '#{params[:name]}'"]).ids[0]
