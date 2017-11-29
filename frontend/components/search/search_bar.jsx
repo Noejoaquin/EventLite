@@ -26,7 +26,7 @@ class SearchBar extends React.Component {
 
   componentWillMount(){
     if (this.props.passedProps.location.pathname === '/'){
-      debugger
+
       this.props.removeQuery();
     }
   }

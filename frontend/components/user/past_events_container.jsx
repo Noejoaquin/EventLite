@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchEvents, removeQuery } from '../../actions/event_actions';
+import { fetchEvents, removeQuery, receiveQuery } from '../../actions/event_actions';
 import { deleteAttendance } from '../../actions/attendance_actions';
 import { fetchCategories } from '../../actions/category_actions';
 import EventIndex from '../events/event_index';
@@ -14,13 +14,14 @@ const mapStateToProps = (state, ownProps) => {
   let events = currentUserEvents.filter((event) => Date.parse(event.start_time) < Date.parse(new Date()) )
   let query = state.query
   let searchIndex = false;
-
+  let profileContainer = true;
   return {
     currentUser,
     events,
     categories,
     query,
-    searchIndex
+    searchIndex,
+    profileContainer
   }
 }
 
@@ -31,7 +32,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createSave: (id) => dispatch(createSave(id)),
     deleteSave: (id) => dispatch(deleteSave(id)),
     fetchCategories: () => dispatch(fetchCategories()),
-    removeQuery: () => dispatch(removeQuery())
+    removeQuery: () => dispatch(removeQuery()),
+    receiveQuery: (query) => dispatch(receiveQuery(query))
 
   }
 }

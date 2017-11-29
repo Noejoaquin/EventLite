@@ -6,27 +6,25 @@ class EventIndex extends React.Component {
   constructor(props){
     super(props);
     this.alreadyOnSearchPage = false;
-    // debugger
     this.state = this.props.query
   }
-
   componentDidMount(){
-    if (this.props.query.name === '' && this.props.searchIndex === false){
-      debugger
+    if ( this.props.ownProps && this.props.searchIndex === false) { // this checks for the profile indicies, making sure all events are in state
       this.props.fetchEvents(
         {
           name: '',
         }
       ).then(this.props.fetchCategories())
-    } else if (this.props.searchIndex & this.props.ownProps.history.action === 'PUSH'){
-      debugger
+      return
+    }
+    if (this.props.query.name === '' && this.props.searchIndex === false){
       this.props.fetchEvents(
         {
-          name: this.props.query.name,
+          name: '',
         }
       ).then(this.props.fetchCategories())
     } else if (this.props.searchIndex){
-      debugger
+
       this.props.fetchEvents(
         {
           name: this.props.query.name,
@@ -36,10 +34,10 @@ class EventIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    debugger
+
     if (this.props.searchIndex && this.props.query.name !== newProps.query.name) {
 
-      debugger
+
       this.props.fetchEvents({
         name: newProps.query.name
       }).then(this.props.fetchCategories())
@@ -61,11 +59,12 @@ class EventIndex extends React.Component {
     if (!(isEmpty(this.props.categories))) {
       events = this.props.events.map((event) => {
       let category = this.findCategoryName(event, this.props.categories)
-      debugger
+
       return <EventIndexItem key={event.id} event={event} category={ category }
                 deleteSave={this.props.deleteSave} createSave={this.props.createSave}
                 currentUser={this.props.currentUser} searchIndex={this.props.searchIndex}
-                fetchEvents={this.props.fetchEvents} ownProps={this.props} receiveQuery={this.props.receiveQuery}/>
+                fetchEvents={this.props.fetchEvents} ownProps={this.props} receiveQuery={this.props.receiveQuery}
+                profileContainer={this.props.profileContainer}/>
       })
     }
 

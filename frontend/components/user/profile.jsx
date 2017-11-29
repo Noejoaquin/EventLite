@@ -29,7 +29,7 @@ class Profile extends React.Component {
               </div>
             </div>
           </div>
-          <EventProfileTabsContainer currentUser={this.props.currentUser}/>
+          <EventProfileTabsContainer ownProps={this.props.ownProps} currentUser={this.props.currentUser}/>
         </div>
       )
     }

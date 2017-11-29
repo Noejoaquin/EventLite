@@ -11,7 +11,7 @@ class BrowseEvents extends React.Component {
   //   if (this.props.query === null){
   //     this.props.fetchEvents()
   //   } else {
-  //     debugger
+  //     
   //     this.props.fetchEvents(
   //       {
   //         name:this.props.query.searchBar,

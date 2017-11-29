@@ -7,15 +7,17 @@ import { fetchUsers } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
+
   if (parseInt(ownProps.match.params.userId) === state.session.currentUser.id){
     currentUser = state.session.currentUser
   } else {
     // this will be the organizer's data being selected
     currentUser = state.entities.users[ownProps.match.params.userId]
   }
-  
+
   return {
-    currentUser
+    currentUser,
+    ownProps
   }
 }
 

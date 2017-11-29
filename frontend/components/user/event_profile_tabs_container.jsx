@@ -15,10 +15,12 @@ const mapStateToProps = (state, ownProps) => {
     tabNames = ['Upcoming Events','Saved Events', 'Past Events', 'Managed Events']
     panes = [UpcomingEventsContainer,SavedEventsContainer, PastEventsContainer, ManagedEventsContainer]
 
+  let routeInfo = ownProps.props
   return {
     currentUser,
     tabNames,
-    panes
+    panes,
+    routeInfo
   }
 }
 

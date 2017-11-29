@@ -4,6 +4,7 @@ class EventProfileTabs extends React.Component{
   constructor(props){
     super(props);
     this.state = { tabsIndex:  0};
+
   }
 
 
@@ -35,7 +36,7 @@ class EventProfileTabs extends React.Component{
             {tabs}
           </ul>
           <div className='content-container'>
-            <div className='content'><Component/></div>
+            <div className='content'><Component ownProps={this.props} /></div>
 
           </div>
         </div>

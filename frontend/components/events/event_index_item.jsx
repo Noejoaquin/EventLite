@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Redirect from 'react-router-dom';
 
-export const EventIndexItem = ({event, ownProps, receiveQuery, fetchEvents, searchIndex, category, createSave, deleteSave, currentUser}) =>{
+export const EventIndexItem = ({event, ownProps, profileContainer, receiveQuery, fetchEvents, searchIndex, category, createSave, deleteSave, currentUser}) =>{
   const months = { 1: 'January', 2: 'Feburary', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
       7: 'July', 8:'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
   let year = event.start_time.split('-')[0]
@@ -34,10 +34,19 @@ export const EventIndexItem = ({event, ownProps, receiveQuery, fetchEvents, sear
                        aria-hidden='true'></div></Link>
                     </button>
     }
-    // debugger
-    // setState(state.name:category)
-    // ownProps.ownProps.props.history.push('/events')
+
+
     let indexItem;
+     let pushDetails;
+    if (profileContainer) {
+      pushDetails = () => {
+        receiveQuery({name:category})
+        ownProps.ownProps.ownProps.history.push('/events') } // this checks to see if we are on the profile page
+    } else {
+      pushDetails = () => {
+        receiveQuery({name:category})
+        ownProps.props.history.push('/events') } // this checks to see if we are anywhere besides the profile page
+    }
     if (searchIndex){
       indexItem = (
         <li className='event-cell-search'>
@@ -88,12 +97,10 @@ export const EventIndexItem = ({event, ownProps, receiveQuery, fetchEvents, sear
             </div></Link>
 
             <div className='event-cell-category'>
-              <div onClick={ () => {
-
-                receiveQuery({name:category})
-                ownProps.ownProps.props.history.push('/events')
+              <div onClick={
+                pushDetails
               }
-              } className='category'>#{category}</div>
+               className='category'>#{category}</div>
             </div>
             {saveButton}
           </div>
@@ -105,6 +112,11 @@ export const EventIndexItem = ({event, ownProps, receiveQuery, fetchEvents, sear
     indexItem
   )
 }
+
+// () => {
+//
+//   receiveQuery({name:category})
+//   ownProps.props.history.push('/events')
 
 // <Redirect to='/events'></Redirect>
 // <li className='event-cell'>
