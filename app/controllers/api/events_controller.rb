@@ -7,7 +7,7 @@ class Api::EventsController < ApplicationController
     # ILIKE %?%
     # debugger
     if category_names.include?(params[:name]) #changing the category... problem for the backend.
-      category_id = Category.all.where(["name LIKE ?", "#{params[:name]}").ids[0]
+      category_id = Category.all.where(["name LIKE ?", "#{params[:name]}"]).ids[0]
       category_id.to_i
       @events = Event.all.where(["category_id = ?", category_id])
     else
