@@ -22,15 +22,14 @@
 }
 
 .event-list {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
+  // display: flex;   // unneeded lines of code!
+  // // justify-content: space-around;
+  // flex-direction: row;
+  // flex-wrap: wrap;
   width: 100%;
   height: 100%;
 }
 .event-list > li {
-  // border: 1px solid black;
   background-color: #fff;
   box-sizing: border-box;
   margin: 1%;
