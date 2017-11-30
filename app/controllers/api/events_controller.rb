@@ -14,7 +14,12 @@ class Api::EventsController < ApplicationController
       @events = Event.all
       @events = @events.where(["name LIKE ?", "#{params[:name]}"]) if params[:name] != ""
     end
-
+    
+    if @events.empty?
+      @events = Event.all
+    else 
+      @events 
+    end  
   end
 
   def show
