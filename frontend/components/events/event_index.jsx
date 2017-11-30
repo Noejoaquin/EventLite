@@ -50,8 +50,6 @@ class EventIndex extends React.Component {
     }
   }
 
-
-
   findCategoryName(event, categories){
     let categoryId = event.category_id;
     let cat = this.props.categories[categoryId].name
@@ -100,12 +98,5 @@ class EventIndex extends React.Component {
   }
 }
 
-// <div className='event-meta-container'>
-//   <div className='event-index-container'>
-//     <ul className='event-list'>
-//       {events}
-//     </ul>
-//   </div>
-// </div>
 
 export default EventIndex;

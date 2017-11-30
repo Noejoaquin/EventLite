@@ -114,12 +114,3 @@ class NavBar extends React.Component {
 }
 
 export default NavBar;
-
-
-
-
-
-// <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
-
-
-// <button id='browse-events'><Link to='/events'>Browse Events</Link></button>

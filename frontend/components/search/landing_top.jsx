@@ -8,7 +8,7 @@ class LandingTop extends React.Component {
     super(props);
   }
 
-  // <SearchCard props={this.props}/>
+
   render(){
     return (
       <div className='root-page'>
