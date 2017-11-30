@@ -23,7 +23,7 @@
 
 .event-list {
   // display: flex;   // unneeded lines of code!
-  // // justify-content: space-around;
+  // justify-content: space-around;
   // flex-direction: row;
   // flex-wrap: wrap;
   width: 100%;
@@ -113,12 +113,6 @@
   color: #0278b8;
 }
 
-// .fa-bookmark-o{
-//   position: absolute;
-//   right: 20px;
-//   bottom: 6px;
-// }
-
 .bookmark-regular {
   position: absolute;
    right: 20px;
@@ -129,6 +123,10 @@
   position: absolute;
   left: 2px;
   bottom: -21;
+}
+
+.category:hover {
+  cursor: pointer;
 }
 
 .image-and-price{
