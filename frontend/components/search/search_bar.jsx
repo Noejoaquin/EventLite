@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 
 
 class SearchBar extends React.Component {
@@ -25,7 +25,7 @@ class SearchBar extends React.Component {
   }
 
   componentWillMount(){
-    
+
     if (this.props.passedProps.location.pathname === '/'){
       this.props.removeQuery();
     }
