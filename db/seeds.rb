@@ -194,11 +194,6 @@ event17 = Event.create(category_id: cat10.id, organizer_id: user4.id, name:'Conf
 South Ozone Park, NY 11420", ticket_type:'paid', price: 250.00, start_time:Time.zone.now + 5.months, image:"https://image.slidesharecdn.com/inclusiveeducation-150823124312-lva1-app6892-161102011828/95/inclusive-education-2-638.jpg?cb=1478049521")
 
 
-
-event18 = Event.create(category_id: cat10.id, organizer_id: user4.id, name:'Green Roof Conference', description:"Green roofs can be used as outdoor classrooms all year round to study important topics such as weather patterns, the water cycle, climate change, air and water quality, stormwater management, sustainable agriculture and biodiversity; they can also be great spaces for stretching, nature study, journaling, and quiet reading. Studies have shown that the psychological benefits of green spaces, like green roofs, are substantial - they reduce stress, boost attention, and improve brain function. In addition, green roofs have practical benefits. They can reduce carbon emissions and energy costs while reducing stormwater runoff and heat island effect; they also provide important habitat for local and migratory wildlife.",
-   location:"552 Valley Street
-Battle Ground, WA 98604", ticket_type:'free', price: 0.00, start_time:Time.zone.now + 4.months, image:"https://s.hswstatic.com/gif/green-roof-save-money-1.jpg")
-
 event19 = Event.create(category_id: cat8.id, organizer_id: user4.id, name:'Community Garden Restoration', description:"We need your help to keep the nearby garden healthy! We have removed invasive species and are now covering the site with burlap and mulch in preparation for planting. Make sure you dress for the weather! Boots are great, but any closed toe shoes will work as long as you're OK with getting them dirty. We'll provide the tools and the work gloves. And make sure to bring your water bottle, we will have a large bottle on hand for re-fills. We will meet over near the restrooms, west of the west ridge.",
    location:"7836 Blackburn Dr.
 San Diego, CA 92111", ticket_type:'free', price: 0.00, start_time:Time.zone.now + 5.months, image:"https://cityofpowell.us/wp-content/uploads/2015/07/FullSizeRender.jpg")
