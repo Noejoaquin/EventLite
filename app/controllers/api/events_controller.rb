@@ -1,7 +1,5 @@
 class Api::EventsController < ApplicationController
 
-
-
   def index
     category_names = Category.all.map do |cat|
       cat.name
@@ -12,6 +10,8 @@ class Api::EventsController < ApplicationController
       category_id.to_i
       @events = Event.all.where(["category_id = ?", category_id])
     else
+      # debugger
+      params[:name] = params[:name].downcase
       @events = Event.all
       @events = @events.where(["lower(name) LIKE ?", "%#{params[:name]}%"]) if params[:name] != ""
     end
@@ -22,6 +22,7 @@ class Api::EventsController < ApplicationController
       @events
     end
   end
+
 
   def show
     @event = Event.find(params[:id])
