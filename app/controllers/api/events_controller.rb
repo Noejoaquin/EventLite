@@ -10,7 +10,6 @@ class Api::EventsController < ApplicationController
       category_id.to_i
       @events = Event.all.where(["category_id = ?", category_id])
     else
-      # debugger
       params[:name] = params[:name].downcase
       @events = Event.all
       @events = @events.where(["lower(name) LIKE ?", "%#{params[:name]}%"]) if params[:name] != ""

@@ -6,10 +6,10 @@ import { fetchCategories } from '../../actions/category_actions';
 import { createSave, deleteSave } from '../../actions/save_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  let routeInfo = ownProps.props.props
-  let categories = state.entities.categories
-  let currentUser = state.session.currentUser
-  let query = state.query
+  let routeInfo = ownProps.props.props;
+  let categories = state.entities.categories;
+  let currentUser = state.session.currentUser;
+  let query = state.query;
   let events = Object.keys(state.entities.events).map((id) => state.entities.events[id]);
   let searchIndex = false;
   let profileContainer = false;

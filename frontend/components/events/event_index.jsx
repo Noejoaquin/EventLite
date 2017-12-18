@@ -60,6 +60,7 @@ class EventIndex extends React.Component {
   render(){
     let events;
     let eventIndex;
+    let finalEvents = [];
     if (!(isEmpty(this.props.categories))) {
       events = this.props.events.map((event) => {
       let category = this.findCategoryName(event, this.props.categories)
@@ -70,14 +71,17 @@ class EventIndex extends React.Component {
                 fetchEvents={this.props.fetchEvents} ownProps={this.props} receiveQuery={this.props.receiveQuery}
                 profileContainer={this.props.profileContainer} removeQuery={this.props.removeQuery}/>
       })
+      
+      for (let i = 0; i <= 20; i++){
+        finalEvents.push(events[i])
+      }
     }
-
     if (this.props.searchIndex){
       eventIndex = (
         <div className='event-meta-container-search'>
           <div className='event-index-container-search'>
             <ul className='event-list-search'>
-              {events}
+              {finalEvents}
             </ul>
           </div>
         </div>
@@ -86,7 +90,7 @@ class EventIndex extends React.Component {
       eventIndex = (<div className='event-meta-container'>
         <div className='event-index-container'>
           <ul className='event-list'>
-            {events}
+            {finalEvents}
           </ul>
         </div>
       </div>
