@@ -80,7 +80,7 @@ class EventShow extends React.Component {
       let ticketPrice = this.props.event.price === 0 ? 'Free' : '$'.concat(this.props.event.price)
 
       return (
-        <div className='whole-container'>
+        <div className='whole-container-show'>
         <div className='show-container'>
           <div className='show-top'>
             <div style={{backgroundImage: `url(${this.props.event.image_url})`}} className='event-image'></div>

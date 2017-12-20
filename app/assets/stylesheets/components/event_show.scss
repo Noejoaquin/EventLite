@@ -1,5 +1,5 @@
 @media screen and (min-width: 1100px) {
-  .whole-container{
+  .whole-container-show{
     display: flex;
     justify-content: center;
   }
@@ -7,6 +7,7 @@
 
 .show-container{
   max-width: 1100px;
+  padding-top: 57px;
 }
 
 .description-contents ol ul {
