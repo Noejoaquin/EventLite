@@ -9,8 +9,8 @@ import { ProtectedRoute } from '../util/route_util';
 // import { LandingTop } from './search/landing_top';
 import LandingContainer from './search/landing_container';
 import ProfileContainer from './user/profile_container';
+import FooterContainer from './footer/footer_container'
 import {Switch} from 'react-router-dom';
-
 
 const MainPage = () => (
   <div className='MainPage'>
@@ -25,6 +25,7 @@ const MainPage = () => (
       <ProtectedRoute exact path='/users/:userId' component={ProfileContainer}/>
       <ProtectedRoute exact path='/events/:eventId/edit' component={EventFormContainer}/>
     </Switch>
+      <Route path='/' component={FooterContainer} />
   </div>
 )
 export default MainPage;
