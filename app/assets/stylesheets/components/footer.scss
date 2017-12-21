@@ -1,10 +1,47 @@
 .footer {
   background-color: #282C35;
-  height: 300px;
+  height: 250px;
   color: #ADB0B6;
+  font-family: 'Libre Franklin', sans-serif;
 }
 
-.footer-header {
-  font-size: 20px;
+.footer-appname-header {
+  font-size: 30px;
   line-height: 30px;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.footer-name {
+  font-size: 25px;
+  line-height: 30px;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+.link-list {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+.border {
+  width: 55%;
+   margin: 0 auto;
+   margin-top: 15px;
+   display: flex;
+   justify-content: center;
+   border-bottom: 1px solid #363A43
+}
+
+.link-fa {
+  font-size: 40px;
+  color: #ADB0B6 ;
+  padding-right: 15px;
+}
+
+.link-fa:hover {
+  cursor: pointer;
 }
