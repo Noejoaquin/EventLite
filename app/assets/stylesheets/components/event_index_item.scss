@@ -9,6 +9,7 @@
   width: 92%;
   display: block;
   max-width: 1000px;
+  min-height: 625px;
 }
 
 .event-cell {
@@ -24,17 +25,11 @@
 }
 
 .event-list {
-  // display: flex;   // unneeded lines of code!
-  // justify-content: space-around;
-  // flex-direction: row;
-  // flex-wrap: wrap;
-  // margin: 0px auto;
   width: 104%;
   height: 100%;
 }
 .event-list > li {
   background-color: #fff;
-  // box-sizing: border-box;
   margin: 1%;
   border: 1px solid #eee;
   padding-bottom: 10px;

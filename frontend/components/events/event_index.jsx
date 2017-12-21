@@ -71,7 +71,7 @@ class EventIndex extends React.Component {
                 fetchEvents={this.props.fetchEvents} ownProps={this.props} receiveQuery={this.props.receiveQuery}
                 profileContainer={this.props.profileContainer} removeQuery={this.props.removeQuery}/>
       })
-      
+
       for (let i = 0; i <= 20; i++){
         finalEvents.push(events[i])
       }
@@ -89,10 +89,10 @@ class EventIndex extends React.Component {
     } else {
       eventIndex = (<div className='event-meta-container'>
         <div className='event-index-container'>
-          <ul className='event-list'>
-            {finalEvents}
-          </ul>
-        </div>
+            <ul className='event-list'>
+              {finalEvents}
+            </ul>
+          </div>
       </div>
       )
     }
