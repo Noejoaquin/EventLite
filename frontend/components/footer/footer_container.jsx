@@ -3,13 +3,11 @@ import Footer from './footer';
 import * as SessionActions from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  let currentUser = state.session.currentUser;
-  return { currentUser, ownProps };
+  return { ownProps };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  let logout = SessionActions.logout
-  return { logout: () => dispatch(logout()) };
+  return { };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Footer)

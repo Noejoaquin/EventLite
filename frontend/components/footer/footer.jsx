@@ -1,14 +1,5 @@
 import React from 'react';
 
-
-// export const Footer = () => {
-//   return (
-//     <div className='footer-header'>
-//       THIS IS THE FOOTER
-//     </div>
-//   )
-// }
-
 class Footer extends React.Component {
   constructor(props){
     super(props)
@@ -16,8 +7,10 @@ class Footer extends React.Component {
 
   render() {
     return (
-        <div className='footer-header'>
-          THIS IS THE FOOTER
+        <div className='footer'>
+          <h1 className='footer-header'>
+            THIS IS THE HEADER
+          </h1>
         </div>
       )
   }

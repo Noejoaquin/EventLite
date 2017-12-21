@@ -253,8 +253,6 @@ class EventForm extends React.Component {
 
           <button className='event-live' onClick={this.handleSubmit}>{buttonText}</button>
           {errorMessage}
-          <div className='footer'>
-          </div>
         </div>
       </div>
     )
