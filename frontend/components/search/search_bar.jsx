@@ -12,7 +12,6 @@ class SearchBar extends React.Component {
 
   handleChange(field){
     return (e) => {
-      debugger
       this.setState({[field]: e.target.value})
     }
   }
@@ -39,7 +38,6 @@ class SearchBar extends React.Component {
   }
 
   render(){
-    debugger
     let dateTypes = ['All Dates', 'Today', 'Tomorrow', 'This Weekend', 'This Week', 'Next Week', "Next Month"]
     const dates = dateTypes.map( (dateType, i) => {
       return <option value={dateType} key={i} >{dateType}</option>
@@ -78,7 +76,6 @@ class SearchBar extends React.Component {
         </ul>
       </form> )
     } else {
-
       searchForm = (
         <form className='nav-search-form'>
         <ul className='nav-search-items'>
