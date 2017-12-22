@@ -8,10 +8,13 @@ class SearchBar extends React.Component {
     this.state = {name: this.props.query}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.clearInput = this.clearInput.bind(this);
+
   }
 
   handleChange(field){
     return (e) => {
+      debugger
       this.setState({[field]: e.target.value})
     }
   }
@@ -25,13 +28,20 @@ class SearchBar extends React.Component {
   }
 
   componentWillMount(){
-
     if (this.props.passedProps.location.pathname === '/'){
       this.props.removeQuery();
     }
   }
 
+  componentWillReceiveProps(nextProps){
+    if (this.props.passedProps.location.pathname === '/events' && nextProps.passedProps.location.pathname !== '/events'){
+      this.setState({name: ""})
+      this.props.removeQuery();
+    }
+  }
+
   render(){
+    debugger
     let dateTypes = ['All Dates', 'Today', 'Tomorrow', 'This Weekend', 'This Week', 'Next Week', "Next Month"]
     const dates = dateTypes.map( (dateType, i) => {
       return <option value={dateType} key={i} >{dateType}</option>
@@ -45,13 +55,29 @@ class SearchBar extends React.Component {
         //   </li>
     })
     let searchForm;
-    let input = this.props.passedProps.location.pathname === '/' ? '' : this.props.query
+    let input = this.props.passedProps.location.pathname === '/events' ?
+     <input className='nav-input'
+       type='text'
+       id='main-search'
+       placeholder='Search by events or categories'
+        value={this.state.name}
+        onChange={this.handleChange('name')}></input> :
+     <input className='nav-input'
+       type='text' id='main-search'
+        placeholder='Search by events or categories'
+       onChange={this.handleChange('name')}
+       value={this.state.name}></input>
     if (this.props.passedProps.location.pathname === '/'){
       searchForm = (
         <form className='searchform'>
         <ul className='input-list-search-card'>
           <li className= 'searchBar'>
-            <input type='text' id='main-search' placeholder='Search events or categories' defaultValue={input} onChange={this.handleChange('name')}></input>
+            <input
+              type='text'
+              id='main-search'
+              placeholder='Search events or categories'
+              defaultValue={this.props.query}
+              onChange={this.handleChange('name')}></input>
           </li>
           <li>
             <button type='submit' onClick={this.handleSubmit}>SEARCH</button>
@@ -59,6 +85,7 @@ class SearchBar extends React.Component {
         </ul>
       </form> )
     } else {
+
       searchForm = (
         <form className='nav-search-form'>
         <ul className='nav-search-items'>
@@ -68,7 +95,7 @@ class SearchBar extends React.Component {
               </button>
           </li>
           <li className='nav-search-input'>
-            <input className='nav-input'type='text' id='main-search' placeholder='Search by events or categories' defaultValue={input}  onChange={this.handleChange('name')}></input>
+            {input}
           </li>
         </ul>
       </form>

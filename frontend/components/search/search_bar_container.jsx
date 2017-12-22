@@ -6,7 +6,8 @@ import SearchBar from './search_bar';
 const mapStateToProps = (state, ownProps) => {
   let passedProps = ownProps.props
   let query = state.query.name
-  return {passedProps, query}
+  let input = '';
+  return {passedProps, query, input}
 }
 
 
