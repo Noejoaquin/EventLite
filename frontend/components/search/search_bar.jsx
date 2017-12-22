@@ -8,8 +8,6 @@ class SearchBar extends React.Component {
     this.state = {name: this.props.query}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.clearInput = this.clearInput.bind(this);
-
   }
 
   handleChange(field){
@@ -45,16 +43,9 @@ class SearchBar extends React.Component {
     let dateTypes = ['All Dates', 'Today', 'Tomorrow', 'This Weekend', 'This Week', 'Next Week', "Next Month"]
     const dates = dateTypes.map( (dateType, i) => {
       return <option value={dateType} key={i} >{dateType}</option>
-        // <li>
-        //   <input type='text' placeholder='location' onChange={this.handleChange('location')}></input>
-        //   </li>
-        //   <li>
-        //     <select>
-        //       {dates}
-        //     </select>
-        //   </li>
     })
     let searchForm;
+
     let input = this.props.passedProps.location.pathname === '/events' ?
      <input className='nav-input'
        type='text'
@@ -63,10 +54,12 @@ class SearchBar extends React.Component {
         value={this.state.name}
         onChange={this.handleChange('name')}></input> :
      <input className='nav-input'
-       type='text' id='main-search'
-        placeholder='Search by events or categories'
+       type='text'
+       id='main-search'
+       placeholder='Search by events or categories'
        onChange={this.handleChange('name')}
        value={this.state.name}></input>
+
     if (this.props.passedProps.location.pathname === '/'){
       searchForm = (
         <form className='searchform'>
@@ -107,23 +100,5 @@ class SearchBar extends React.Component {
   }
 
 }
-// <form className={this.props.location.pathname === '/' ? 'searchform' : 'nav-search-form'}>
-//   <ul className={this.props.location.pathname === '/' ? 'input-list-search-card' : 'nav-input-list-search-card'}>
-//     <li className={this.props.location.pathname === '/' ? 'searchBar' : 'nav-searchBar' }>
-//       <input type='text' id='main-search' placeholder='Search events or categories' onChange={this.handleChange('name')}></input>
-//       </li>
-//       <li>
-//         <input type='text' placeholder='location' onChange={this.handleChange('location')}></input>
-//         </li>
-//         <li>
-//           <select>
-//             {dates}
-//           </select>
-//         </li>
-//         <li>
-//           <button type='submit' onClick={this.handleSubmit}>SEARCH</button>
-//           </li>
-//         </ul>
-//       </form>
 
 export default SearchBar;
