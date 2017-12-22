@@ -6,7 +6,6 @@ import EventShowContainer from './events/event_show_container';
 import BrowseEventsContainer from './events/event_browse_container';
 import { Route } from 'react-router-dom';
 import { ProtectedRoute } from '../util/route_util';
-// import { LandingTop } from './search/landing_top';
 import LandingContainer from './search/landing_container';
 import ProfileContainer from './user/profile_container';
 import FooterContainer from './footer/footer_container'

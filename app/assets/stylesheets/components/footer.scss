@@ -45,3 +45,11 @@
 .link-fa:hover {
   cursor: pointer;
 }
+
+.browse-events-image {
+  height: 282px;
+  background-size:contain;
+  background-image: image_url("browse_events_image.jpg");
+  background-repeat: no-repeat;
+  position: relative;
+}
