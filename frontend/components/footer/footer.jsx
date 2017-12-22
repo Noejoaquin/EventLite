@@ -9,11 +9,11 @@ class Footer extends React.Component {
 
 
   render() {
-
-    let browseEventImage = this.props.location.pathname === '/events' ? <div className='browse-events-image'></div> : <div></div>
+    let browseEventImage = this.props.location.pathname === '/events' ? <img className='browse-events-image' src={window.event_image} /> : <div></div>
     return (
+      <div>
+      {browseEventImage}
         <div className='footer'>
-          {browseEventImage}
             <h1 className='footer-appname-header'>EventLite</h1>
               <h2 className='footer-name'>
                 Learn More About Noe Jimenez
@@ -25,6 +25,7 @@ class Footer extends React.Component {
               </ul>
             <div className='border'></div>
         </div>
+      </div>
       )
   }
 }
