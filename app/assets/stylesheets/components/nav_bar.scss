@@ -43,8 +43,6 @@
   padding-right: 10px;
 }
 
-
-
 .dropdown{
   overflow: hidden;
 }
@@ -94,27 +92,23 @@
   display: block;
   position: absolute;
   right: 172px;
-  height: 83px;
+  height: 82px;
   width: 190px;
 }
-
-// #logout-button{
-//   padding: 3px;
-// }
 
 .dropdown-content button {
   padding: 0px
 }
 #organizer-profile-link, #logout-button {
   padding: 0px;
-  margin-left: 17px;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  padding-left: 11px;
+  padding-top: 6px;
+  padding-bottom: 6px;
   text-transform: none;
   font-size: 14px;
   color: #666A73;
   letter-spacing: 0.5px;
-  padding-right: 66px;
+  padding-right: 113px;
 }
 
 

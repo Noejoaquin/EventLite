@@ -16,27 +16,24 @@ class NavBar extends React.Component {
   render(){
     let nav;
     let createEventLink;
-    let profileLink;
     let landingPageLink;
     let browseEventsLink;
+    let  profileLink = <Link to={`/users/${this.props.currentUser.id}`}><button id='organizer-profile-link'>Profile</button></Link>
+
     let searchBar = this.props.location.pathname === '/' ? <div></div> : <SearchBarContainer props={this.props}/>
     if (this.props.currentUser){
-
       if (this.props.location.pathname.includes('events') && !this.props.location.pathname.includes('events/')){
         browseEventsLink = <button className='browse-link' id='browse-events'>Browse Events</button>
       } else {
         browseEventsLink = <Link to='/events'><button className='browse-link' id='browse-events'>Browse Events</button></Link>
       }
+
       if (this.props.location.pathname === '/'){
         landingPageLink = <button className='header-title'>eventLite</button>
         } else {
           landingPageLink = <Link className='header-title' to='/'>eventLite</Link>
           }
-      if (this.props.location.pathname === `/users/${this.props.currentUser.id}`){
-          profileLink = <button id='organizer-profile-link'>Profile</button>
-        } else {
-          profileLink = <Link to={`/users/${this.props.currentUser.id}`}><button id='organizer-profile-link'>Profile</button></Link>
-          }
+
       if (this.props.location.pathname === '/events/new' ){
           createEventLink = <button id='create-event'>Create An Event</button>
       } else {
