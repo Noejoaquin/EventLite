@@ -47,7 +47,7 @@ class NavBar extends React.Component {
               <div className='search-form'>
                 {searchBar}
               </div>
-              <nav className='links-container' >
+              <nav className='links-container'>
                 <ul className='nav-links'>
                   {browseEventsLink}
                   <li>
