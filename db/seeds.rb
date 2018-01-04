@@ -160,8 +160,8 @@ New York, NY 10013', lat: 40.7142049, lng:-73.99789149999998, ticket_type:'donat
 
 
 event12 = Event.create(category_id: cat10.id, organizer_id: user4.id, name:"Life Saving's Conference", description:"The Money is a free conference, brought to you by YWCA Hartford Region. It focuses on money management, investment strategies and retirement planning for people of all ages, economic backgrounds and levels of financial knowledge.",
-   location:'41 E. Pendergast Ave.
-Roanoke, VA 24012', ticket_type:'paid', price: 50.00, start_time:Time.zone.now + 3.months, image: "https://thumbs.dreamstime.com/z/business-people-money-rain-conference-room-portrait-successful-50543022.jpg")
+   location:'199 Grand St
+New York, NY 10013', lat: 40.719002, lng:-73.99702660000003, ticket_type:'paid', price: 50.00, start_time:Time.zone.now + 3.months, image: "https://thumbs.dreamstime.com/z/business-people-money-rain-conference-room-portrait-successful-50543022.jpg")
 
 
 
@@ -191,8 +191,8 @@ New York, NY 10009", lat: 40.7226894, lng: -73.98330229999999, ticket_type:'paid
 
 
 event17 = Event.create(category_id: cat10.id, organizer_id: user4.id, name:'Conference for Autism and Inclusive Education', description:"Join us for two days focused on best practices in autism and inclusion. Learn more about NYU Steinhardt's ASD Nest Program and hear from international experts in the autism field who have greatly influenced the supports and strategies used in Nest. Bridging research and practice, we will explore how to better understand and support students on the autism spectrum. The ASD Nest Model is the recognized internationally as one of the top inclusion programs for students with autism spectrum disorders. Join us as we hear from the experts in the field who helped us shape our program.",
-   location:"913 West Kirkland Ave.
-South Ozone Park, NY 11420", lat: 40.7126854, lng:73.78501649999998, ticket_type:'paid', price: 250.00, start_time:Time.zone.now + 5.months, image:"https://image.slidesharecdn.com/inclusiveeducation-150823124312-lva1-app6892-161102011828/95/inclusive-education-2-638.jpg?cb=1478049521")
+   location:"1046 Flatbush Ave
+Brooklyn, NY 11226", lat: 40.6455068, lng: -73.95833870000001, ticket_type:'paid', price: 250.00, start_time:Time.zone.now + 5.months, image:"https://image.slidesharecdn.com/inclusiveeducation-150823124312-lva1-app6892-161102011828/95/inclusive-education-2-638.jpg?cb=1478049521")
 
 
 event19 = Event.create(category_id: cat8.id, organizer_id: user4.id, name:'Community Garden Restoration', description:"We need your help to keep the nearby garden healthy! We have removed invasive species and are now covering the site with burlap and mulch in preparation for planting. Make sure you dress for the weather! Boots are great, but any closed toe shoes will work as long as you're OK with getting them dirty. We'll provide the tools and the work gloves. And make sure to bring your water bottle, we will have a large bottle on hand for re-fills. We will meet over near the restrooms, west of the west ridge.",
