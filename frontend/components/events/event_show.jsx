@@ -124,9 +124,8 @@ class EventShow extends React.Component {
                 </div>
               </div>
             </div>
-        </div>
-        <div className='footer'></div>
-        </div>
+         </div>
+       </div>
       )
 
     }
