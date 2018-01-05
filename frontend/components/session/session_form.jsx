@@ -5,11 +5,8 @@ import { Redirect, Link } from 'react-router-dom';
 class SessionForm extends React.Component {
   constructor(props){
     super(props);
-    if(this.props.formType === 'Log In'){
-      this.state = {email: '',password: '' }
-    } else {
-      this.state = {email: '', password: '', first_name: '', last_name: ''}
-    }
+
+    this.state = {email: '', password: '', first_name: '', last_name: ''}
     this.handleSubmit = this.handleSubmit.bind(this);
     this.revertBackToOriginalState = this.revertBackToOriginalState.bind(this)
     this.handleGuestLogin = this.handleGuestLogin.bind(this);
@@ -17,16 +14,16 @@ class SessionForm extends React.Component {
   }
 
   revertBackToOriginalState(){
-    if (this.props.formType === 'Log In'){
-      this.setState({ email: '', password: ''})
-    } else {
-      this.setState({email: '', password: '', first_name: '', last_name: ''})
-    }
+      this.setState({ email: '', password: '', first_name: '', last_name: ''})
   }
 
   handleSubmit(e){
-    let state = this.state;
-    this.props.processForm(state).then(this.revertBackToOriginalState);
+    if (this.props.formType === 'Log In'){
+      this.props.processForm({email: this.state.email, password: this.state.password})
+    } else {
+      let state = this.state;
+      this.props.processForm(state)
+    }
   }
 
   componentWillReceiveProps(nextProps){
@@ -135,7 +132,7 @@ class SessionForm extends React.Component {
                     <ul className='first-last-name'>
                       <ul className='input'>
                         <li>
-                          <label className='first-name-signup'> First Name</label>
+                          <label className='first-name-signup'>First Name</label>
                         </li>
                         <li>
                           <input type='text' id='input-first-name' onChange={this.handleChange('first_name')} value={this.state.first_name} />

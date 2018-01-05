@@ -75,7 +75,7 @@ class EventIndex extends React.Component {
       }
     }
 
-    if (!finalEvents.length === 0 || !finalEvents[0] ){
+    if (finalEvents[0] === undefined){
       finalEvents = (
         <div>
           <img className='empty-index-image' src={window.empty_index_image} />
