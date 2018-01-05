@@ -9,7 +9,11 @@ class NavBar extends React.Component {
   }
 
   handleLogout(){
-    this.props.logout().then(this.props.history.push('/'));
+    if (this.props.location.pathname === '/') {
+      this.props.logout()
+    } else {
+      this.props.logout().then(this.props.history.push('/'));
+    }
   }
 
   render(){
@@ -30,12 +34,12 @@ class NavBar extends React.Component {
     } else {
       landingPageLink = <Link className='header-title' to='/'>eventLite</Link>
     }
-    if(this.props.location.pathname.includes('users')){
-      profileLink = <button id='organizer-profile-link'>Profile</button>
-    } else {
-      profileLink = <Link to={`/users/${this.props.currentUser.id}`}><button id='organizer-profile-link'>Profile</button></Link>
-    }
     if (this.props.currentUser){
+      if(this.props.location.pathname.includes('users')){
+        profileLink = <button id='organizer-profile-link'>Profile</button>
+      } else {
+        profileLink = <Link to={`/users/${this.props.currentUser.id}`}><button id='organizer-profile-link'>Profile</button></Link>
+      }
 
       if (this.props.location.pathname === '/events/new' ){
           createEventLink = <button id='create-event'>Create An Event</button>
