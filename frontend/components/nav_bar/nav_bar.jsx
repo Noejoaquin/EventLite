@@ -10,7 +10,7 @@ class NavBar extends React.Component {
   }
 
   handleLogout(){
-    this.props.logout();
+    this.props.logout().then(this.props.history.push('/'));
   }
 
   render(){
@@ -79,16 +79,21 @@ class NavBar extends React.Component {
       </header>
       );
     } else {
-      if (this.props.location.pathname.includes('events')){
-        browseEventsLink = <button id='browse-events'>Browse Events</button>
+      if (this.props.location.pathname.includes('events') && !this.props.location.pathname.includes('events/')){
+        browseEventsLink = <button className='browse-link' id='browse-events'>Browse Events</button>
       } else {
-        browseEventsLink = <button id='browse-events'><Link to='/events'>Browse Events</Link></button>
+        browseEventsLink = <Link to='/events'><button className='browse-link' id='browse-events'>Browse Events</button></Link>
       }
       if (this.props.location.pathname === '/'){
         landingPageLink = <button className='header-title'>eventLite</button>
         } else {
           landingPageLink = <Link className='header-title' to='/'>eventLite</Link>
           }
+      if (this.props.location.pathname === '/events/new' ){
+          createEventLink = <button id='create-event'>Create An Event</button>
+      } else {
+          createEventLink = <Link to='/login'><button id='create-event' >Create An Event</button></Link>
+        }
       nav = (
         <header>
             <div className='header-title-container'>
@@ -97,7 +102,7 @@ class NavBar extends React.Component {
             <ul className='nav-links'>
               {browseEventsLink}
               <button><Link to='/login'>Log In</Link></button>
-              <button id='create-event'><Link to='/login'>Create An Event</Link></button>
+              {createEventLink}
             </ul>
           </nav>
         </div>
