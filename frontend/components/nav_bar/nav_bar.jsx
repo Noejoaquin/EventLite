@@ -101,7 +101,7 @@ class NavBar extends React.Component {
           <nav className='links-container' >
             <ul className='nav-links'>
               {browseEventsLink}
-              <button><Link to='/login'>Log In</Link></button>
+              <Link to='/login'><button>Log In</button></Link>
               {createEventLink}
             </ul>
           </nav>
