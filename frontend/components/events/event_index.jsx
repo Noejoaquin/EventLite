@@ -36,8 +36,6 @@ class EventIndex extends React.Component {
   componentWillReceiveProps(newProps){
 
     if (this.props.searchIndex && this.props.query.name !== newProps.query.name) {
-
-
       this.props.fetchEvents({
         name: newProps.query.name
       }).then(this.props.fetchCategories())
@@ -56,26 +54,38 @@ class EventIndex extends React.Component {
     return cat
   }
 
-
   render(){
     let events;
     let eventIndex;
     let finalEvents = [];
+    let emptyIndexPicture;
     if (!(isEmpty(this.props.categories))) {
       events = this.props.events.map((event) => {
-      let category = this.findCategoryName(event, this.props.categories)
+        let category = this.findCategoryName(event, this.props.categories)
 
-      return <EventIndexItem key={event.id} event={event} category={ category }
-                deleteSave={this.props.deleteSave} createSave={this.props.createSave}
-                currentUser={this.props.currentUser} searchIndex={this.props.searchIndex}
-                fetchEvents={this.props.fetchEvents} ownProps={this.props} receiveQuery={this.props.receiveQuery}
-                profileContainer={this.props.profileContainer} removeQuery={this.props.removeQuery}/>
+        return <EventIndexItem key={event.id} event={event} category={ category }
+                  deleteSave={this.props.deleteSave} createSave={this.props.createSave}
+                  currentUser={this.props.currentUser} searchIndex={this.props.searchIndex}
+                  fetchEvents={this.props.fetchEvents} ownProps={this.props} receiveQuery={this.props.receiveQuery}
+                  profileContainer={this.props.profileContainer} removeQuery={this.props.removeQuery}/>
       })
 
       for (let i = 0; i <= 20; i++){
         finalEvents.push(events[i])
       }
     }
+
+    if (!finalEvents.length === 0 || !finalEvents[0] ){
+      finalEvents = (
+        <div>
+          <img className='empty-index-image' src={window.empty_index_image} />
+          <h2 className='empty-notice'>You Don't Have Any Events Here Yet.</h2>
+          <br/>
+          <h2 className='empty-notice'>But Visit Our Browse Events Page and Get Busy!</h2>
+        </div>
+      )
+    }
+
     if (this.props.searchIndex){
       eventIndex = (
         <div className='event-meta-container-search'>
