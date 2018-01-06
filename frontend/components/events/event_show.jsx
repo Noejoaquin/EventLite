@@ -38,16 +38,16 @@ class EventShow extends React.Component {
       return null
     } else {
         var editButton;
-        if (this.props.currentUser){
-          if (this.props.event.organizer_id === this.props.currentUser.id){
+        // if (this.props.currentUser){
+        //   if (this.props.event.organizer_id === this.props.currentUser.id){
             editButton = <Link to={`/events/${this.props.event.id}/edit`}>
               <div className='edit-button'>
                 <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
               </div></Link>
-            } else {
-              editButton = <div></div>
-            }
-        }
+            // } else {
+            //   editButton = <div></div>
+            // }
+        // }
         var attendanceButton;
         if (this.props.currentUser){
           if (this.props.currentUser.attending_events.includes(parseInt(this.props.match.params.eventId))) {
