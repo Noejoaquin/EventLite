@@ -8,11 +8,13 @@ class EventShow extends React.Component {
     this.handleCancellation = this.handleCancellation.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleUnsave = this.handleUnsave.bind(this);
+    this.handleTagClick = this.handleTagClick.bind(this);
     this.state = this.props.currentUser
   }
 
   componentWillMount(){
-    this.props.fetchEvent(this.props.match.params.eventId).then(() => this.props.fetchUsers())
+    // this.props.fetchEvent(this.props.match.params.eventId).then(() => this.props.fetchCategories()).then(() => this.props.fetchUsers())
+    this.props.fetchCategories().then(() => this.props.fetchEvent(this.props.match.params.eventId)).then(() => this.props.fetchUsers())
   }
 
   handleAttendance(){
@@ -29,6 +31,12 @@ class EventShow extends React.Component {
 
   handleUnsave(){
     this.props.deleteSave(this.props.match.params.eventId)
+  }
+
+  handleTagClick(){
+    let category = this.props.categories[this.props.event.category_id].name
+    this.props.receiveQuery({name:category})
+    this.props.history.push('/events')
   }
 
 
@@ -123,6 +131,9 @@ class EventShow extends React.Component {
                   {this.props.event.location}
                 </div>
               </div>
+            </div>
+            <div className='tag-container'>
+              <button className='tag-button' onClick={this.handleTagClick}></button>
             </div>
          </div>
        </div>

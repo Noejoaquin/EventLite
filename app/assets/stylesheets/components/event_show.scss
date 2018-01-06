@@ -124,26 +124,14 @@
 }
 
 #icon-bookmark-show-save {
-  // position: absolute;
-  // left: 20px;
-  // bottom: 15px;
-  // font-size: 29px;
-  // color: #0278b8;
-
   position: absolute;
   right: 20px;
   bottom: 77px;
   font-size: 29px;
   color: #0278b8;
-
 }
 
 #icon-bookmark-show {
-  // position: absolute;
-  // left: 20px;
-  // bottom: 15px;
-  // font-size: 29px;
-  // color: #0278b8;
   position: absolute;
   right: 20px;
   bottom: 77px;
@@ -151,7 +139,6 @@
   color: #0278b8;
 
 }
-
 
 #register-button{
   margin-right: 2.3%;
@@ -211,7 +198,14 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-//
-// .footer{
-//   height: 200px;
-// }
+
+.tag-container {
+  // background-color: blue;
+  height: 50px;
+}
+
+.tag-button{
+  background-color: red;
+  height: 25px;
+  width:25px;
+}
