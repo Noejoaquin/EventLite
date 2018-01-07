@@ -7,7 +7,7 @@
 }
 
 .whole-container-show {
-  margin-bottom:59px;
+  background-color: #f5f5f5;
 }
 .show-container{
   max-width: 1100px;
@@ -52,7 +52,8 @@
   border: 1px solid black;
   width: 100%;
   max-width: 1100px;
-  background-color: #f5f5f5;
+  // background-color: #f5f5f5;
+  background-color: white;
   border: 1px solid #D8D0CE;
 }
 
@@ -121,7 +122,7 @@
   border-color: #D2D6DF;
   height: 63px;
   position: relative;
-
+  background-color: white;
 }
 
 #icon-bookmark-show-save {
@@ -183,12 +184,16 @@
 .listing-cell{
   padding-top: 5%;
   display: flex;
+  border: 1px solid #D2D6DF;
+  border-bottom: none;
+  background-color: white;
 }
 
 .description{
   width: 46%;
   padding-left:11%;
   padding-right:8%;
+  background-color: white;
 }
 
 .title{
@@ -202,8 +207,13 @@
 }
 
 .tag-container {
-  margin-left: 11%;
-  margin-top: 65px;
+  padding-left: 11%;
+  padding-top: 75px;
+  padding-bottom: 103px;
+  border: 1px solid #D2D6DF;
+  border-bottom-width:2px; 
+  border-top: none;
+  background-color: white;
 }
 
 .tag-container h3 {
@@ -232,4 +242,9 @@
   font-family: 'Roboto', sans-serif;
   list-style: none;
   font-weight: 300;
+}
+
+.event-background-image{
+  height:250px;
+
 }
