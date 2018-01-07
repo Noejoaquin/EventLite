@@ -133,7 +133,7 @@ class EventShow extends React.Component {
               </div>
             </div>
             <div className='tag-container'>
-              <button className='tag-button' onClick={this.handleTagClick}></button>
+              <button className='tag-button' onClick={this.handleTagClick}>{this.props.categories[this.props.event.category_id].name}</button>
             </div>
          </div>
        </div>
