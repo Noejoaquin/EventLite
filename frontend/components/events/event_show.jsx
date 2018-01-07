@@ -13,7 +13,6 @@ class EventShow extends React.Component {
   }
 
   componentWillMount(){
-    // this.props.fetchEvent(this.props.match.params.eventId).then(() => this.props.fetchCategories()).then(() => this.props.fetchUsers())
     this.props.fetchCategories().then(() => this.props.fetchEvent(this.props.match.params.eventId)).then(() => this.props.fetchUsers())
   }
 
@@ -121,18 +120,19 @@ class EventShow extends React.Component {
               <div className='event-details'>
                 <div className='date-and-time'>
                   <h3 className='title date-and-time'>date and time</h3>
-                  <ul>
+                  <ul className='info'>
                     <li>{date}</li>
                     <li>{time}</li>
                   </ul>
                 </div>
                 <div className='location'>
                   <h3 className='title location'>location</h3>
-                  {this.props.event.location}
+                  <li className='info'>{this.props.event.location}</li>
                 </div>
               </div>
             </div>
             <div className='tag-container'>
+              <h3 className='title'>TAGS</h3>
               <button className='tag-button' onClick={this.handleTagClick}>{this.props.categories[this.props.event.category_id].name}</button>
             </div>
          </div>
