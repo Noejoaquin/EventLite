@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-
   const root = document.getElementById('root');
   ReactDom.render(<Root store={store} />, root)
 })

@@ -86,7 +86,7 @@ class EventShow extends React.Component {
         let date = moment(this.props.event.start_time).format('MMMM Do');
         let time = moment(this.props.event.start_time).format('hh:mm a');
       let ticketPrice = this.props.event.price === 0 ? 'Free' : '$'.concat(this.props.event.price)
-      
+
       return (
           <div className='whole-container-show'>
           <div className='show-container'>
@@ -136,7 +136,7 @@ class EventShow extends React.Component {
                 <h3 className='title'>TAGS</h3>
                 <button className='tag-button' onClick={this.handleTagClick}>{this.props.categories[this.props.event.category_id].name}</button>
               </div>
-              <EventMap lat={this.props.event.lat} lng={this.props.event.lng}/>
+              <EventMap events={this.props.event} lat={this.props.event.lat} lng={this.props.event.lng}/>
            </div>
          </div>
       )
