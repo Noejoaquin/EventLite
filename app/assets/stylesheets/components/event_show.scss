@@ -211,7 +211,7 @@
   padding-top: 75px;
   padding-bottom: 103px;
   border: 1px solid #D2D6DF;
-  border-bottom-width:2px; 
+  border-bottom-width:2px;
   border-top: none;
   background-color: white;
 }
@@ -246,5 +246,9 @@
 
 .event-background-image{
   height:250px;
+}
 
+#map-container{
+  width: 500px;
+  height: 500px;
 }
