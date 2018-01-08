@@ -86,7 +86,6 @@ class EventShow extends React.Component {
         let date = moment(this.props.event.start_time).format('MMMM Do');
         let time = moment(this.props.event.start_time).format('hh:mm a');
       let ticketPrice = this.props.event.price === 0 ? 'Free' : '$'.concat(this.props.event.price)
-
       return (
           <div className='whole-container-show'>
           <div className='show-container'>

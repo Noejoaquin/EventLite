@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   let dummyEvent = {dummy: true, name: '', description: '', location:'', ticket_type: '',
     price: 0.0, start_time:'', end_time:'', category_id: null, imageFile: '',
      imageUrl:"https://www.arabamerica.com/wp-content/themes/arabamerica/assets/img/thumbnail-default.jpg",
-      image_url:''}
+      image_url:'', lat:null, lng:null}
   let event = dummyEvent;
   if (ownProps.match.path === '/events/:eventId/edit'){
     formType = 'edit';

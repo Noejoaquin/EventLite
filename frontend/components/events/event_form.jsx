@@ -17,6 +17,8 @@ class EventForm extends React.Component {
     this.handleLocation = this.handleLocation.bind(this)
     this.errorConstructor = this.errorConstructor.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.activatePlacesSearch = this.activatePlacesSearch.bind(this)
+    this.getLatLng = this.getLatLng.bind(this)
     this.state = this.props.event
   }
 
@@ -34,6 +36,17 @@ class EventForm extends React.Component {
     }
   }
 
+// Corey Ladovsky
+  getLatLng(address) {
+    if(address === "") {
+      return "";
+    }
+    let place = this.autocomplete.getPlace();
+    let lat = place.geometry.location.lat();
+    let lng = place.geometry.location.lng();
+    this.setState({lat: lat, lng: lng})
+  }
+
   revertBackToOriginalState(){
       this.setState({name: '', description: '', location:'', ticket_type: '',
         price: 0.0, start_time:'', end_time:'', category_id: null, imageFile: '', imageUrl: '', image_url:''})
@@ -47,35 +60,51 @@ class EventForm extends React.Component {
 
   handleSubmit(e){
     let formData = new FormData();
-    this.state.id ? formData.append('event[id]', this.state.id) : null
-    formData.append("event[name]", this.state.name)
-    formData.append("event[description]", this.state.description)
-    formData.append("event[location]", this.state.location)
-    formData.append("event[ticket_type]", this.state.ticket_type)
-    formData.append("event[price]", this.state.price)
-    formData.append("event[start_time]", this.state.start_time)
-    formData.append("event[end_time]", this.state.end_time)
-    formData.append("event[category_id]", this.state.category_id)
-    if (this.state.imageFile) {
-      formData.append("event[image]", this.state.imageFile)
+    setTimeout(() => {
+      let latLng = this.getLatLng(this.state.location)
+      this.state.id ? formData.append('event[id]', this.state.id) : null
+      formData.append("event[name]", this.state.name)
+      formData.append("event[description]", this.state.description)
+      formData.append("event[location]", this.state.location)
+      formData.append("event[ticket_type]", this.state.ticket_type)
+      formData.append("event[price]", this.state.price)
+      formData.append("event[start_time]", this.state.start_time)
+      formData.append("event[end_time]", this.state.end_time)
+      formData.append("event[category_id]", this.state.category_id)
+      formData.append("event[lat]", this.state.lat)
+      formData.append("event[lng]", this.state.lng)
+      if (this.state.imageFile) {
+        formData.append("event[image]", this.state.imageFile)
+      }
+      this.props.clearErrors();
+      this.props.action(formData).then(({event}) => {
+        this.props.history.push(`/events/${event.id}`)
+      })
     }
-    this.props.clearErrors();
-    this.props.action(formData).then(({event}) => {
-      this.props.history.push(`/events/${event.id}`)
-    })
+  ,0)
   }
 
-  handleLocation(location){
-    this.setState({location: location.description})
+  // handleLocation(location){
+  //   this.setState({location: location.description})
+  // }
+  handleLocation(e){
+    this.setState({location: e.target.value})
+  }
+
+  activatePlacesSearch(){
+    let input = document.getElementById('location');
+    this.autocomplete = new google.maps.places.Autocomplete(input);
   }
 
   handleDescription(description){
     this.setState( { description  } )
+    this.setState({location: document.getElementById("location").value});
   }
 
   handleChange(field){
     return (e) => {
       this.setState( { [field]:e.target.value } )
+      this.setState({location: document.getElementById("location").value});
     }
   }
 
@@ -94,6 +123,7 @@ class EventForm extends React.Component {
   handleDate(field){
     return (moment) => {
       this.setState( { [field]: moment._d })
+      this.setState({location: document.getElementById("location").value});
     }
   }
 
@@ -171,8 +201,9 @@ class EventForm extends React.Component {
           </div>
           <div className='event-details-location'>
             <label>Location</label>
+            <br/>
             {this.errorConstructor('location', this.props.errors)}
-            <Geosuggest initialValue={this.state.location} id='location' onSuggestSelect={this.handleLocation} onChange={this.handleLocation} />
+            <input id='location' value={this.state.location} placeholder='Enter Location' type='text' autoComplete='on' onFocus={this.activatePlacesSearch} onChange={this.handleChange('location')}/>
             <br/>
           </div>
           <div className='times'>
@@ -261,6 +292,7 @@ class EventForm extends React.Component {
 }
 
 
+// <Geosuggest initialValue={this.state.location} id='location' onSuggestSelect={this.handleLocation} onChange={this.handleLocation} />
 
 
 export default EventForm;
