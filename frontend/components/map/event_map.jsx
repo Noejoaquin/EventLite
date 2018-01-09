@@ -5,13 +5,12 @@ class EventMap extends React.Component {
 
   constructor(props){
     super(props);
-    this.lat = props.lat;
-    this.lng = props.lng;
-    this.events = props.events;
+    this.lat = this.props.lat;
+    this.lng = this.props.lng;
+    this.events = this.props.events;
   }
 
   componentDidMount() {
-    console.log(this.lat, this.lng)
     const mapOptions = {
       center: { lat: this.lat, lng: this.lng },
       zoom: 14
@@ -25,7 +24,7 @@ class EventMap extends React.Component {
   }
 
   componentDidUpdate(){
-    this.MarkerManager.updateMarkers([this.events])
+    this.MarkerManager.updateMarkers(this.props.events)
   }
 
   render() {

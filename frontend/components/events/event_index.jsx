@@ -1,6 +1,8 @@
 import React from 'react';
 import {EventIndexItem} from './event_index_item';
 import { isEmpty } from 'lodash';
+import EventMap from '../map/event_map'
+
 
 class EventIndex extends React.Component {
   constructor(props){
@@ -57,9 +59,11 @@ class EventIndex extends React.Component {
   render(){
     let events;
     let eventIndex;
+    let filterableEvents = [];
     let finalEvents = [];
     let emptyIndexPicture;
-    if (!(isEmpty(this.props.categories))) {
+    if (!(isEmpty(this.props.categories)) && !(isEmpty(this.props.events))) {
+      filterableEvents = this.props.events
       events = this.props.events.map((event) => {
         let category = this.findCategoryName(event, this.props.categories)
 
@@ -85,10 +89,10 @@ class EventIndex extends React.Component {
         </div>
       )
     }
-
     if (this.props.searchIndex){
       eventIndex = (
         <div className='event-meta-container-search'>
+          <EventMap events={filterableEvents} lat={40.713647} lng={-73.942451}/>
           <div className='event-index-container-search'>
             <ul className='event-list-search'>
               {finalEvents}
