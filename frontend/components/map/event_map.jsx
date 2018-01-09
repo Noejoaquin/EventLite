@@ -11,7 +11,6 @@ class EventMap extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.lat, this.lng)
     const mapOptions = {
       center: { lat: this.lat, lng: this.lng },
       zoom: 14
