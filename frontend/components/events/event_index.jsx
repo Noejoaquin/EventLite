@@ -92,7 +92,7 @@ class EventIndex extends React.Component {
     if (this.props.searchIndex){
       eventIndex = (
         <div className='event-meta-container-search'>
-          <EventMap events={filterableEvents} lat={40.713647} lng={-73.942451}/>
+          <EventMap events={filterableEvents} page={'search'} lat={40.713647} lng={-73.942451}/>
           <div className='event-index-container-search'>
             <ul className='event-list-search'>
               {finalEvents}

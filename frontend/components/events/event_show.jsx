@@ -135,7 +135,7 @@ class EventShow extends React.Component {
                 <h3 className='title'>TAGS</h3>
                 <button className='tag-button' onClick={this.handleTagClick}>{this.props.categories[this.props.event.category_id].name}</button>
               </div>
-              <EventMap events={this.props.event} lat={this.props.event.lat} lng={this.props.event.lng}/>
+              <EventMap events={this.props.event} page={'show'} lat={this.props.event.lat} lng={this.props.event.lng}/>
            </div>
          </div>
       )
