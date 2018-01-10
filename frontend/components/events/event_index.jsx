@@ -9,6 +9,7 @@ class EventIndex extends React.Component {
     super(props);
     this.alreadyOnSearchPage = false;
     this.state = this.props.query
+    this.toggleSelections = this.toggleSelections.bind(this)
   }
   componentDidMount(){
     if ( this.props.ownProps && this.props.searchIndex === false) { // this checks for the profile indicies, making sure all events are in state
@@ -56,7 +57,19 @@ class EventIndex extends React.Component {
     return cat
   }
 
+  toggleSelections(field, angle){
+   document.getElementById(field).classList.toggle("show");
+   if (document.getElementById(angle).classList.contains("fa-angle-down")){
+     document.getElementById(angle).classList.remove("fa-angle-down");
+     document.getElementById(angle).classList.add("fa-angle-up");
+   } else {
+     document.getElementById(angle).classList.remove("fa-angle-up");
+     document.getElementById(angle).classList.add("fa-angle-down");
+   }
+ }
+
   render(){
+    let categoryOpts;
     let events;
     let eventIndex;
     let filterableEvents = [];
@@ -77,6 +90,14 @@ class EventIndex extends React.Component {
       for (let i = 0; i <= 20; i++){
         finalEvents.push(events[i])
       }
+
+    //   categoryOpts = this.props.categories.map((category, i) => {
+    //     debugger
+    //     return(
+    //       <li>{category.name}</li>
+    //     );
+    //
+    //   });
     }
 
     if (finalEvents[0] === undefined){
@@ -89,19 +110,34 @@ class EventIndex extends React.Component {
         </div>
       )
     }
-    // <div className='event-meta-container-search'>
-    //   <EventMap events={filterableEvents} page={'search'} lat={40.713647} lng={-73.942451}/>
-    //   <div className='event-index-container-search'>
-    //     <ul className='event-list-search'>
-    //       {finalEvents}
-    //     </ul>
-    //   </div>
-    // </div>
+
+    // let categoryOpts = this.props.categories.map((category, i) => {
+    //   return(
+    //     <li>{category.name}</li>
+    //   );
+    //
+    // });
     if (this.props.searchIndex){
       eventIndex = (
         <div>
           <div className='browse-events-top'>
-            <EventMap events={filterableEvents} page={'search'} lat={40.713647} lng={-73.942451}/>
+            <div>
+              <EventMap events={filterableEvents} page={'search'} lat={40.713647} lng={-73.942451}/>
+              <div className='event-index-options-main'>
+                <div className="event-index-options">
+                  <div className="event-index-options-category">
+                      <button onClick={(e) => this.toggleSelections("event-index-category-dropdown", "event-index-category-btn-angle")}
+                        className="event-index-category-btn">
+                        CATEGORY <i className="fa fa-angle-down fa-lg" id="event-index-category-btn-angle"aria-hidden="true"></i>
+                      </button>
+                    <div id="event-index-category-dropdown"
+                      className="event-index-category-dropdown-content">
+                      {categoryOpts}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
               <div className='browse-events-container'>
               <h3 className='browse-events-header'>Things to do</h3>
               <div className='browse-events-text'>

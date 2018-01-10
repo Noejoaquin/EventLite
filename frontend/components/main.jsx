@@ -11,7 +11,6 @@ import LandingContainer from './search/landing_container';
 import ProfileContainer from './user/profile_container';
 import FooterContainer from './footer/footer_container'
 import {Switch} from 'react-router-dom';
-// <Route exact path ='/events' component={BrowseEventsContainer}/>
 
 const MainPage = () => (
   <div className='MainPage'>
