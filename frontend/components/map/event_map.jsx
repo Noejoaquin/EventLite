@@ -1,6 +1,7 @@
 import React from 'react';
 import MarkerManager from '../../util/marker_manager';
 
+// var center;
 class EventMap extends React.Component {
 
   constructor(props){
@@ -13,9 +14,14 @@ class EventMap extends React.Component {
   }
 
   createMap(mapOptions){
-    this.map = new google.maps.Map(this.mapNode, mapOptions);
+    this.map = new google.maps.Map(this.mapNode, mapOptions)
     this.MarkerManager = new MarkerManager(this.map);
     this.MarkerManager.updateMarkers([this.events])
+    let that = this
+    let center = this.map.getCenter()
+    this.map.addListener('bounds_changed', () => {
+      that.map.setCenter(center)
+    })
     // wrap the mapDOMNode in a Google Map
   }
 
@@ -37,6 +43,8 @@ class EventMap extends React.Component {
   }
 
   componentDidUpdate(){
+    window.addEventListener('resize', this.resize)
+
     if (this.props.page === 'show'){
       this.MarkerManager.updateMarkers([this.props.events])
     } else {
@@ -44,9 +52,14 @@ class EventMap extends React.Component {
     }
   }
 
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.resize)
+  }
+
   render() {
+    let mapClass = this.page === 'search' ? 'map-container-search': 'map-container-show'
     return (
-      <div id='map-container' ref={ map => this.mapNode = map }></div>
+      <div className={mapClass} ref={ map => this.mapNode = map }></div>
     )
   }
 }

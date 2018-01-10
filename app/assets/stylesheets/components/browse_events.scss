@@ -1,8 +1,13 @@
-.browse-events-header-container{
-  margin: 0 auto;
-  margin-top: 75px;
+.browse-events-container{
   font-family: 'Roboto', sans-serif;
   width: 790px;
+  margin-left: 3%;
+}
+
+.browse-events-top {
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
 }
 
 .browse-events-header {
@@ -12,4 +17,24 @@
 .browse-events-text {
   font-weight: 300;
   line-height: 18px;
+}
+
+.map-container-search {
+  width: 300px;
+  height: 300px;
+}
+
+@media screen and (max-width: 1100px) {
+  .map-container-search {
+    display: block;
+    margin: 0 auto;
+    width: 90% !important;
+    height: 200px;
+  }
+  .browse-events-top{
+    display: block;
+  }
+  .browse-events-container {
+   margin: 0 auto;
+  }
 }

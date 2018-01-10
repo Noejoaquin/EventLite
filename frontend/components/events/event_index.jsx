@@ -89,14 +89,33 @@ class EventIndex extends React.Component {
         </div>
       )
     }
+    // <div className='event-meta-container-search'>
+    //   <EventMap events={filterableEvents} page={'search'} lat={40.713647} lng={-73.942451}/>
+    //   <div className='event-index-container-search'>
+    //     <ul className='event-list-search'>
+    //       {finalEvents}
+    //     </ul>
+    //   </div>
+    // </div>
     if (this.props.searchIndex){
       eventIndex = (
-        <div className='event-meta-container-search'>
-          <EventMap events={filterableEvents} page={'search'} lat={40.713647} lng={-73.942451}/>
-          <div className='event-index-container-search'>
-            <ul className='event-list-search'>
-              {finalEvents}
-            </ul>
+        <div>
+          <div className='browse-events-top'>
+            <EventMap events={filterableEvents} page={'search'} lat={40.713647} lng={-73.942451}/>
+              <div className='browse-events-container'>
+              <h3 className='browse-events-header'>Things to do</h3>
+              <div className='browse-events-text'>
+                There are so many things to explore and do. Go square dancing on Pilgrim avenue. See American Jim live.
+                Get active and plant things at the Blackburn Community Garden. Get your costumed-groove on at the Alexis Charity Ball!
+              </div>
+              <div className='event-meta-container-search'>
+                <div className='event-index-container-search'>
+                  <ul className='event-list-search'>
+                    {finalEvents}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )

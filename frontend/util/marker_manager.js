@@ -8,7 +8,6 @@ export default class MarkerManager {
 
   updateMarkers(events) {
     let eventObj = {};
-    debugger
     events.forEach(event => eventObj[event.id] = event); // create events obj for filtering
 
     events
@@ -28,7 +27,6 @@ export default class MarkerManager {
       eventId: event.id
     });
 
-    marker.addListener('click', () => this.handleClick(event));
     this.markers[marker.eventId] = marker;
   }
 
