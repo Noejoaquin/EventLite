@@ -10,6 +10,7 @@ class EventIndex extends React.Component {
     this.alreadyOnSearchPage = false;
     this.state = this.props.query
     this.toggleSelections = this.toggleSelections.bind(this)
+    this.handleCategoryClick = this.handleCategoryClick.bind(this)
   }
   componentDidMount(){
     if ( this.props.ownProps && this.props.searchIndex === false) { // this checks for the profile indicies, making sure all events are in state
@@ -68,8 +69,13 @@ class EventIndex extends React.Component {
    }
  }
 
+ handleCategoryClick(){
+   console.log('clicked')
+ }
+
   render(){
     let categoryOpts;
+    let categories;
     let events;
     let eventIndex;
     let filterableEvents = [];
@@ -91,13 +97,14 @@ class EventIndex extends React.Component {
         finalEvents.push(events[i])
       }
 
-    //   categoryOpts = this.props.categories.map((category, i) => {
-    //     debugger
-    //     return(
-    //       <li>{category.name}</li>
-    //     );
-    //
-    //   });
+      categories = Object.keys(this.props.categories).map((id) => this.props.categories[id])
+      categoryOpts = categories.map((category, i) => {
+        return(
+          <li onClick={this.handleCategoryClick} key={i}>{category.name}</li>
+        );
+
+      });
+      debugger
     }
 
     if (finalEvents[0] === undefined){
@@ -117,13 +124,14 @@ class EventIndex extends React.Component {
     //   );
     //
     // });
+    // debugger
     if (this.props.searchIndex){
       eventIndex = (
         <div>
           <div className='browse-events-top'>
             <div>
               <EventMap events={filterableEvents} page={'search'} lat={40.713647} lng={-73.942451}/>
-              <div className='event-index-options-main'>
+              <div className='event-index-options-main search-options'>
                 <div className="event-index-options">
                   <div className="event-index-options-category">
                       <button onClick={(e) => this.toggleSelections("event-index-category-dropdown", "event-index-category-btn-angle")}
