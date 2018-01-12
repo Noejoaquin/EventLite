@@ -69,8 +69,8 @@ class EventIndex extends React.Component {
    }
  }
 
- handleCategoryClick(){
-   console.log('clicked')
+ handleCategoryClick(category){
+   this.props.receiveQuery({name:category})
  }
 
   render(){
@@ -100,11 +100,10 @@ class EventIndex extends React.Component {
       categories = Object.keys(this.props.categories).map((id) => this.props.categories[id])
       categoryOpts = categories.map((category, i) => {
         return(
-          <li onClick={this.handleCategoryClick} key={i}>{category.name}</li>
+          <li onClick={() => this.handleCategoryClick(category.name)} key={i}>{category.name}</li>
         );
 
       });
-      debugger
     }
 
     if (finalEvents[0] === undefined){
@@ -118,28 +117,21 @@ class EventIndex extends React.Component {
       )
     }
 
-    // let categoryOpts = this.props.categories.map((category, i) => {
-    //   return(
-    //     <li>{category.name}</li>
-    //   );
-    //
-    // });
-    // debugger
     if (this.props.searchIndex){
       eventIndex = (
         <div>
           <div className='browse-events-top'>
             <div>
               <EventMap events={filterableEvents} page={'search'} lat={40.713647} lng={-73.942451}/>
-              <div className='event-index-options-main search-options'>
-                <div className="event-index-options">
-                  <div className="event-index-options-category">
+              <div className='filter-options'>
+                <div className="filter-index-options">
+                  <div className="event-filter-category">
                       <button onClick={(e) => this.toggleSelections("event-index-category-dropdown", "event-index-category-btn-angle")}
-                        className="event-index-category-btn">
+                        className="event-filter-category-btn">
                         CATEGORY <i className="fa fa-angle-down fa-lg" id="event-index-category-btn-angle"aria-hidden="true"></i>
                       </button>
                     <div id="event-index-category-dropdown"
-                      className="event-index-category-dropdown-content">
+                      className="event-filter-category-dropdown-content">
                       {categoryOpts}
                   </div>
                 </div>

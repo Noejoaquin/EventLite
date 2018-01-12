@@ -32,8 +32,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createSave: (id) => dispatch(createSave(id)),
     deleteSave: (id) => dispatch(deleteSave(id)),
     removeQuery: () => dispatch(removeQuery()),
-    receiveQuery: (query) => dispatch(receiveQuery(query))
   }
+
 }
 
 
