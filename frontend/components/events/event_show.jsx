@@ -13,6 +13,10 @@ class EventShow extends React.Component {
     this.state = this.props.currentUser
   }
 
+  componentDidMount(){
+    window.scrollTo(0,0)
+  }
+
   componentWillMount(){
     this.props.fetchCategories().then(() => this.props.fetchEvent(this.props.match.params.eventId)).then(() => this.props.fetchUsers())
   }
@@ -135,7 +139,7 @@ class EventShow extends React.Component {
                 <h3 className='title'>TAGS</h3>
                 <button className='tag-button' onClick={this.handleTagClick}>{this.props.categories[this.props.event.category_id].name}</button>
               </div>
-              <EventMap events={this.props.event} lat={this.props.event.lat} lng={this.props.event.lng}/>
+              <EventMap events={this.props.event} page={'show'} lat={this.props.event.lat} lng={this.props.event.lng}/>
            </div>
          </div>
       )

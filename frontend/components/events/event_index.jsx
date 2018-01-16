@@ -1,12 +1,16 @@
 import React from 'react';
 import {EventIndexItem} from './event_index_item';
 import { isEmpty } from 'lodash';
+import EventMap from '../map/event_map'
+
 
 class EventIndex extends React.Component {
   constructor(props){
     super(props);
     this.alreadyOnSearchPage = false;
     this.state = this.props.query
+    this.toggleSelections = this.toggleSelections.bind(this)
+    this.handleCategoryClick = this.handleCategoryClick.bind(this)
   }
   componentDidMount(){
     if ( this.props.ownProps && this.props.searchIndex === false) { // this checks for the profile indicies, making sure all events are in state
@@ -54,12 +58,31 @@ class EventIndex extends React.Component {
     return cat
   }
 
+  toggleSelections(field, angle){
+   document.getElementById(field).classList.toggle("show");
+   if (document.getElementById(angle).classList.contains("fa-angle-down")){
+     document.getElementById(angle).classList.remove("fa-angle-down");
+     document.getElementById(angle).classList.add("fa-angle-up");
+   } else {
+     document.getElementById(angle).classList.remove("fa-angle-up");
+     document.getElementById(angle).classList.add("fa-angle-down");
+   }
+ }
+
+ handleCategoryClick(category){
+   this.props.receiveQuery({name:category})
+ }
+
   render(){
+    let categoryOpts;
+    let categories;
     let events;
     let eventIndex;
+    let filterableEvents = [];
     let finalEvents = [];
     let emptyIndexPicture;
-    if (!(isEmpty(this.props.categories))) {
+    if (!(isEmpty(this.props.categories)) && !(isEmpty(this.props.events))) {
+      filterableEvents = this.props.events
       events = this.props.events.map((event) => {
         let category = this.findCategoryName(event, this.props.categories)
 
@@ -73,10 +96,18 @@ class EventIndex extends React.Component {
       for (let i = 0; i <= 20; i++){
         finalEvents.push(events[i])
       }
+
+      categories = Object.keys(this.props.categories).map((id) => this.props.categories[id])
+      categoryOpts = categories.map((category, i) => {
+        return(
+          <li onClick={() => this.handleCategoryClick(category.name)} key={i}>{category.name}</li>
+        );
+
+      });
     }
 
-    if (finalEvents[0] === undefined){
-      finalEvents = (
+    if (finalEvents[0] === undefined && this.props.ownProps !== undefined ){
+      emptyIndexPicture = (
         <div>
           <img className='empty-index-image' src={window.empty_index_image} />
           <h2 className='empty-notice'>You Don't Have Any Events Here Yet.</h2>
@@ -88,11 +119,39 @@ class EventIndex extends React.Component {
 
     if (this.props.searchIndex){
       eventIndex = (
-        <div className='event-meta-container-search'>
-          <div className='event-index-container-search'>
-            <ul className='event-list-search'>
-              {finalEvents}
-            </ul>
+        <div>
+          <div className='browse-events-top'>
+            <div>
+              <EventMap events={filterableEvents} page={'search'} lat={40.713647} lng={-73.942451}/>
+              <div className='filter-options'>
+                <div className="filter-index-options">
+                  <div className="event-filter-category">
+                      <button onClick={(e) => this.toggleSelections("event-index-category-dropdown", "event-index-category-btn-angle")}
+                        className="event-filter-category-btn">
+                        CATEGORY <i className="fa fa-angle-down fa-lg" id="event-index-category-btn-angle"aria-hidden="true"></i>
+                      </button>
+                    <div id="event-index-category-dropdown"
+                      className="event-filter-category-dropdown-content">
+                      {categoryOpts}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+              <div className='browse-events-container'>
+              <h3 className='browse-events-header'>Things to do</h3>
+              <div className='browse-events-text'>
+                There are so many things to explore and do. Go square dancing on Pilgrim avenue. See American Jim live.
+                Get active and plant things at the Blackburn Community Garden. Get your costumed-groove on at the Alexis Charity Ball!
+              </div>
+              <div className='event-meta-container-search'>
+                <div className='event-index-container-search'>
+                  <ul className='event-list-search'>
+                    {finalEvents}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )
@@ -101,6 +160,7 @@ class EventIndex extends React.Component {
         <div className='event-index-container'>
             <ul className='event-list'>
               {finalEvents}
+              {emptyIndexPicture}
             </ul>
           </div>
       </div>

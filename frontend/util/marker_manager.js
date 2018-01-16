@@ -27,7 +27,6 @@ export default class MarkerManager {
       eventId: event.id
     });
 
-    marker.addListener('click', () => this.handleClick(event));
     this.markers[marker.eventId] = marker;
   }
 

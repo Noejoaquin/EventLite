@@ -18,23 +18,16 @@ guest_user = User.create(email:'guest@guest.com', first_name: 'Guest', last_name
 Category.destroy_all
 
 
-
+cat0 = Category.create(name: "All Categories")
 cat1 = Category.create(name: 'Music')
 cat2 = Category.create(name: 'Business')
 cat3 = Category.create(name: 'Arts')
-cat4 = Category.create(name: 'Other')
 cat5 = Category.create(name: 'Holiday')
 cat6 = Category.create(name: 'Fashion')
-cat7 = Category.create(name: 'Health')
 cat8 = Category.create(name: 'Community')
 cat10 = Category.create(name: 'Education')
 cat11 = Category.create(name: 'Charity & Causes')
-cat12 = Category.create(name: 'Sports $ Fitness')
-cat13 = Category.create(name: 'Hobbies')
 cat14 = Category.create(name: 'Science & Tech')
-cat15 = Category.create(name: 'Travel & Outdoor')
-cat16 = Category.create(name: 'Spirituality')
-cat17 = Category.create(name: 'Film & Media')
 cat18 = Category.create(name: 'Food & Drink')
 
 

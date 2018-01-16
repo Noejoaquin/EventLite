@@ -37,7 +37,7 @@ export const EventIndexItem = ({event, ownProps, removeQuery, profileContainer, 
 
 
     let indexItem;
-     let pushDetails;
+    let pushDetails;
     if (profileContainer) {
       pushDetails = () => {
         receiveQuery({name:category})
