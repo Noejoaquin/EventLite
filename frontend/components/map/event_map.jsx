@@ -12,19 +12,8 @@ class EventMap extends React.Component {
     this.createMap = this.createMap.bind(this)
   }
 
-<<<<<<< HEAD
-  componentDidMount() {
-    const mapOptions = {
-      center: { lat: this.lat, lng: this.lng },
-      zoom: 14
-    };
-
-    // wrap the mapDOMNode in a Google Map
-    this.map = new google.maps.Map(this.mapNode, mapOptions);
-=======
   createMap(mapOptions){
     this.map = new google.maps.Map(this.mapNode, mapOptions)
->>>>>>> Filter
     this.MarkerManager = new MarkerManager(this.map);
     this.MarkerManager.updateMarkers([this.events])
     let that = this
