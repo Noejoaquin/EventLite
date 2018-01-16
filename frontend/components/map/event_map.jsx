@@ -1,7 +1,6 @@
 import React from 'react';
 import MarkerManager from '../../util/marker_manager';
 
-// var center;
 class EventMap extends React.Component {
 
   constructor(props){

@@ -13,6 +13,10 @@ class EventShow extends React.Component {
     this.state = this.props.currentUser
   }
 
+  componentDidMount(){
+    window.scrollTo(0,0)
+  }
+
   componentWillMount(){
     this.props.fetchCategories().then(() => this.props.fetchEvent(this.props.match.params.eventId)).then(() => this.props.fetchUsers())
   }
