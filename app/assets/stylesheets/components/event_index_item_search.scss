@@ -49,8 +49,6 @@
   border: 1px solid #eee;
 }
 
-
-
 .image-price-search {
   border-bottom: none;
 }
@@ -90,6 +88,7 @@
 
 .event-cell-category-search li {
   height: 35px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .event-ticket-type-search{
@@ -111,6 +110,7 @@
 
 .category-search:hover {
   cursor: pointer;
+  color: #0093D7;
 }
 
 
