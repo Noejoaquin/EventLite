@@ -106,8 +106,8 @@ class EventIndex extends React.Component {
       });
     }
 
-    if (finalEvents[0] === undefined){
-      finalEvents = (
+    if (finalEvents[0] === undefined && this.props.ownProps !== undefined ){
+      emptyIndexPicture = (
         <div>
           <img className='empty-index-image' src={window.empty_index_image} />
           <h2 className='empty-notice'>You Don't Have Any Events Here Yet.</h2>
@@ -160,6 +160,7 @@ class EventIndex extends React.Component {
         <div className='event-index-container'>
             <ul className='event-list'>
               {finalEvents}
+              {emptyIndexPicture}
             </ul>
           </div>
       </div>

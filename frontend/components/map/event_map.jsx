@@ -19,7 +19,6 @@ class EventMap extends React.Component {
     this.MarkerManager.updateMarkers([this.events])
     let that = this
     let center = this.map.getCenter()
-    debugger
     let mapOnDom;
     let height;
     if (this.page === 'search') {
@@ -28,7 +27,6 @@ class EventMap extends React.Component {
     }
     this.map.addListener('bounds_changed', () => {
       if (that.page === 'search' && height !== window.getComputedStyle(mapOnDom).height) {
-        debugger
         that.map.setCenter(center)
         height = window.getComputedStyle(mapOnDom).height
       }
