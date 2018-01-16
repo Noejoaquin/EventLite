@@ -13,6 +13,7 @@ class EventIndex extends React.Component {
     this.handleCategoryClick = this.handleCategoryClick.bind(this)
   }
   componentDidMount(){
+    window.scrollTo(0,0)
     if ( this.props.ownProps && this.props.searchIndex === false) { // this checks for the profile indicies, making sure all events are in state
       this.props.fetchEvents(
         {
