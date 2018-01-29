@@ -59,6 +59,7 @@ class EventIndex extends React.Component {
     return cat
   }
 
+  // inspired by Emily Hansen 
   toggleSelections(field, angle){
    document.getElementById(field).classList.toggle("show");
    if (document.getElementById(angle).classList.contains("fa-angle-down")){
