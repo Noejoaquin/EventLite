@@ -227,8 +227,10 @@ class EventForm extends React.Component {
           </div>
           <div className='Event-image-title-cell'>
             <h3 className='event-image-title'>Event Image</h3>
-            <input id='image' placeholder='ADD EVENT IMAGE' type='file' onChange={this.handleFile}></input>
-            <img id='event-image' src={this.state.image_url || window.image_url}/>
+            <div className='drag-and-drop'>
+              <input id='image' placeholder='ADD EVENT IMAGE' type='file' onChange={this.handleFile}></input>
+              <img id='event-image' src={this.state.image_url || window.image_url}/>
+            </div>
           </div>
 
           <div className='event-details-description'></div>

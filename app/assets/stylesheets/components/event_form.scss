@@ -106,8 +106,11 @@
 
 
 #image{
-  padding: 2px;
-  width: 211px;
+  border: 1px solid yellow;
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  opacity: 0;
 }
 
 #event-image {
@@ -115,6 +118,12 @@
   background-position: center center;
   width: 400px;
   height: 300px;
+}
+
+.drag-and-drop {
+  width: 400px;
+  height: 300px;
+  border: 1px solid red;
 }
 
 .edit-button{
