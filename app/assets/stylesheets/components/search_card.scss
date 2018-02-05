@@ -8,11 +8,52 @@ select {
 
 .LandingImage {
   width: 100%;
-  height: 282px;
+  height: 300px;
   background-size: cover;
-  background-image: image_url("fireworks.jpg");
   position: absolute;
 }
+
+.one {
+  background-image: image_url("fireworks1.JPEG");
+  -moz-animation: fadein 2s; /* Firefox */
+  -webkit-animation: fadein 2s; /* Safari and Chrome */
+  -o-animation: fadein 2s; /* Opera */
+}
+
+.two {
+  background-image: image_url("concert_pic3.JPEG");
+  // -moz-animation: fadeout 2s; /* Firefox */
+  // -webkit-animation: fadeout 2s; /* Safari and Chrome */
+  // -o-animation: fadeout 2s; /* Opera */
+  -moz-animation: fadein 2s; /* Firefox */
+  -webkit-animation: fadein 2s; /* Safari and Chrome */
+  -o-animation: fadein 2s; /* Opera */
+}
+
+.three {
+  background-image: image_url("parade.JPEG");
+  -moz-animation: fadeout 2s; /* Firefox */
+  -webkit-animation: fadeout 2s; /* Safari and Chrome */
+  -o-animation: fadeout 2s; /* Opera */
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes fadeout { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
 
 .meta-search-card{
   width: 92%;
