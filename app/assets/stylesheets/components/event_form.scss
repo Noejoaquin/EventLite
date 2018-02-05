@@ -113,6 +113,10 @@
   opacity: 0;
 }
 
+#image:hover {
+  cursor: pointer;
+}
+
 #event-image {
   background-size: cover;
   background-position: center center;
@@ -120,11 +124,43 @@
   height: 300px;
 }
 
+.event-image-title-cell {
+  position: relative;
+}
+
 .drag-and-drop {
   width: 400px;
   height: 300px;
-  border: 1px solid red;
+  border: 1px dashed #D8D0CE;
+  background-color: #fff;
 }
+
+.text-upload-container:hover {
+  cursor: pointer;
+}
+
+.text-upload-container {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  padding-top: 60px;
+  line-height: 2;
+  color: #0278b8;
+  font-size: 21px;
+}
+
+.text-for-upload {
+  display: flex;
+  justify-content: center;
+}
+
+.fa-camera {
+  display: flex;
+  justify-content: center;
+  font-size: 37px;
+  margin-top: 10px;
+}
+
 
 .edit-button{
 
