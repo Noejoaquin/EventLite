@@ -9,11 +9,11 @@ class NavBar extends React.Component {
   }
 
   handleLogout(){
-    if (this.props.location.pathname === '/') {
-      this.props.logout()
-    } else {
-      /////////////////// TODO: fix the log out sequence
+    if (this.props.location.pathname === '/events/new' ||
+        this.props.location.pathname.includes('/events/users')) {
       this.props.logout().then(this.props.history.push('/'));
+    } else {
+      this.props.logout()
     }
   }
 
