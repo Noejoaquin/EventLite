@@ -12,6 +12,7 @@ class NavBar extends React.Component {
     if (this.props.location.pathname === '/') {
       this.props.logout()
     } else {
+      /////////////////// TODO: fix the log out sequence
       this.props.logout().then(this.props.history.push('/'));
     }
   }
@@ -96,6 +97,9 @@ class NavBar extends React.Component {
         <header>
             <div className='header-title-container'>
               {landingPageLink}
+              <div className='search-form'>
+                {searchBar}
+              </div>
           <nav className='links-container' >
             <ul className='nav-links'>
               {browseEventsLink}

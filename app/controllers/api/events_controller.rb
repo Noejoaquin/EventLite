@@ -1,25 +1,24 @@
 class Api::EventsController < ApplicationController
 
   def index
-    category_names = Category.all.map do |cat|
-      cat.name
+    @events_one = []
+    @events_two = []
+
+    category_names = Category.all.map { |cat|  cat.name }
+    category_name = category_names.select { |name| name.downcase.include?(params[:name].downcase)}
+
+    if category_name
+      category_id = Category.all.where(name: category_name[0]).ids[0]
+      @events_one = Event.all.where(category_id: category_id)
     end
 
-    if category_names.include?(params[:name]) #changing the category... problem for the backend.
-      category_id = Category.all.where(["name LIKE ?", "#{params[:name]}"]).ids[0]
-      category_id.to_i
-      @events = Event.all.where(["category_id = ?", category_id])
-    else
-      params[:name] = params[:name].downcase
-      @events = Event.all
-      @events = @events.where(["lower(name) LIKE ?", "%#{params[:name]}%"]) if params[:name] != ""
-    end
+    params[:name] = params[:name].downcase
+    @events = Event.all
+    @events_two = @events.where(["lower(name) LIKE ?", "%#{params[:name]}%"]) if params[:name] != ""
 
-    if @events.empty?
-      @events = Event.all
-    else
-      @events
-    end
+    @events = @events_one + @events_two
+
+    @events.empty? ? @events = Event.all : @events
   end
 
 
