@@ -8,7 +8,7 @@ select {
 
 .LandingImage {
   width: 100%;
-  height: 300px;
+  height: 430px;
   background-size: cover;
   position: absolute;
 }
@@ -22,16 +22,20 @@ select {
 
 .two {
   background-image: image_url("concert_pic3.JPEG");
-  // -moz-animation: fadeout 2s; /* Firefox */
-  // -webkit-animation: fadeout 2s; /* Safari and Chrome */
-  // -o-animation: fadeout 2s; /* Opera */
+  -moz-animation: fadeout 2s; /* Firefox */
+  -webkit-animation: fadeout 2s; /* Safari and Chrome */
+  -o-animation: fadeout 2s; /* Opera */
+}
+
+.three {
+  background-image: image_url("parade.JPEG");
   -moz-animation: fadein 2s; /* Firefox */
   -webkit-animation: fadein 2s; /* Safari and Chrome */
   -o-animation: fadein 2s; /* Opera */
 }
 
-.three {
-  background-image: image_url("parade.JPEG");
+.four {
+  background-image: image_url("concert2.JPEG");
   -moz-animation: fadeout 2s; /* Firefox */
   -webkit-animation: fadeout 2s; /* Safari and Chrome */
   -o-animation: fadeout 2s; /* Opera */
@@ -64,7 +68,7 @@ select {
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
   position: relative;
-  top: 140px;
+  top: 269px;
   height: 210px;
 }
 
