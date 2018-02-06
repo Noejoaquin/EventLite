@@ -20,6 +20,7 @@ class EventForm extends React.Component {
     this.activatePlacesSearch = this.activatePlacesSearch.bind(this)
     this.getLatLng = this.getLatLng.bind(this)
     this.state = this.props.event
+    this.renderText = this.renderText.bind(this)
   }
 
   componentDidMount(){
@@ -157,6 +158,29 @@ class EventForm extends React.Component {
     }
   }
 
+  renderText(){
+    if (this.state.image_url !== ''){
+      return ''
+    } else {
+      return (
+        <ul className='text-upload-container'>
+          <li className='text-for-upload'>
+            Click To Add Photo
+          </li>
+          <li className='text-for-upload'>
+            OR
+          </li>
+          <li className='text-for-upload'>
+            Drag And Drop
+          </li>
+          <li>
+            <i className="fa fa-camera"></i>
+          </li>
+        </ul>
+      )
+    }
+  }
+
   render(){
 
     let title = this.props.formType === 'new' ? 'Create An Event' : 'Edit Event';
@@ -227,22 +251,10 @@ class EventForm extends React.Component {
           </div>
           <div className='Event-image-title-cell'>
             <h3 className='event-image-title'>Event Image</h3>
-            <ul className='text-upload-container'>
-              <li className='text-for-upload'>
-                Click To Add Photo
-              </li>
-              <li className='text-for-upload'>
-                OR
-              </li>
-              <li className='text-for-upload'>
-                Drag And Drop
-              </li>
-              <li>
-                <i className="fa fa-camera"></i>
-              </li>
-            </ul>
               <div className='drag-and-drop'>
+                {this.renderText()}
                 <input id='image' placeholder='ADD EVENT IMAGE' accept='image/*' type='file' onChange={this.handleFile}></input>
+                <img id='event-image' src={this.state.image_url}/>
               </div>
           </div>
 
@@ -305,9 +317,6 @@ class EventForm extends React.Component {
     }
   // }
 }
-
-
-// <Geosuggest initialValue={this.state.location} id='location' onSuggestSelect={this.handleLocation} onChange={this.handleLocation} />
 
 
 export default EventForm;
