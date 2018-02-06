@@ -160,7 +160,7 @@ class EventIndex extends React.Component {
     } else {
       eventIndex = (<div className='event-meta-container'>
         <div className='event-index-container'>
-            <ul className={this.props.props.location.pathname === '/' ? 'event-list landing-list' : 'event-list'}>
+            <ul className={this.props.props && this.props.props.location.pathname === '/' ? 'event-list landing-list' : 'event-list'}>
               {finalEvents}
               {emptyIndexPicture}
             </ul>
