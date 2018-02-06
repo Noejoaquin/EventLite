@@ -33,10 +33,8 @@ class LandingTop extends React.Component {
         image.classList.remove("four");
         image.classList.add("one");
       }
-    }, 5000);
+    }, 6000);
   }
-
-  // {this.handleChangeOfPhoto()}
 
   render() {
     return (

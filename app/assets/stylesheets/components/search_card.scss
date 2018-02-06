@@ -1,5 +1,5 @@
 select {
-  -webkit-appearance:none
+  -webkit-appearance: none;
 }
 
 .event-meta-container {
@@ -12,7 +12,7 @@ select {
   background-size: cover;
   position: absolute;
 }
-
+// IMAGE FADE STYLING ////////
 .one {
   background-image: image_url("fireworks1.JPEG");
   -moz-animation: fadein 2s; /* Firefox */
@@ -21,117 +21,156 @@ select {
 }
 
 .two {
+  background-position: 40% 60%;
   background-image: image_url("concert_pic3.JPEG");
-  -moz-animation: fadeout 2s; /* Firefox */
-  -webkit-animation: fadeout 2s; /* Safari and Chrome */
-  -o-animation: fadeout 2s; /* Opera */
+  -moz-animation: fadeout 2s;
+  -webkit-animation: fadeout 2s;
+  -o-animation: fadeout 2s;
 }
 
 .three {
+  background-position: 25% 75%;
   background-image: image_url("parade.JPEG");
-  -moz-animation: fadein 2s; /* Firefox */
-  -webkit-animation: fadein 2s; /* Safari and Chrome */
-  -o-animation: fadein 2s; /* Opera */
+  -moz-animation: fadein 2s;
+  -webkit-animation: fadein 2s;
+  -o-animation: fadein 2s;
 }
 
 .four {
+  background-position: 20% 80%;
   background-image: image_url("concert2.JPEG");
-  -moz-animation: fadeout 2s; /* Firefox */
-  -webkit-animation: fadeout 2s; /* Safari and Chrome */
-  -o-animation: fadeout 2s; /* Opera */
-}
-@-webkit-keyframes fadein { /* Safari and Chrome */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
+  -moz-animation: fadeout 2s;
+  -webkit-animation: fadeout 2s;
+  -o-animation: fadeout 2s;
 }
 
-@-webkit-keyframes fadeout { /* Safari and Chrome */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
+@keyframes fadeout {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
-.meta-search-card{
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeout {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+//////////////////
+
+.meta-search-card {
   width: 92%;
   max-width: 1000px;
   margin: auto;
   background-color: #fff;
-  border: 1px solid #D8D0CE;
+  border: 1px solid #d8d0ce;
   border-radius: 4px;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   position: relative;
   top: 269px;
   height: 210px;
 }
 
-.input-list-search-card{
-  display:flex;
+.input-list-search-card {
+  display: flex;
   justify-content: center;
   padding-top: 23px;
 }
 
 .meta-search-card h1 {
-  font-family: 'Libre Franklin', sans-serif;
-  color:#f6682F;
+  font-family: "Libre Franklin", sans-serif;
+  color: #f6682f;
   text-align: center;
   font-size: 45px;
   font-weight: lighter;
   padding-top: 45px;
-
 }
 
 #main-search {
   // width: 250px;
 }
 
-
 .searchform {
-  margin-bottom: 25px
+  margin-bottom: 25px;
 }
 
 .searchform input::placeholder {
-  color: #BCC2CD;
+  color: #bcc2cd;
 }
 
 .searchform input {
-  border: 1px solid #D8D0CE;
+  border: 1px solid #d8d0ce;
   border-radius: 4px 0 0 4px;
   padding: 10px 12px;
-  width:475px;
+  width: 475px;
   display: flex;
-  color: #878B93;
-  font-family: 'Libre Franklin', sans-serif;
+  color: #878b93;
+  font-family: "Libre Franklin", sans-serif;
 }
 
 .searchform select {
   padding: 11.7px 10px;
-  border: 1px solid #D8D0CE;
-  width:100px;
+  border: 1px solid #d8d0ce;
+  width: 100px;
   background-color: #fff;
   font-size: 12px;
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: "Libre Franklin", sans-serif;
   border-radius: none;
 }
 
 .searchform button {
-  border: 1px solid #D8D0CE;
+  border: 1px solid #d8d0ce;
   padding: 10.74px 40px;
   font-size: 15px;
   border-radius: 0 4px 4px 0;
-  font-family: 'Libre Franklin', sans-serif;
-  background-color: #f6682F;
+  font-family: "Libre Franklin", sans-serif;
+  background-color: #f6682f;
   color: #fff;
-
 }
 
 .searchform button:hover {
-  background-color:  #b73a08;
+  background-color: #b73a08;
 }

@@ -59,7 +59,7 @@ class EventIndex extends React.Component {
     return cat
   }
 
-  // inspired by Emily Hansen 
+  // inspired by Emily Hansen
   toggleSelections(field, angle){
    document.getElementById(field).classList.toggle("show");
    if (document.getElementById(angle).classList.contains("fa-angle-down")){
@@ -160,7 +160,7 @@ class EventIndex extends React.Component {
     } else {
       eventIndex = (<div className='event-meta-container'>
         <div className='event-index-container'>
-            <ul className='event-list'>
+            <ul className={this.props.props.location.pathname === '/' ? 'event-list landing-list' : 'event-list'}>
               {finalEvents}
               {emptyIndexPicture}
             </ul>
